@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto">
+    <title>Portfolio</title>
+    <style>
+    #main-header{  
+        color: teal;
+    }
+    body{
+        background: url('/images/bgimg1.jpg') no-repeat center center/cover;
+        height: 100vh;
+        background-attachment: fixed;
+    }
+    .card{
+        border: 1px solid #ccc;
+        background: #f4f4f4;
+        padding: 20px;
+        margin-bottom: 10px;
+        box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.3),
+        -3px -3px 10px 1px rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        width: 40%;
+    }
+    .enhance{
+        color:yellow;
+        background-color: black;
+    }
+    body{
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        line-height: 1.6rem;
+    }
+    #title {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .container {
+        padding: 2px 16px;
+        background-color: antiquewhite;
+        font-size: small;
+    }
+    </style>
+    
+    <script
+      src="https://kit.fontawesome.com/5c4607dc13.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+<div id="main-header">
+    <h1><em>Hello! My name is Maor</em></h1>
+    <h3>I am a programmer <i class="fas fa-code"> </i></span></h3>
+    <img src="/images/profile.jpeg" width="100px" alt="profile picture" />
+</div>
+
+<div id="about" class="card">
+    <p>
+      I love everything that has to do with programming
+      <i class="fab fa-html5"></i> <i class="fab fa-js"></i>. <br />
+      Everyday I <mark><ins>need</ins></mark> to learn something new or  else I
+      cannot function.<br />
+      I recently got into <i class="fas fa-laptop-code"></i> <span class="enhance">Fullstack Web
+      Development </span><i class="fas fa-laptop-code"></i> course and i LOVE it. <br />
+      You can build really cool stuff with it. Here are a few cool
+      <a 
+        href="https://www.intechnic.com/blog/top-50-examples-best-responsive-designs/"
+        target="_blank">examples</a>
+    </p>
+</div>
+<div class="card">
+    <img src="/images/golan.jpg" alt="Avatar" style="width: 100%" />
+
+    <div class="container">
+      <div id="title">The Golan Heights</div>
+      <div>Cool places to visit:</div>
+      <div>
+        <a href="#">Hermon Mountains</a>
+        <a href="#">Sea Of Galilee</a>
+        <a href="#">Hula Valley</a>
+      </div>
+    </div>
+  </div>
+
+<div id="bonus" class="card">
+    <h3>Here is a bonus button for reaching this far!</h3>
+    <button type="button" onclick="alert('You made it!')">Click Me!</button>
+</div>
+
+<div id="footer" class="card">
+    <h4>Follow me</h4>
+    <ul style="list-style:square;">
+      <li>
+        <a href="#"><span class="fab fa-twitter"></span></a>
+      </li>
+      <li>
+        <a href="#"><span class="fab fa-linkedin"></span></a>
+      </li>
+      <li>
+        <a href="#"><span class="fab fa-facebook"></span></a>
+      </li>
+    </ul>
+</div>
+
+  </body>
+</html>

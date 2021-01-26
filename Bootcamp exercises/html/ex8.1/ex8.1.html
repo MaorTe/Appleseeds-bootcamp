@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons</title>
+    <style>
+        body{
+            background-color: #c4c4c4;
+        }
+        .btnflat{
+            background-color: #0B8EDE;
+            color: white;
+            border: none;
+            font-size: 16px;
+            padding: 10px 50px;
+        }
+        .btnflat:hover{
+            background-color: #0b67a0;
+        }
+
+        .btnround{
+            background-color: yellowgreen;
+            color: white;
+            border: none;
+            font-size: 16px;
+            padding: 10px 50px;
+            border-radius: 20px;
+            transition-duration: 0.4s;
+        }
+        .btnround:hover{
+            background-color: #d0de0b;
+        }
+
+        .btnflatghost{
+            background-color: #ffffff00;
+            color: white;
+            border: 3px blue solid;
+            font-size: 16px;
+            padding: 10px 50px;
+            transition-duration: 0.4s;
+        }
+        .btnflatghost:hover{
+            background-color: #0B8EDE;
+        }
+
+        .btnroundghost{
+            background-color: rgb(143, 50, 205);
+            color: white;
+            border: none;
+            font-size: 16px;
+            padding: 10px 50px;
+            border-radius: 20px;
+            transition-duration: 0.4s;
+        }
+        .btnroundghost:hover{
+            background-color: #de120b;
+        }
+    </style>
+</head>
+<body>
+    <div><button class="btnflat">Flat</button></div><br>
+    <div><button class="btnround">Round</button></div><br>
+    <div><button class="btnflatghost">FlatGhost</button></div><br>
+    <div><button class="btnroundghost">Roundghost</button></div>
+</body>
+</html>
