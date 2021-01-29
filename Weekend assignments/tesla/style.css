@@ -58,6 +58,7 @@ p {
   float: right;
   padding-top: 11px;
 }
+
 /* Utility Classes */
 .nav-container {
   margin-right: 5px;
@@ -65,14 +66,16 @@ p {
 }
 
 /* Navbar */
-#navbar {
+#navbar,
+#side-navbar {
   color: #fff;
   overflow: auto;
-  list-style: none;
+  /* list-style: none; */
   background: transparent;
 }
 
-#navbar ul {
+#navbar ul,
+#side-navbar ul {
   list-style: none;
 }
 .clr {
@@ -88,7 +91,7 @@ p {
 
 .nav-right-container {
   display: inline-block;
-  width: calc(24.5%);
+  width: calc(25.5%);
   text-align: center;
   padding-top: 16px;
   height: 52px;
@@ -116,6 +119,64 @@ p {
   float: right;
 }
 
+/* Side Navbar */
+.side-nav-container {
+  display: block;
+  inset-inline-start: 0;
+  /* -webkit-margin-before: -78px; */
+  margin-top: -78px;
+  position: fixed;
+  top: 50%;
+  z-index: 5;
+}
+
+.side-nav-item a {
+  transition-duration: 0.2s;
+  color: transparent;
+  padding-left: 10px;
+}
+
+.side-nav-item a:hover {
+  transition-duration: 0.2s;
+  color: #fff;
+}
+
+.side-nav-item a {
+  display: block;
+  height: 26px;
+  position: relative;
+}
+.side-nav-label {
+  height: 26px;
+  top: 5px;
+  padding-left: 15px;
+  width: 300px;
+  position: absolute;
+}
+.vertical-bar {
+  display: block;
+  float: left;
+  font-size: 24px;
+  color: #fff;
+  background: transparent;
+  position: absolute;
+  /* float: left; */
+  /* margin: 10px; */
+  /* font-family: "Gotham";
+  font-weight: "Gotham Medium"; */
+}
+
+.thin-svg {
+  fill: blue;
+  stroke: #f4f4f4;
+  stroke-width: 0.5;
+  fill-opacity: 0.1;
+  stroke-opacity: 1;
+  margin: 5px 0px;
+  height: 26px;
+  width: 4px;
+}
+
 /* Show case */
 header {
   /* .. means outside of the current folder */
@@ -132,4 +193,76 @@ header {
   text-align: center;
   font-size: 40px;
   padding-top: 85px;
+}
+
+/* First Page Bottom Center */
+.first-page-container {
+  border: 1px red solid;
+  width: auto;
+  /* height: 600px; */
+}
+
+.first-page-content {
+  border: 1px blue solid;
+  /* bottom of the page */
+  position: absolute;
+  top: 90vh;
+  transform: translateY(-100%);
+  display: inline-block;
+
+  /* center the element*/
+  margin: 0 auto;
+  width: 99.9%;
+
+  text-align: center;
+  padding-top: 16px;
+  /* margin-left: 501px; */
+  height: 52px;
+}
+.light-meter,
+.light-meter-label {
+  display: inline-block;
+  text-align: center;
+}
+
+.callout-container-left,
+.callout-container-center1,
+.callout-container-center2,
+.callout-container-right {
+  padding: 0px 20px;
+  display: inline-block;
+}
+
+.callout-container-center1,
+.callout-container-center2 {
+  border-left: 1px #fff solid;
+}
+
+.btn-order {
+  font-family: "Gotham Book", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 14.4px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  background: transparent;
+
+  border: 3px #fff solid;
+  border-radius: 20px;
+  padding: 10px 40px 10px 40px;
+  min-width: 40px;
+  max-height: 400px;
+
+  display: block;
+  position: relative;
+
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.btn-order:hover {
+  background: #fff;
+  color: #000;
+  transition-duration: 0.4s;
 }
