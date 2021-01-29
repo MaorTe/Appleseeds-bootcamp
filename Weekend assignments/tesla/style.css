@@ -39,11 +39,12 @@ a {
   color: #ffffff;
   text-decoration: none;
 }
-/* h1,
+h1,
 h2,
 h3 {
-  padding-bottom: 10px;
-} */
+  font-size: 40px;
+  line-height: 48px;
+}
 
 p {
   margin: 10px 0;
@@ -53,11 +54,13 @@ p {
   display: block;
 }
 .menu-ham {
-  font-size: 25px;
+  font-size: 22px;
+  float: right;
+  padding-top: 11px;
 }
 /* Utility Classes */
 .nav-container {
-  margin: auto;
+  margin-right: 5px;
   overflow: auto;
 }
 
@@ -65,7 +68,6 @@ p {
 #navbar {
   color: #fff;
   overflow: auto;
-  /* border: 1px white solid; */
   list-style: none;
   background: transparent;
 }
@@ -81,23 +83,23 @@ p {
 .nav-center a {
   float: left;
   display: block;
-  /* padding: 20px; */
-  margin: 0px 10px;
+  margin: 0px 22px;
 }
 
 .nav-right-container {
-  display: block;
-  float: right;
-  width: calc(20%);
+  display: inline-block;
+  width: calc(24.5%);
   text-align: center;
-  margin: auto;
+  padding-top: 16px;
+  height: 52px;
 }
 .nav-center-container {
-  display: block;
-  /* float: left; */
+  display: inline-block;
   width: calc(39%);
   text-align: center;
-  margin: auto;
+  padding-top: 16px;
+  margin-left: 501px;
+  height: 52px;
 }
 .nav-center {
   text-align: right;
@@ -106,7 +108,6 @@ p {
 #navbar li a {
   display: block;
   margin: 0px 10px;
-  /* padding: 20px; */
   text-align: center;
 }
 
@@ -129,5 +130,6 @@ header {
 
 .showcase-content {
   text-align: center;
-  padding-top: 120px;
+  font-size: 40px;
+  padding-top: 85px;
 }
