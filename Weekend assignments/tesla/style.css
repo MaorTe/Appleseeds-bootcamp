@@ -70,7 +70,6 @@ p {
 #side-navbar {
   color: #fff;
   overflow: auto;
-  /* list-style: none; */
   background: transparent;
 }
 
@@ -123,7 +122,6 @@ p {
 .side-nav-container {
   display: block;
   inset-inline-start: 0;
-  /* -webkit-margin-before: -78px; */
   margin-top: -78px;
   position: fixed;
   top: 50%;
