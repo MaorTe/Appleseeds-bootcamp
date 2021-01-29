@@ -198,7 +198,10 @@ header {
 /* First Page Bottom Center */
 .first-page-container {
   border: 1px red solid;
-  width: auto;
+  /* width: auto; */
+  /* height: auto; */
+  /* overflow: auto; */
+  /* vertical-align: auto; */
   /* height: 600px; */
 }
 
@@ -206,7 +209,7 @@ header {
   border: 1px blue solid;
   /* bottom of the page */
   position: absolute;
-  top: 90vh;
+  top: 93vh;
   transform: translateY(-100%);
   display: inline-block;
 
@@ -216,8 +219,6 @@ header {
 
   text-align: center;
   padding-top: 16px;
-  /* margin-left: 501px; */
-  height: 52px;
 }
 .light-meter,
 .light-meter-label {
@@ -231,6 +232,10 @@ header {
 .callout-container-right {
   padding: 0px 20px;
   display: inline-block;
+  /* vertically align different inline elements */
+  vertical-align: middle;
+  border: 1px blue solid;
+  height: 66px;
 }
 
 .callout-container-center1,
@@ -239,8 +244,6 @@ header {
 }
 
 .btn-order {
-  font-family: "Gotham Book", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 14.4px;
   font-weight: 400;
   color: #fff;
@@ -268,6 +271,14 @@ header {
 }
 
 .arrow-down {
+  display: block;
   color: #fff;
   cursor: pointer;
+  border: 1px green solid;
+  /* background: #fff; */
+  margin-top: 100px;
+  /* padding: 10px; */
+  /* position: absolute; */
+  /* top: 15px; */
+  /* margin: 0 auto; */
 }
