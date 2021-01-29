@@ -160,10 +160,6 @@ p {
   color: #fff;
   background: transparent;
   position: absolute;
-  /* float: left; */
-  /* margin: 10px; */
-  /* font-family: "Gotham";
-  font-weight: "Gotham Medium"; */
 }
 
 .thin-svg {
@@ -197,29 +193,21 @@ header {
 
 /* First Page Bottom Center */
 .first-page-container {
-  border: 1px red solid;
-  /* width: auto; */
-  /* height: auto; */
-  /* overflow: auto; */
-  /* vertical-align: auto; */
-  /* height: 600px; */
+  position: relative;
+  top: calc(75.3vh);
+  transform: translateY(-100%);
 }
 
-.first-page-content {
-  border: 1px blue solid;
-  /* bottom of the page */
-  position: absolute;
-  top: 93vh;
-  transform: translateY(-100%);
-  display: inline-block;
-
-  /* center the element*/
-  margin: 0 auto;
-  width: 99.9%;
-
+.first-page-content,
+.arrow-container {
+  position: relative;
   text-align: center;
   padding-top: 16px;
 }
+.arrow-container {
+  padding-top: 25px;
+}
+
 .light-meter,
 .light-meter-label {
   display: inline-block;
@@ -234,8 +222,8 @@ header {
   display: inline-block;
   /* vertically align different inline elements */
   vertical-align: middle;
-  border: 1px blue solid;
   height: 66px;
+  transition-duration: 3s;
 }
 
 .callout-container-center1,
@@ -273,12 +261,7 @@ header {
 .arrow-down {
   display: block;
   color: #fff;
+  background: rgba(255, 255, 255, 0.335);
   cursor: pointer;
-  border: 1px green solid;
-  /* background: #fff; */
-  margin-top: 100px;
-  padding: 10px;
-  /* position: absolute; */
-  /* top: 15px; */
-  /* margin: 0 auto; */
+  display: inline-block;
 }
