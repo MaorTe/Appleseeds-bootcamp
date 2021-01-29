@@ -266,3 +266,8 @@ header {
   color: #000;
   transition-duration: 0.4s;
 }
+
+.arrow-down {
+  color: #fff;
+  cursor: pointer;
+}
