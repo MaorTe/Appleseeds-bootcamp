@@ -3,7 +3,7 @@
   /* to reset html defaults */
   margin: 0;
   padding: 0;
-  /* we dont want the padding for exmaple to be added to the actualt width of the box */
+  /* we dont want the padding for exmaple to be added to the actual width of the box */
   box-sizing: border-box;
 }
 
@@ -57,7 +57,6 @@ p {
 
 .tesla-logo {
   display: block;
-  /* position: fixed; */
   z-index: 3;
 }
 
@@ -194,7 +193,6 @@ p {
 
 /* Show case */
 header {
-  /* .. means outside of the current folder */
   background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/b03da2fc-ecaa-4554-8df9-8f73e411f360/bvlatuR/std/2880x1800/model-3-hero-desktop")
     no-repeat center center/cover;
   height: 100vh;
@@ -535,7 +533,6 @@ scroll-page {
 .callout-container-right-third-page {
   display: inline-block;
   width: 318.1px;
-  /* width: 30%; */
   color: #fff;
   font-size: 28px;
   text-align: left;
