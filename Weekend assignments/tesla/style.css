@@ -77,7 +77,8 @@ p {
   background: transparent;
 }
 
-#navbar {
+#navbar,
+.third-page-nav-container {
   position: relative;
   top: 0;
 }
@@ -435,7 +436,74 @@ scroll-page {
 }
 
 /* Third Page */
-.third-page-picture-container {
-  background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/b2b118a7-7e86-4e8f-b7af-092f3e64d847/bvlatuR/std/1920x1080/lhd-range-hero-desktop")
+.pic-third-page-container {
+  background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/3489a82e-b19c-457a-86a4-7ea9ac91aa1c/bvlatuR/std/1920x1080/lhd-performance-hero-desktop")
     no-repeat center center/cover;
+  position: relative;
+  height: 686px;
+  width: auto;
+}
+
+/* bottom: 0; = a good trick to position an absolute element bottom of a relative container */
+.pic-center-bot-third-page-container {
+  width: 100%;
+  min-width: 100%;
+  height: 230.219px;
+  position: absolute;
+  bottom: 0;
+  border: 1px red solid;
+}
+.pic-center-bot-third-page-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  margin: 56px 440px 72px 440px;
+  padding: 0px 30px;
+  width: 1024px;
+  height: 84px;
+  /* display: inline-block; */
+}
+
+.bottom-third-page-container {
+  display: block;
+  min-height: 250px;
+  width: 100%;
+}
+
+.light-meter-third-page,
+.pic-center-bot-third-page-content p {
+  display: block;
+}
+
+.callout-container-left-third-page,
+.callout-container-center-third-page,
+.callout-container-right-third-page {
+  display: inline-block;
+  width: 318.1px;
+  /* width: 30%; */
+  color: #fff;
+  font-size: 28px;
+  text-align: left;
+}
+.callout-container-left-third-page {
+  padding-right: 20px;
+  font-weight: 400;
+  border-right: 1px #fff solid;
+}
+.callout-container-center-third-page {
+  padding: 0px 20px;
+  font-weight: 400;
+}
+.callout-container-right-third-page {
+  padding-left: 20px;
+  font-weight: 400;
+  border-left: 1px #fff solid;
+}
+.callout-container-left-third-page p,
+.callout-container-center-third-page p,
+.callout-container-right-third-page p {
+  font-size: 12px;
+  font-weight: 300;
 }
