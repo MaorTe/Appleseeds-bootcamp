@@ -31,8 +31,7 @@
 html,
 body {
   font-family: "Gotham";
-  /* line-height: 18px; */
-  /* font-size: 16px; */
+  font-weight: 300;
 }
 
 a {
@@ -64,7 +63,8 @@ p {
 
 /* Utility Classes */
 .nav-container,
-.second-page-nav-container {
+.second-page-nav-container,
+.third-page-nav-container {
   margin-right: 5px;
   overflow: auto;
 }
@@ -84,7 +84,7 @@ p {
 
 #navbar ul,
 #side-navbar ul,
-.card ul {
+.second-page-side-card ul {
   list-style: none;
 }
 .clr {
@@ -153,12 +153,13 @@ p {
   display: block;
   height: 26px;
   position: relative;
+  background: rgba(0, 0, 0, 0.096);
 }
 .side-nav-label {
   height: 26px;
   top: 5px;
   padding-left: 15px;
-  width: 300px;
+  width: 150px;
   position: absolute;
 }
 .vertical-bar {
@@ -277,61 +278,37 @@ header {
 }
 
 /* Second Page */
-.second-page {
+#second-page {
   background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/ba4f4fe9-5c46-48c2-ad03-a5c7bf68f30c/bvlatuR/std/2880x1800/model_3_safety_hero")
     no-repeat center center/cover;
 }
 
-.second-page-side-content {
+.second-page-side-container {
   /* Color & Background */
   background-attachment: scroll;
   background-color: #fff;
   background-position: 0% 0%;
   background-repeat: repeat;
   color: rgb(57, 60, 65);
-
+  padding-top: 20px;
   /* Box */
   height: 937px;
   width: 415px;
   margin: 0px;
   padding: 0px 50px;
-  max-height: none;
-  min-height: 250px;
-  max-width: none;
-  min-width: 415px;
 
   /* Positioning */
-  /* position: relative;
-  top: 0px;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
-  float: none;
+  position: relative;
   display: block;
-  clear: none;
-  z-index: auto; */
-
-  /* Table */
-  /* border-collapse: separate;
-  border-spacing: 0px 0px;
-  caption-side: top;
-  empty-cells: show;
-  table-layout: auto; */
-
-  /* Effects */
-  transform: none;
-  /* transition: all 0s ease 0s;
-  outline: rgb(255, 0, 0) dashed 1px;
-  outline-offset: 0px; */
-  box-sizing: border-box;
+  z-index: 1;
 }
 
-.second-page-side-content h2 {
+.second-page-side-container h2 {
   font-size: 17px;
   line-height: 17px;
   font-weight: 300;
 }
-.second-page-side-content h3 {
+.second-page-side-container h3 {
   /* font-size: 17px;
   line-height: 17px; */
   font-weight: 500;
@@ -368,9 +345,6 @@ header {
 }
 
 scroll-container {
-  display: block;
-  width: 350px;
-  height: 200px;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
@@ -381,7 +355,8 @@ scroll-page {
   height: 100%;
   font-size: 5em;
 }
-.second-page-nav-container {
+.second-page-nav-container,
+.third-page-nav-container {
   padding-left: 20px;
   vertical-align: auto;
 }
@@ -403,4 +378,64 @@ scroll-page {
   height: 52px;
   text-align: end;
   padding: 15px 20px;
+}
+
+.second-page-side-content {
+  padding-top: 16px;
+}
+
+.second-page-side-content p {
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+.second-page-side-content section {
+  padding: 24px;
+}
+.second-page-side-card,
+.second-page-side-content section h4 {
+  padding-bottom: 16px;
+}
+.second-page-side-content section h4 {
+  line-height: 28px;
+  font-size: 20px;
+}
+.second-page-side-card li {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 8px;
+  border: 1px red solid;
+}
+.card-line-info1 {
+  margin-right: 8px;
+  float: left;
+  width: calc(60%);
+  display: block;
+}
+.card-star-info {
+  float: right;
+  margin: 0px 3px;
+}
+
+.second-page-side-card {
+  border-radius: 25px;
+  background: #eeeeee;
+}
+
+.btn-second-page-container {
+  max-width: 367px;
+  position: absolute;
+  top: 83vh;
+  bottom: 50px;
+  right: -2px;
+  left: 50px;
+  float: none;
+  display: flex;
+  clear: left;
+  z-index: 3;
+}
+
+/* Third Page */
+.third-page-picture-container {
+  background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/b2b118a7-7e86-4e8f-b7af-092f3e64d847/bvlatuR/std/1920x1080/lhd-range-hero-desktop")
+    no-repeat center center/cover;
 }
