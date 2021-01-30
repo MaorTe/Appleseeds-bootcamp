@@ -307,6 +307,86 @@ header {
 #second-page {
   background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/ba4f4fe9-5c46-48c2-ad03-a5c7bf68f30c/bvlatuR/std/2880x1800/model_3_safety_hero")
     no-repeat center center/cover;
+  position: relative;
+}
+
+.second-page-pic-element-one {
+  position: absolute;
+  height: 316px;
+  width: 267.8px;
+  border-left: 3px #000 solid;
+  top: 174.469px;
+  bottom: 442.484px;
+  right: 848.172px;
+  left: 727px;
+  z-index: 10;
+  padding-left: 10px;
+}
+.second-page-pic-element-two {
+  position: absolute;
+  height: 180px;
+  width: 267.8px;
+  border-left: 3px #000 solid;
+  top: 14px;
+  bottom: 668px;
+  right: 535px;
+  left: 1123px;
+  z-index: 10;
+  padding-left: 10px;
+}
+.second-page-pic-element-three {
+  position: absolute;
+  height: 198px;
+  width: 592px;
+  border-left: 3px #000 solid;
+  top: 577px;
+  bottom: 180px;
+  right: -48px;
+  left: 1196px;
+  z-index: 10;
+  padding-left: 10px;
+}
+.dot-icon-one,
+.dot-icon-two,
+.dot-icon-three {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px #000 solid;
+  z-index: 10;
+}
+.dot-icon-one {
+  top: 483.469px;
+  bottom: 442.484px;
+  right: 848.172px;
+  left: 724px;
+}
+.dot-icon-two {
+  top: 188px;
+  bottom: 668px;
+  right: 535px;
+  left: 1120px;
+}
+.dot-icon-three {
+  top: 572px;
+  bottom: 180px;
+  right: -48px;
+  left: 1193px;
+}
+.text-bottom {
+  padding-top: 182px;
+  padding-left: 10px;
+}
+.second-page-pic-element-one,
+.second-page-pic-element-two,
+.second-page-pic-element-three {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 15px;
+  text-decoration: none solid rgb(57, 60, 65);
 }
 
 .second-page-side-container {
