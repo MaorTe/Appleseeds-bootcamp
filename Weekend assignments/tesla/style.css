@@ -73,6 +73,8 @@ p {
 .third-page-nav-container {
   margin-right: 5px;
   overflow: auto;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 /* Navbar */
@@ -137,6 +139,7 @@ p {
 
 /* Side Navbar */
 .side-nav-container {
+  font-size: 12px;
   display: block;
   inset-inline-start: 0;
   margin-top: -78px;
@@ -207,7 +210,10 @@ header {
   font-size: 40px;
   padding-top: 85px;
 }
-
+.showcase-content h1 {
+  font-size: 40px;
+  font-weight: 500;
+}
 /* First Page Bottom Center */
 .first-page-container {
   position: relative;
@@ -235,6 +241,8 @@ header {
 .callout-container-center1,
 .callout-container-center2,
 .callout-container-right {
+  font-size: 28px;
+  font-weight: 500;
   padding: 0px 20px;
   display: inline-block;
   /* vertically align different inline elements */
@@ -242,7 +250,14 @@ header {
   height: 66px;
   transition-duration: 3s;
 }
-
+.first-page-content p {
+  font-size: 12px;
+  font-weight: 300;
+}
+.btn-order-transparent {
+  font-size: 12px;
+  font-weight: 400;
+}
 .callout-container-center1,
 .callout-container-center2 {
   border-left: 1px #fff solid;
@@ -466,16 +481,17 @@ scroll-page {
   bottom: 0;
 }
 .pic-center-bot-third-page-content {
+  font-size: 14px;
+  line-height: 21px;
   position: absolute;
   left: 0;
   right: 0;
   margin: 0 auto;
   text-align: center;
-  margin: 56px 440px 72px 440px;
+  margin: 74px 440px 72px 440px;
   padding: 0px 30px;
   width: 1024px;
   height: 84px;
-  /* display: inline-block; */
 }
 
 .light-meter-third-page,
@@ -524,6 +540,7 @@ scroll-page {
   width: 100%;
   min-width: auto;
   font-weight: 300;
+  text-align: center;
 }
 
 .bottom-third-page-content-left {
@@ -534,14 +551,11 @@ scroll-page {
   padding: 48px 20px 48px 0;
   min-height: auto;
   min-width: 351px;
-  width: 50%;
-  float: left;
-  display: block;
+  display: inline-block;
+  text-align: left;
 }
 .bottom-third-page-content-right {
-  display: block;
-  width: 50%;
-  float: left;
+  text-align: left;
   font-size: 14px;
   line-height: 21px;
   height: 219px;
@@ -549,6 +563,7 @@ scroll-page {
   padding: 48px 0;
   min-height: auto;
   min-width: auto;
+  display: inline-block;
 }
 
 .btn-third-page-container {
