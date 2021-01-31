@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Queries</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: gray;
+        color: #fff;
+        text-align: center;
+        padding-top: 100px;
+      }
+      @media (min-width: 500px) {
+        body {
+          font-size: 20px;
+        }
+      }
+      @media (min-width: 501px) and (max-width: 768px) {
+        body {
+          font-size: 60px;
+        }
+      }
+      @media (min-width: 769px) and (max-width: 1200px) {
+        body {
+          font-size: 100px;
+        }
+      }
+      @media (min-width: 1201px) {
+        body {
+          font-size: 140px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, repellat
+    </p>
+  </body>
+</html>

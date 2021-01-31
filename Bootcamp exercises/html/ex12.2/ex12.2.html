@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Queries</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .container {
+        margin: 0px auto;
+        width: 100%;
+        text-align: center;
+      }
+      .container div {
+        width: 350px;
+        height: 300px;
+        display: inline-block;
+        text-align: left;
+        background: #000;
+        color: #fff;
+        margin: 10px;
+      }
+
+      @media (min-width: 500px) {
+        .container div {
+          display: inline-block;
+        }
+      }
+      @media (min-width: 501px) and (max-width: 768px) {
+        .container div {
+          display: inline-block;
+        }
+      }
+      @media (min-width: 769px) and (max-width: 1200px) {
+        .container div {
+          display: inline-block;
+        }
+      }
+      @media (min-width: 1201px) {
+        .container div {
+          display: inline-block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h1>First Item</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta neque
+          expedita sequi ex explicabo porro magni, dolorem dignissimos,
+          similique ipsum, ad minima voluptatibus totam illo nulla. Nemo enim,
+          excepturi ab repellat harum, optio temporibus explicabo dignissimos ex
+          tenetur laboriosam! Omnis deleniti laudantium saepe labore doloremque
+          modi explicabo, impedit amet recusandae.
+        </p>
+      </div>
+      <div>
+        <h1>Second Item</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta neque
+          expedita sequi ex explicabo porro magni, dolorem dignissimos,
+          similique ipsum, ad minima voluptatibus totam illo nulla. Nemo enim,
+          excepturi ab repellat harum, optio temporibus explicabo dignissimos ex
+          tenetur laboriosam! Omnis deleniti laudantium saepe labore doloremque
+          modi explicabo, impedit amet recusandae.
+        </p>
+      </div>
+      <div>
+        <h1>Third Item</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta neque
+          expedita sequi ex explicabo porro magni, dolorem dignissimos,
+          similique ipsum, ad minima voluptatibus totam illo nulla. Nemo enim,
+          excepturi ab repellat harum, optio temporibus explicabo dignissimos ex
+          tenetur laboriosam! Omnis deleniti laudantium saepe labore doloremque
+          modi explicabo, impedit amet recusandae.
+        </p>
+      </div>
+      <div>
+        <h1>Fourth Item</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta neque
+          expedita sequi ex explicabo porro magni, dolorem dignissimos,
+          similique ipsum, ad minima voluptatibus totam illo nulla. Nemo enim,
+          excepturi ab repellat harum, optio temporibus explicabo dignissimos ex
+          tenetur laboriosam! Omnis deleniti laudantium saepe labore doloremque
+          modi explicabo, impedit amet recusandae.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
