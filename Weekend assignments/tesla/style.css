@@ -496,7 +496,8 @@ scroll-page {
   height: 52px;
   z-index: 2;
 }
-.tesla-logo-black-container h1 {
+.tesla-logo-black-container h1,
+.first-page-title-on-picture-content h1 {
   margin: 0;
 }
 .arrow-top {
