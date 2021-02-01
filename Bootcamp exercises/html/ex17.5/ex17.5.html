@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+      .paragraph {
+        width: 40%;
+        position: relative;
+      }
+
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+        color: darkorchid;
+      }
+      /* the arrow */
+      .tooltip:hover:before {
+        content: "";
+        position: absolute;
+        top: -48%;
+        left: 40.5%;
+        margin-left: -5px;
+        border-width: 8px;
+        border-style: solid;
+        border-color: black transparent transparent transparent;
+      }
+
+      /* the text */
+      .tooltip:hover::after {
+        content: attr(data-tooltip);
+        width: 130px;
+        background-color: black;
+        color: darkorchid;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="paragraph">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet fugiat
+      explicabo eveniet ipsum placeat mollitia, quod quia laudantium sunt,
+      inventore eum atque? Consequuntur deleniti
+      <!-- <div class="tooltip">
+        nostrum
+        <span class="tooltiptext">this is a badass tooltip</span>
+      </div> -->
+
+      sequi pariatur aperiam ad facilis odio culpa et quo nesciunt, impedit
+      harum reiciendis incidunt dolores? Quia consectetur esse, voluptates
+      quidem adipisci nemo ad molestiae quibusdam
+      <a href="#" data-tooltip="this is a badass text" class="tooltip"
+        ><span class="arrow"></span> nostrum</a
+      >
+      facere voluptatem, iure, aliquid a similique reiciendis deleniti corrupti
+      perspiciatis? Impedit at dignissimos quis amet consequuntur fugiat. Animi,
+      enim illum saepe ut officiis nostrum deleniti! Minus, maiores? Dolorem,
+      eum laboriosam. Culpa, voluptatibus harum exercitationem vel impedit quasi
+      odit accusantium libero hic optio ratione veritatis deleniti. Aliquid
+      temporibus minima repellendus.
+    </div>
+  </body>
+</html>

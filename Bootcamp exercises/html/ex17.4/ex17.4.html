@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    .container {
+      position: relative;
+      display: flex;
+      height: 250px;
+      width: 400px;
+      background: black;
+      justify-content: center;
+      align-items: center;
+    }
+    .cool-border {
+      display: flex;
+      border: 4px red solid;
+      color: #fff;
+    }
+    .container::before {
+      content: "";
+      display: flex;
+      border: 4px black solid;
+      color: #fff;
+      height: 39px;
+      width: 170px;
+      position: absolute;
+    }
+    .container::after {
+      content: "";
+      display: flex;
+      border: 5px black solid;
+      color: #fff;
+      height: 80px;
+      width: 136px;
+      position: absolute;
+      border-left: transparent;
+      border-right: transparent;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="cool-border"><h1>Cool Border</h1></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo selectors</title>
+  </head>
+  <style>
+    .link::after {
+      content: " (" attr(href) ")";
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    Please visit this
+    <a href="https://www.w3schools.com" class="link">Website </a>
+    for more information.
+  </body>
+</html>
