@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Navbar</title>
+	</head>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		/* Navbar */
+		body {
+			background: yellow;
+		}
+		li {
+			list-style: none;
+			position: relative;
+			margin-left: 1rem;
+		}
+
+		.navbar {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		ul {
+			display: flex;
+			justify-content: space-around;
+			position: relative;
+			margin-top: 50px;
+			overflow: hidden;
+		}
+		a {
+			text-decoration: none;
+			color: #000;
+		}
+
+		/* Effects */
+		li::before {
+			content: "";
+			position: absolute;
+			background: green;
+			top: -1px;
+			left: 0;
+			height: 2px;
+			width: 100%;
+			transform-origin: right;
+			transition: all 0.5s ease-in;
+			transform: scale(0);
+		}
+		li::after {
+			content: "";
+			position: absolute;
+			background: green;
+			bottom: 0;
+			right: 0;
+			height: 1px;
+			width: 100%;
+			transform-origin: left;
+			transition: all 0.5s ease-in;
+			transform: scale(0);
+		}
+		li:hover::after,
+		li:hover::before {
+			position: absolute;
+			transform: scale(1);
+		}
+	</style>
+	<body>
+		<nav class="navbar">
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Services</a></li>
+				<li><a href="#">Portfolio</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</body>
+</html>

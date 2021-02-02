@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			min-height: 100vh;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+		/* ----------------------------------- */
+		/* Box TranslateY */
+		.translateY,
+		.rotate,
+		.translateX,
+		.scale-opacity {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			border: 2px solid black;
+			padding: 10px 30px;
+			height: 30px;
+			width: 100px;
+			margin-top: 10px;
+			overflow: hidden;
+		}
+
+		.translateY::after,
+		.rotate::after,
+		.translateX::after,
+		.scale-opacity::after,
+		.scale-opacity::before {
+			content: "YEAH!";
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			background: red;
+			height: 100%;
+			width: 100%;
+			transform: translateY(-60px);
+		}
+		.translateY:hover::after {
+			position: absolute;
+			transition: all 0.5s ease-in;
+			transform: translate(0);
+		}
+		/* --------------------------------- */
+		/* Box Rotate */
+		.rotate::after {
+			content: "";
+			background: yellow;
+			transform-origin: top left;
+			z-index: -1;
+			transform: rotate(90deg);
+		}
+
+		.rotate:hover::after {
+			position: absolute;
+			transition: all 0.5s ease-in;
+			transform: rotate(0deg);
+		}
+		/* -------------------------------- */
+		/* Box TranslateX */
+		.translateX::after {
+			content: "";
+			background: black;
+			transform: translateX(-162px);
+			z-index: -1;
+			transition: all 1s ease-in-out;
+		}
+		.translateX:hover::after {
+			position: absolute;
+			background: black;
+			color: #fff;
+			opacity: 0.7;
+			transform: translateX(0);
+			z-index: -50;
+		}
+		.translateX {
+			transition: all 1s ease-in-out;
+		}
+		.translateX:hover {
+			color: #fff;
+		}
+		/* ------------------------- */
+		/* Scale Opacity */
+		.scale-opacity::after {
+			content: "";
+			background: white;
+			transform: scale(2);
+			z-index: -1;
+			transition: all 0.5s ease-in-out;
+		}
+		.scale-opacity:hover::after {
+			position: absolute;
+			background: black;
+			color: #fff;
+			opacity: 0.81;
+			transform: scale(1);
+			z-index: -50;
+		}
+		.scale-opacity::before {
+			content: "Scale&Opacity";
+			background: white;
+			transform: scale(2);
+			transition: all 0.5s ease-in-out;
+		}
+		.scale-opacity:hover::before {
+			transform: scale(1);
+			color: #fff;
+			background: black;
+		}
+		.scale-opacity {
+			background: white;
+			color: #000;
+			transform: scale(1);
+			z-index: 500;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<div class="translateY">TranslateY</div>
+			<div class="rotate">Rotate</div>
+			<div class="translateX">Translate</div>
+			<div class="scale-opacity">Scale&Opacity</div>
+		</div>
+	</body>
+</html>
