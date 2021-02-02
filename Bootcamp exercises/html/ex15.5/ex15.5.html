@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
 
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+			}
 
-      .flex-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #f4f4f4;
-        text-align: center;
-        padding: 10px;
-      }
-      .flex-container ul {
-        display: flex;
-      }
-      .flex-container li {
-        list-style: none;
-        padding: 1rem 2rem;
-      }
-      .flex-container a {
-        text-decoration: none;
-        color: #444;
-      }
-      @media only screen and (max-width: 600px) {
-        .flex-container {
-          justify-content: center;
-          flex-direction: column;
-        }
-        .flex-container ul {
-          flex-direction: column;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="flex-container">
-      <a href="#"><h1>APPLESEEDS</h1></a>
-      <ul>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">ABOUT</a></li>
-        <li><a href="#">PORTFOLIO</a></li>
-        <li><a href="#">CONTACT</a></li>
-      </ul>
-    </nav>
-  </body>
+			.flex-container {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				background: #f4f4f4;
+				text-align: center;
+				padding: 10px;
+			}
+			.flex-container ul {
+				display: flex;
+			}
+			.flex-container li {
+				list-style: none;
+				padding: 1rem 2rem;
+			}
+			.flex-container a {
+				text-decoration: none;
+				color: #444;
+			}
+			@media only screen and (max-width: 600px) {
+				.flex-container {
+					justify-content: center;
+					flex-direction: column;
+				}
+				.flex-container ul {
+					flex-direction: column;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="flex-container">
+			<ul>
+				<li>
+					<a href="#"><h1>APPLESEEDS</h1></a>
+				</li>
+				<li><a href="#">HOME</a></li>
+				<li><a href="#">ABOUT</a></li>
+				<li><a href="#">PORTFOLIO</a></li>
+				<li><a href="#">CONTACT</a></li>
+			</ul>
+		</nav>
+	</body>
 </html>
