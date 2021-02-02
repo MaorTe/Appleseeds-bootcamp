@@ -1,756 +1,761 @@
 /* Reset */
 * {
-  /* to reset html defaults */
-  margin: 0;
-  padding: 0;
-  /* we dont want the padding for exmaple to be added to the actual width of the box */
-  box-sizing: border-box;
+	/* to reset html defaults */
+	margin: 0;
+	padding: 0;
+	/* we dont want the padding for exmaple to be added to the actual width of the box */
+	box-sizing: border-box;
+}
+
+:root {
+	--gotham-book: 300;
+	--gotham-medium: 400;
+	--gotham-bold: 700;
 }
 
 @font-face {
-  font-family: "Gotham";
-  src: url(./fonts/GothamBook.ttf) format("truetype");
-  font-weight: 300;
-  font-style: normal;
+	font-family: "Gotham";
+	src: url(./fonts/GothamBook.ttf) format("truetype");
+	font-weight: 300;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Gotham";
-  src: url(./fonts/GothamMedium.ttf) format("truetype");
-  font-weight: 400;
-  font-style: normal;
+	font-family: "Gotham";
+	src: url(./fonts/GothamMedium.ttf) format("truetype");
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Gotham";
-  src: url(./fonts/GothamBold.ttf) format("truetype");
-  font-weight: 700;
-  font-style: normal;
+	font-family: "Gotham";
+	src: url(./fonts/GothamBold.ttf) format("truetype");
+	font-weight: 700;
+	font-style: normal;
 }
 
 html,
 body {
-  font-family: "Gotham";
-  font-weight: 300;
+	font-family: "Gotham";
+	font-weight: var(--gotham-book);
 }
 
 a {
-  color: #ffffff;
-  text-decoration: none;
+	color: #ffffff;
+	text-decoration: none;
 }
 h1 {
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 36px;
-  text-decoration: none solid rgb(23, 26, 32);
+	font-size: 28px;
+	font-weight: var(--gotham-medium);
+	line-height: 36px;
+	text-decoration: none solid rgb(23, 26, 32);
 }
 h2 {
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 17px;
-  text-decoration: none solid rgb(23, 26, 32);
+	font-size: 17px;
+	font-weight: var(--gotham-medium);
+	line-height: 17px;
+	text-decoration: none solid rgb(23, 26, 32);
 }
 
 p {
-  margin: 10px 0;
+	margin: 10px 0;
 }
 
 .tesla-logo {
-  display: block;
-  z-index: 3;
+	display: block;
+	z-index: 3;
 }
 
 .menu-ham {
-  font-size: 22px;
-  float: right;
-  padding-top: 11px;
+	font-size: 22px;
+	float: right;
+	padding-top: 11px;
 }
 
 /* Utility Classes */
 .first-page-nav-container,
 .second-page-nav-container,
 .third-page-nav-container {
-  margin-right: 5px;
-  overflow: auto;
-  font-size: 14px;
-  font-weight: 400;
+	margin-right: 5px;
+	overflow: auto;
+	font-size: 14px;
+	font-weight: var(--gotham-medium);
 }
 
 /* Navbar */
 #first-page-top-navbar,
 #side-navbar {
-  color: #fff;
-  overflow: auto;
-  background: transparent;
+	color: #fff;
+	overflow: auto;
+	background: transparent;
 }
 
 #first-page-top-navbar,
 .third-page-nav-container {
-  position: relative;
-  top: 0;
+	position: relative;
+	top: 0;
 }
 
 #first-page-top-navbar ul,
 #side-navbar ul,
 .second-page-side-card ul {
-  list-style: none;
+	list-style: none;
 }
 .clr {
-  clear: both;
+	clear: both;
 }
 
 #first-page-top-navbar h1,
 .nav-center a {
-  float: left;
-  display: block;
-  margin: 0px 22px;
+	float: left;
+	display: block;
+	margin: 0px 22px;
 }
 
 .nav-right-container {
-  display: inline-block;
-  width: calc(25.5%);
-  text-align: center;
-  padding-top: 16px;
-  height: 52px;
+	display: inline-block;
+	width: calc(25.5%);
+	text-align: center;
+	padding-top: 16px;
+	height: 52px;
 }
 .nav-center-container {
-  display: inline-block;
-  width: calc(39%);
-  text-align: center;
-  padding-top: 16px;
-  margin-left: 501px;
-  height: 52px;
+	display: inline-block;
+	width: calc(39%);
+	text-align: center;
+	padding-top: 16px;
+	margin-left: 501px;
+	height: 52px;
 }
 .nav-center {
-  text-align: right;
+	text-align: right;
 }
 
 #first-page-top-navbar li a {
-  display: block;
-  margin: 0px 10px;
-  text-align: center;
+	display: block;
+	margin: 0px 10px;
+	text-align: center;
 }
 
 .nav-right a {
-  display: block;
-  float: right;
+	display: block;
+	float: right;
 }
 
 /* Side Navbar */
 .side-nav-container {
-  font-size: 12px;
-  display: block;
-  inset-inline-start: 0;
-  margin-top: -78px;
-  position: fixed;
-  top: calc(50% - 126px);
-  z-index: 5;
+	font-size: 12px;
+	display: block;
+	inset-inline-start: 0;
+	margin-top: -78px;
+	position: fixed;
+	top: calc(50% - 126px);
+	z-index: 5;
 }
 
 .side-nav-item a {
-  transition-duration: 0.2s;
-  color: transparent;
-  padding-left: 10px;
+	transition-duration: 0.2s;
+	color: transparent;
+	padding-left: 10px;
 }
 
 .side-nav-item a:hover {
-  transition-duration: 0.2s;
-  color: #fff;
+	transition-duration: 0.2s;
+	color: #fff;
 }
 
 .side-nav-item a {
-  display: block;
-  height: 26px;
-  position: relative;
-  background: rgba(0, 0, 0, 0.096);
+	display: block;
+	height: 26px;
+	position: relative;
+	background: rgba(0, 0, 0, 0.096);
 }
 .side-nav-label {
-  height: 26px;
-  top: 5px;
-  padding-left: 15px;
-  width: 150px;
-  position: absolute;
+	height: 26px;
+	top: 5px;
+	padding-left: 15px;
+	width: 150px;
+	position: absolute;
 }
 .vertical-bar {
-  display: block;
-  float: left;
-  font-size: 24px;
-  color: #fff;
-  background: transparent;
-  position: absolute;
+	display: block;
+	float: left;
+	font-size: 24px;
+	color: #fff;
+	background: transparent;
+	position: absolute;
 }
 
 .thin-svg {
-  fill: blue;
-  stroke: #f4f4f4;
-  stroke-width: 0.5;
-  fill-opacity: 0.1;
-  stroke-opacity: 1;
-  margin: 5px 0px;
-  height: 26px;
-  width: 4px;
+	fill: blue;
+	stroke: #f4f4f4;
+	stroke-width: 0.5;
+	fill-opacity: 0.1;
+	stroke-opacity: 1;
+	margin: 5px 0px;
+	height: 26px;
+	width: 4px;
 }
 
 /* Show case */
 header {
-  background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/b03da2fc-ecaa-4554-8df9-8f73e411f360/bvlatuR/std/2880x1800/model-3-hero-desktop")
-    no-repeat center center/cover;
-  height: 100vh;
-  min-height: 100%;
-  color: #fff;
-  font-family: "Gotham";
-  font-weight: "GothamMedium";
-  background-attachment: scroll;
+	background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/b03da2fc-ecaa-4554-8df9-8f73e411f360/bvlatuR/std/2880x1800/model-3-hero-desktop")
+		no-repeat center center/cover;
+	height: 100vh;
+	min-height: 100%;
+	color: #fff;
+	font-family: "Gotham";
+	font-weight: "GothamMedium";
+	background-attachment: scroll;
 }
 
 .first-page-title-on-picture-content {
-  text-align: center;
-  font-size: 40px;
-  padding-top: 85px;
+	text-align: center;
+	font-size: 40px;
+	padding-top: 85px;
 }
 .first-page-title-on-picture-content h1 {
-  font-size: 40px;
-  font-weight: 500;
+	font-size: 40px;
+	font-weight: 500;
 }
 /* First Page Bottom Center */
 .first-page-container {
-  position: relative;
-  top: calc(75.3vh);
-  transform: translateY(-100%);
+	position: relative;
+	top: calc(75.3vh);
+	transform: translateY(-100%);
 }
 
 .first-page-content,
 .arrow-container {
-  position: relative;
-  text-align: center;
-  padding-top: 16px;
+	position: relative;
+	text-align: center;
+	padding-top: 16px;
 }
 .arrow-container {
-  padding-top: 25px;
+	padding-top: 25px;
 }
 
 .light-meter,
 .light-meter-label {
-  display: inline-block;
-  text-align: center;
+	display: inline-block;
+	text-align: center;
 }
 
 .callout-container-left,
 .callout-container-center1,
 .callout-container-center2,
 .callout-container-right {
-  font-size: 28px;
-  font-weight: 500;
-  padding: 0px 20px;
-  display: inline-block;
-  /* vertically align different inline elements */
-  vertical-align: middle;
-  height: 66px;
-  transition-duration: 3s;
+	font-size: 28px;
+	font-weight: 500;
+	padding: 0px 20px;
+	display: inline-block;
+	/* vertically align different inline elements */
+	vertical-align: middle;
+	height: 66px;
+	transition-duration: 3s;
 }
 .first-page-content p {
-  font-size: 12px;
-  font-weight: 300;
+	font-size: 12px;
+	font-weight: var(--gotham-book);
 }
 .btn-order-transparent {
-  font-size: 12px;
-  font-weight: 400;
+	font-size: 12px;
+	font-weight: var(--gotham-medium);
 }
 .callout-container-center1,
 .callout-container-center2 {
-  border-left: 1px #fff solid;
+	border-left: 1px #fff solid;
 }
 
 .btn-order-transparent,
 .btn-order-white,
 .btn-order-white-third-page {
-  font-size: 12px;
-  line-height: 14.4px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #ffffff;
-  font-weight: 400;
-  background: transparent;
+	font-size: 12px;
+	line-height: 14.4px;
+	text-align: center;
+	text-transform: uppercase;
+	color: #ffffff;
+	font-weight: var(--gotham-medium);
+	background: transparent;
 
-  border: 3px #fff solid;
-  border-radius: 20px;
-  padding: 10px 32px 10px 32px;
-  min-width: 40px;
-  max-height: 400px;
-  min-width: calc(50%-8px);
+	border: 3px #fff solid;
+	border-radius: 20px;
+	padding: 10px 32px 10px 32px;
+	min-width: 40px;
+	max-height: 400px;
+	min-width: calc(50%-8px);
 
-  display: block;
-  position: absolute;
+	display: block;
+	position: absolute;
 
-  cursor: pointer;
-  transition-duration: 0.4s;
+	cursor: pointer;
+	transition-duration: 0.4s;
 
-  height: 40px;
-  width: 155.3px;
+	height: 40px;
+	width: 155.3px;
 }
 
 .btn-order-transparent:hover {
-  background: #fff;
-  color: #000;
-  transition-duration: 0.4s;
+	background: #fff;
+	color: #000;
+	transition-duration: 0.4s;
 }
 
 .arrow-down {
-  display: block;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.335);
-  cursor: pointer;
-  display: inline-block;
+	display: block;
+	color: #fff;
+	background: rgba(255, 255, 255, 0.335);
+	cursor: pointer;
+	display: inline-block;
 }
 
 /* Second Page */
 #second-page {
-  background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/ba4f4fe9-5c46-48c2-ad03-a5c7bf68f30c/bvlatuR/std/2880x1800/model_3_safety_hero")
-    no-repeat center center/cover;
-  position: relative;
+	background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/ba4f4fe9-5c46-48c2-ad03-a5c7bf68f30c/bvlatuR/std/2880x1800/model_3_safety_hero")
+		no-repeat center center/cover;
+	position: relative;
 }
 
 .second-page-pic-element-one {
-  position: absolute;
-  height: 316px;
-  width: 267.8px;
-  border-left: 3px #000 solid;
-  top: 174.469px;
-  bottom: 442.484px;
-  right: 848.172px;
-  left: 727px;
-  z-index: 10;
-  padding-left: 10px;
+	position: absolute;
+	height: 316px;
+	width: 267.8px;
+	border-left: 3px #000 solid;
+	top: 174.469px;
+	bottom: 442.484px;
+	right: 848.172px;
+	left: 727px;
+	z-index: 10;
+	padding-left: 10px;
 }
 .second-page-pic-element-two {
-  position: absolute;
-  height: 180px;
-  width: 267.8px;
-  border-left: 3px #000 solid;
-  top: 14px;
-  bottom: 668px;
-  right: 535px;
-  left: 1123px;
-  z-index: 10;
-  padding-left: 10px;
+	position: absolute;
+	height: 180px;
+	width: 267.8px;
+	border-left: 3px #000 solid;
+	top: 14px;
+	bottom: 668px;
+	right: 535px;
+	left: 1123px;
+	z-index: 10;
+	padding-left: 10px;
 }
 .second-page-pic-element-three {
-  position: absolute;
-  height: 198px;
-  width: 592px;
-  border-left: 3px #000 solid;
-  top: 577px;
-  bottom: 180px;
-  right: -48px;
-  left: 1196px;
-  z-index: 10;
-  padding-left: 10px;
+	position: absolute;
+	height: 198px;
+	width: 592px;
+	border-left: 3px #000 solid;
+	top: 577px;
+	bottom: 180px;
+	right: -48px;
+	left: 1196px;
+	z-index: 10;
+	padding-left: 10px;
 }
 .dot-icon-one,
 .dot-icon-two,
 .dot-icon-three {
-  position: absolute;
-  height: 10px;
-  width: 10px;
-  background-color: #fff;
-  border-radius: 50%;
-  display: inline-block;
-  border: 2px #000 solid;
-  z-index: 10;
+	position: absolute;
+	height: 10px;
+	width: 10px;
+	background-color: #fff;
+	border-radius: 50%;
+	display: inline-block;
+	border: 2px #000 solid;
+	z-index: 10;
 }
 .dot-icon-one {
-  top: 483.469px;
-  bottom: 442.484px;
-  right: 848.172px;
-  left: 724px;
+	top: 483.469px;
+	bottom: 442.484px;
+	right: 848.172px;
+	left: 724px;
 }
 .dot-icon-two {
-  top: 188px;
-  bottom: 668px;
-  right: 535px;
-  left: 1120px;
+	top: 188px;
+	bottom: 668px;
+	right: 535px;
+	left: 1120px;
 }
 .dot-icon-three {
-  top: 572px;
-  bottom: 180px;
-  right: -48px;
-  left: 1193px;
+	top: 572px;
+	bottom: 180px;
+	right: -48px;
+	left: 1193px;
 }
 .text-bottom {
-  padding-top: 182px;
-  padding-left: 10px;
+	padding-top: 182px;
+	padding-left: 10px;
 }
 .second-page-pic-element-one,
 .second-page-pic-element-two,
 .second-page-pic-element-three {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 15px;
-  text-decoration: none solid rgb(57, 60, 65);
+	font-size: 14px;
+	font-weight: var(--gotham-medium);
+	line-height: 15px;
+	text-decoration: none solid rgb(57, 60, 65);
 }
 
 .second-page-side-container {
-  /* Color & Background */
-  background-attachment: scroll;
-  background-color: #fff;
-  background-position: 0% 0%;
-  background-repeat: repeat;
-  color: rgb(57, 60, 65);
-  padding-top: 20px;
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: #fff;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(57, 60, 65);
+	padding-top: 20px;
 
-  /* Box */
-  height: 937px;
-  width: 415px;
-  margin: 0px;
-  padding: 0px 50px;
+	/* Box */
+	height: 937px;
+	width: 415px;
+	margin: 0px;
+	padding: 0px 50px;
 
-  /* Positioning */
-  position: relative;
-  display: block;
-  z-index: 1;
+	/* Positioning */
+	position: relative;
+	display: block;
+	z-index: 1;
 }
 
 .second-page-side-container h2 {
-  font-size: 17px;
-  line-height: 17px;
-  font-weight: 300;
+	font-size: 17px;
+	line-height: 17px;
+	font-weight: var(--gotham-book);
 }
 .second-page-side-container p {
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 300;
+	font-size: 14px;
+	line-height: 21px;
+	font-weight: var(--gotham-book);
 }
 .second-page-side-container h3 {
-  font-size: 28px;
-  line-height: 36px;
-  font-weight: 500;
+	font-size: 28px;
+	line-height: 36px;
+	font-weight: 500;
 }
 .second-page-side-container h4 {
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 500;
-  text-align: center;
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: 500;
+	text-align: center;
 }
 .btn-hover {
-  display: inline-block;
-  vertical-align: middle;
-  text-transform: uppercase;
-  font-size: 12px;
-  line-height: 21px;
-  font-weight: 300;
+	display: inline-block;
+	vertical-align: middle;
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 21px;
+	font-weight: var(--gotham-book);
 }
 .btn-order-white,
 .btn-info-white {
-  font-size: 12px;
-  line-height: 21px;
-  font-weight: 300;
-  color: #000;
-  border: 3px #000 solid;
+	font-size: 12px;
+	font-weight: var(--gotham-book);
+	color: #000;
+	border: 3px #000 solid;
 }
 
 .btn-info-white {
-  border-radius: 20px;
-  padding: 10px;
-  min-width: 40px;
-  max-height: 400px;
-  border-radius: 100%;
-  cursor: pointer;
-  transition-duration: 0.4s;
+	border-radius: 20px;
+	padding: 10px;
+	min-width: 40px;
+	max-height: 400px;
+	border-radius: 100%;
+	cursor: pointer;
+	transition-duration: 0.4s;
 }
 
 .btn-info-white:hover {
-  background-color: #fff;
-  background: url("/img/plus-white2.svg") no-repeat center center, #fff;
-  cursor: pointer;
+	background-color: #fff;
+	background: url("/img/plus-white2.svg") no-repeat center center, #fff;
+	cursor: pointer;
 }
 .btn-order-white:hover,
 .btn-order-white-third-page:hover {
-  background: #000;
-  color: #fff;
-  transition-duration: 0.4s;
+	background: #000;
+	color: #fff;
+	transition-duration: 0.4s;
 }
 .btn-second-page-container a {
-  color: #000;
+	color: #000;
 }
 
 scroll-container {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
 }
 scroll-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  font-size: 5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	font-size: 5em;
 }
 .second-page-nav-container,
 .third-page-nav-container {
-  padding-left: 20px;
-  vertical-align: auto;
+	padding-left: 20px;
+	vertical-align: auto;
 }
 .tesla-logo-black {
-  display: block;
-  float: left;
-  width: 100px;
-  height: 52px;
-  z-index: 2;
+	display: block;
+	float: left;
+	width: 100px;
+	height: 52px;
+	z-index: 2;
 }
 .tesla-logo-black-container h1,
 .first-page-title-on-picture-content h1 {
-  margin: 0;
+	margin: 0;
 }
 .arrow-top {
-  display: block;
-  float: right;
+	display: block;
+	float: right;
 }
 .arrow-top-container {
-  display: block;
-  float: right;
-  width: 100px;
-  height: 52px;
-  text-align: end;
-  padding: 15px 20px;
+	display: block;
+	float: right;
+	width: 100px;
+	height: 52px;
+	text-align: end;
+	padding: 15px 20px;
 }
 
 .second-page-side-content {
-  padding-top: 16px;
+	padding-top: 16px;
 }
 
 .second-page-side-content p {
-  padding-bottom: 14px;
-  margin-bottom: 16px;
+	padding-bottom: 14px;
+	margin-bottom: 16px;
 }
 .second-page-side-content section {
-  padding: 24px;
+	padding: 24px;
 }
 .second-page-side-card,
 .second-page-side-content section h4 {
-  padding-bottom: 16px;
+	padding-bottom: 16px;
 }
 .second-page-side-content section h4 {
-  line-height: 28px;
-  font-size: 20px;
+	line-height: 28px;
+	font-size: 20px;
 }
 .second-page-side-card li {
-  display: inline-block;
-  width: 100%;
-  padding-bottom: 8px;
+	display: inline-block;
+	width: 100%;
+	padding-bottom: 8px;
 }
 .card-line-info1 {
-  margin-right: 8px;
-  float: left;
-  width: 136.3px;
-  display: block;
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 700;
+	margin-right: 8px;
+	float: left;
+	width: 136.3px;
+	display: block;
+	font-size: 14px;
+	line-height: 21px;
+	font-weight: var(--gotham-bold);
 }
 .card-star-info {
-  float: right;
-  margin: 0px 3px;
-  font-size: 17px;
-  font-weight: 500;
-  line-height: 20px;
+	float: right;
+	margin: 0px 3px;
+	font-size: 17px;
+	font-weight: 500;
+	line-height: 20px;
 }
 .card-line-info2 {
-  font-size: 8px;
-  line-height: 8px;
-  font-weight: 400;
+	font-size: 8px;
+	line-height: 8px;
+	font-weight: var(--gotham-medium);
 }
 
 .second-page-side-card {
-  border-radius: 25px;
-  background: #eeeeee;
+	border-radius: 25px;
+	background: #eeeeee;
 }
 
 .btn-second-page-container {
-  max-width: 367px;
-  position: absolute;
-  top: 83vh;
-  bottom: 50px;
-  right: -2px;
-  left: 50px;
-  float: none;
-  display: flex;
-  clear: left;
-  z-index: 3;
+	max-width: 367px;
+	position: absolute;
+	top: 83vh;
+	bottom: 50px;
+	right: -2px;
+	left: 50px;
+	float: none;
+	display: flex;
+	clear: left;
+	z-index: 3;
 }
 
 /* Third Page */
 .pic-third-page-container {
-  background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/3489a82e-b19c-457a-86a4-7ea9ac91aa1c/bvlatuR/std/1920x1080/lhd-performance-hero-desktop")
-    no-repeat center center/cover;
-  position: relative;
-  height: 686px;
-  width: auto;
+	background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/3489a82e-b19c-457a-86a4-7ea9ac91aa1c/bvlatuR/std/1920x1080/lhd-performance-hero-desktop")
+		no-repeat center center/cover;
+	position: relative;
+	height: 686px;
+	width: auto;
 }
 
 /* bottom: 0; = a good trick to position an absolute element bottom of a relative container */
 .pic-center-bottom-third-page-container {
-  width: 100%;
-  min-width: 100%;
-  height: 230.219px;
-  position: absolute;
-  bottom: 0;
+	width: 100%;
+	min-width: 100%;
+	height: 230.219px;
+	position: absolute;
+	bottom: 0;
 }
 .pic-center-bottom-third-page-content {
-  font-size: 14px;
-  line-height: 21px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  text-align: center;
-  margin: 74px 440px 72px 440px;
-  padding: 0px 30px;
-  width: 1024px;
-  height: 84px;
+	font-size: 14px;
+	line-height: 21px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	text-align: center;
+	margin: 74px 440px 72px 440px;
+	padding: 0px 30px;
+	width: 1024px;
+	height: 84px;
 }
 
 .light-meter-third-page,
 .pic-center-bottom-third-page-content p {
-  display: block;
+	display: block;
 }
 
 .callout-container-left-third-page,
 .callout-container-center-third-page,
 .callout-container-right-third-page {
-  display: inline-block;
-  width: 318.1px;
-  color: #fff;
-  font-size: 28px;
-  text-align: left;
+	display: inline-block;
+	width: 318.1px;
+	color: #fff;
+	font-size: 28px;
+	text-align: left;
 }
 .callout-container-left-third-page {
-  padding-right: 20px;
-  font-weight: 400;
-  border-right: 1px #fff solid;
+	padding-right: 20px;
+	font-weight: var(--gotham-medium);
+	border-right: 1px #fff solid;
 }
 .callout-container-center-third-page {
-  padding: 0px 20px;
-  font-weight: 400;
+	padding: 0px 20px;
+	font-weight: var(--gotham-medium);
 }
 .callout-container-right-third-page {
-  padding-left: 20px;
-  font-weight: 400;
-  border-left: 1px #fff solid;
+	padding-left: 20px;
+	font-weight: var(--gotham-medium);
+	border-left: 1px #fff solid;
 }
 .callout-container-left-third-page p,
 .callout-container-center-third-page p,
 .callout-container-right-third-page p {
-  font-size: 12px;
-  font-weight: 300;
+	font-size: 12px;
+	font-weight: var(--gotham-book);
 }
 
 .bottom-third-page-container {
-  font-size: 14px;
-  line-height: 21px;
-  display: block;
-  min-height: 250px;
-  height: 250px;
-  padding: 0px 24px;
-  width: 100%;
-  min-width: auto;
-  font-weight: 300;
-  text-align: center;
+	font-size: 14px;
+	line-height: 21px;
+	display: block;
+	min-height: 250px;
+	height: 250px;
+	padding: 0px 24px;
+	width: 100%;
+	min-width: auto;
+	font-weight: var(--gotham-book);
+	text-align: center;
 }
 
 .bottom-third-page-content-left {
-  font-size: 14px;
-  line-height: 21px;
-  height: 219px;
-  width: 351px;
-  padding: 48px 20px 48px 0;
-  min-height: auto;
-  min-width: 351px;
-  display: inline-block;
-  text-align: left;
+	font-size: 14px;
+	line-height: 21px;
+	height: 219px;
+	width: 351px;
+	padding: 48px 20px 48px 0;
+	min-height: auto;
+	min-width: 351px;
+	display: inline-block;
+	text-align: left;
 }
 .bottom-third-page-content-left h2 {
-  font-size: 17px;
-  line-height: 17px;
-  font-weight: 300;
+	font-size: 17px;
+	line-height: 17px;
+	font-weight: var(--gotham-book);
 }
 .bottom-third-page-content-right {
-  text-align: left;
-  font-size: 14px;
-  line-height: 21px;
-  height: 219px;
-  width: 624px;
-  padding: 48px 0;
-  min-height: auto;
-  min-width: auto;
-  display: inline-block;
+	text-align: left;
+	font-size: 14px;
+	line-height: 21px;
+	height: 219px;
+	width: 624px;
+	padding: 48px 0;
+	min-height: auto;
+	min-width: auto;
+	display: inline-block;
 }
 
 .btn-third-page-container {
-  width: 341px;
-  height: 56px;
-  display: inline;
-  vertical-align: middle;
-  margin-top: 16px;
+	width: 341px;
+	height: 56px;
+	display: inline;
+	vertical-align: middle;
+	margin-top: 16px;
 }
 
 .btns-third-page-container {
-  font-size: 12px;
-  line-height: 21px;
-  text-transform: uppercase;
-  color: #171a20;
-  height: 56px;
-  width: 138.3px;
-  margin: 8px 12px 0 0;
-  min-width: auto;
-  min-height: auto;
-  cursor: pointer;
-  float: left;
+	font-size: 12px;
+	line-height: 21px;
+	text-transform: uppercase;
+	color: #171a20;
+	height: 56px;
+	width: 138.3px;
+	margin: 8px 12px 0 0;
+	min-width: auto;
+	min-height: auto;
+	cursor: pointer;
+	float: left;
 }
 
 .callout-container-bottom-third-page {
-  font-size: 14px;
-  line-height: 21px;
-  color: #393c41;
-  height: 56px;
-  width: 180.641px;
-  min-height: auto;
-  min-width: auto;
-  display: inline-block;
+	font-size: 14px;
+	line-height: 21px;
+	color: #393c41;
+	height: 56px;
+	width: 180.641px;
+	min-height: auto;
+	min-width: auto;
+	display: inline-block;
 }
 
 .btn-order-white-third-page {
-  background: #fff;
-  color: #171a20;
-  margin: 8px 0;
-  border: 3px solid #171a20;
+	background: #fff;
+	color: #171a20;
+	margin: 8px 0;
+	border: 3px solid #171a20;
 }
 
 .btn-info-third-page {
-  color: #171a20;
+	color: #171a20;
 }
 
 footer {
-  font-size: 12px;
-  line-height: 17px;
-  font-weight: 300;
-  background: #000;
-  text-align: center;
-  height: 70px;
-  min-height: 70px;
-  position: relative;
+	font-size: 12px;
+	line-height: 17px;
+	font-weight: var(--gotham-book);
+	background: #000;
+	text-align: center;
+	height: 70px;
+	min-height: 70px;
+	position: relative;
 }
 footer li {
-  position: relative;
-  top: 24px;
-  display: inline;
-  text-align: center;
-  padding: 8px 16px 8px 0;
+	position: relative;
+	top: 24px;
+	display: inline;
+	text-align: center;
+	padding: 8px 16px 8px 0;
 }
 
 /* Fourth Page */
 .pic-fourth-page-container {
-  background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/02b9fe62-2569-4fc8-bfa1-a8f8cdd9d48e/bvlatuR/std/1440x900/lhd-awd-hero-desktop")
-    no-repeat center center/cover;
-  position: relative;
-  height: 686px;
-  width: auto;
+	background: url("https://tesla-cdn.thron.com/delivery/public/image/tesla/02b9fe62-2569-4fc8-bfa1-a8f8cdd9d48e/bvlatuR/std/1440x900/lhd-awd-hero-desktop")
+		no-repeat center center/cover;
+	position: relative;
+	height: 686px;
+	width: auto;
 }
