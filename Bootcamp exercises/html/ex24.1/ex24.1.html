@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.color-1,
+			.color-2,
+			.color-3,
+			.color-4,
+			.color-5 {
+				border: 1px #000 solid;
+				padding: 0.5rem;
+				border-radius: 10px;
+			}
+			.container {
+				display: grid;
+
+				grid-template-areas:
+					"red-1 red-1 blue-2 blue-2 "
+					"green-3 purple-4 purple-4 purple-4"
+					"yellow-5 yellow-5 yellow-5 yellow-5";
+				gap: 1rem;
+			}
+			.color-1 {
+				grid-area: red-1;
+
+				background: red;
+			}
+			.color-2 {
+				grid-area: blue-2;
+				background: blue;
+			}
+			.color-3 {
+				grid-area: green-3;
+				background: green;
+			}
+			.color-4 {
+				grid-area: purple-4;
+				background: purple;
+			}
+			.color-5 {
+				grid-area: yellow-5;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="color-1">1</div>
+			<div class="color-2">2</div>
+			<div class="color-3">3</div>
+			<div class="color-4">4</div>
+			<div class="color-5">5</div>
+		</div>
+	</body>
+</html>

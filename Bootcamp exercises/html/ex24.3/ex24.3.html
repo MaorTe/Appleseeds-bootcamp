@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.header,
+			.sidebar,
+			.content,
+			.sidebar-2,
+			.footer {
+				padding: 0.5rem;
+				border-radius: 10px;
+				text-align: center;
+			}
+			.container {
+				display: grid;
+				grid-template-areas:
+					"header header header header "
+					"sidebar content content sidebar-2"
+					"footer footer footer footer";
+				gap: 1rem;
+				color: #fff;
+			}
+			.header {
+				grid-area: header;
+				background: red;
+			}
+			.sidebar {
+				grid-area: sidebar;
+				background: blue;
+			}
+			.content {
+				grid-area: content;
+				background: green;
+			}
+			.sidebar-2 {
+				grid-area: sidebar-2;
+				background: purple;
+			}
+			.footer {
+				grid-area: footer;
+				background: yellow;
+			}
+
+			/* Mobile */
+			@media screen and (max-width: 768px) {
+				.container {
+					grid-template-areas:
+						"header"
+						"sidebar"
+						"content"
+						"sidebar-2"
+						"footer";
+					background: black;
+				}
+			}
+			/* Tablet */
+			@media screen and (min-width: 769px) and (max-width: 1024px) {
+				.container {
+					grid-template-areas:
+						"header header header"
+						"sidebar content content"
+						"sidebar-2 sidebar-2 sidebar-2"
+						"footer footer footer";
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">Header</div>
+			<div class="sidebar">Sidebar</div>
+			<div class="content">
+				Content
+				<div>
+					More content than we had before so this column is now quite tall
+				</div>
+			</div>
+			<div class="sidebar-2">Sidebar 2</div>
+			<div class="footer">Footer</div>
+		</div>
+	</body>
+</html>
