@@ -5,7 +5,6 @@
 			href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 			crossorigin="anonymous"
 		/>
-		<!-- integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" -->
 		<link
 			href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
 			rel="stylesheet"
@@ -19,12 +18,21 @@
 			<a href="#" class="logo">Portfolio</a>
 			<div class="toggle" onclick="toggleMenu();"></div>
 			<ul class="menu">
-				<li><a href="#home" onclick="toggleMenu();">Home</a></li>
-				<li><a href="#about" onclick="toggleMenu();">About</a></li>
-				<li><a href="#services" onclick="toggleMenu();">Service</a></li>
-				<li><a href="#work" onclick="toggleMenu();">Work</a></li>
-				<!-- <li><a href="#testimonial" onclick="toggleMenu();">Testimonial</a></li> -->
-				<li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
+				<li>
+					<a href="#home" class="btn-one" onclick="toggleMenu();">Home</a>
+				</li>
+				<li>
+					<a href="#about" class="btn-one" onclick="toggleMenu();">About</a>
+				</li>
+				<li>
+					<a href="#services" class="btn-one" onclick="toggleMenu();">Skills</a>
+				</li>
+				<li>
+					<a href="#work" class="btn-one" onclick="toggleMenu();">Projects</a>
+				</li>
+				<li>
+					<a href="#contact" class="btn-one" onclick="toggleMenu();">Contact</a>
+				</li>
 			</ul>
 		</header>
 
@@ -32,41 +40,101 @@
 			<div class="textBx">
 				<h2>Hi, I'm<br /><span>Maor Tene.</span></h2>
 				<h3>I am a Web developer.</h3>
-				<a href="#about" class="btn">About Me</a>
+				<a href="#about" class="btn1 btn">About Me</a>
 			</div>
-			<div id="overlay"></div>
 		</section>
 		<section class="about" id="about">
-			<div class="heading">
+			<div class="heading divider-custom-line">
 				<h2>About Me</h2>
 			</div>
 			<div class="content">
-				<div class="contentBx w50">
+				<div class="contentBx">
 					<h3>I am a Web developer.</h3>
 					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-						necessitatibus magnam voluptatem ea, nostrum quae at laborum numquam
-						ipsum molestias similique facilis totam sunt explicabo laudantium,
-						consequuntur itaque quam expedita neque odit corporis. Rerum
-						asperiores, enim aliquam esse dolore ad? Velit totam quae assumenda
-						in ipsam, maxime at laborum repellat distinctio laboriosam, esse
-						nesciunt libero possimus perspiciatis officiis natus impedit
-						dignissimos! Eligendi tenetur ipsam ad vel dolorum, fugit error
-						accusamus, molestias at aut qui repellat! Sit ut at architecto
-						reprehenderit aspernatur nulla consequuntur quos dolores,
-						dignissimos temporibus eveniet porro optio laboriosam voluptate
-						tenetur sint totam libero dicta voluptatibus assumenda maiores.
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit
+						obcaecati ad laudantium modi? Laboriosam, vero error sequi molestias
+						culpa rerum nemo laudantium libero officiis dicta sint consectetur
+						odit voluptate maxime nam facilis iusto id! Nam at fugit iste
+						temporibus expedita possimus porro aut reprehenderit corporis
+						aliquam mollitia laudantium, ipsa tempore!
 					</p>
 				</div>
-				<div class="w50">
-					<img
-						src="https://sun9-18.userapi.com/c850608/v850608322/9d6bd/EOOXF9vXQK0.jpg"
-					/>
+				<div>
+					<img src="./img/profilepic.jpeg" />
 				</div>
 			</div>
 		</section>
 
-		<section class="services" id="services">
+		<!-- skills -->
+		<div class="skills" id="skills">
+			<div class="heading divider-custom-line">
+				<h2>Skills</h2>
+			</div>
+			<div class="skills-container">
+				<div class="skills-icon">
+					<!-- <div class="icons-row-1"> -->
+					<div>
+						<i class="fab fa-html5"></i>
+						<h6>HTML</h6>
+					</div>
+					<div>
+						<i class="fab fa-css3-alt"></i>
+						<h6>CSS</h6>
+					</div>
+					<div>
+						<i class="fab fa-js-square"></i>
+						<h6>JavaScript</h6>
+					</div>
+
+					<div>
+						<i class="fab fa-react"></i>
+						<h6>React</h6>
+					</div>
+
+					<div>
+						<!-- <h5 class="text">(.*)</h5> -->
+						<i class="fab fa-node"></i>
+						<h6>Nodejs</h6>
+					</div>
+					<div>
+						<span>
+							<i class="fa fa-laptop"></i
+							><i class="fa fa-mobile-alt" style="font-size: 1.5rem"></i>
+						</span>
+						<h6>Responsive design</h6>
+					</div>
+
+					<div>
+						<i class="fab fa-git-square"></i>
+						<h6>Git</h6>
+					</div>
+					<div>
+						<i class="fa fa-code"></i>
+						<h6>Fast coding</h6>
+					</div>
+
+					<div>
+						<h5 class="text">Ajax</h5>
+						<h6>Ajax</h6>
+					</div>
+					<div>
+						<img src="https://i.ibb.co/YDSghBj/jquery.png" alt="jquery" />
+						<h6>jQuery</h6>
+					</div>
+					<div>
+						<h5 class="text">JSON</h5>
+						<h6>Json</h6>
+					</div>
+
+					<div>
+						<i class="fas fa-lightbulb"></i>
+						<h6>Solving problem</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- --------------- -->
+		<!-- <section class="services" id="services">
 			<div class="heading white">
 				<h2>Services</h2>
 				<p>These are all things what can i do.</p>
@@ -132,9 +200,9 @@
 					</p>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
-		<section class="work" id="work">
+		<!-- <section class="work" id="work">
 			<div class="heading">
 				<h2>Latest Work</h2>
 				<p>Graphics. Colour. Content. Design.</p>
@@ -164,36 +232,82 @@
 			<div class="heading">
 				<a href="#" class="btn">View More</a>
 			</div>
-		</section>
-
-		<!-- <section class="testimonial" id="testimonial">
-			<div class="heading">
-				<h2>Testimonial</h2>
-				<p>A few words from clients</p>
-			</div>
-			<div class="content">
-				<div class="testimonialBx">
-					<p>
-						Thank you very much for the work done. In your works, you can see
-						the energy that you put into what you create. Your ideas are modern
-						and attractive. Good luck to you.
-					</p>
-					<h3>A.A.Blaze<br /><span>Creative Designer</span></h3>
-				</div>
-				<div class="testimonialBx">
-					<p>
-						For my project, I needed to make a beautiful and functional design.
-						In search of a designer, I reviewed many different portfolios, until
-						on one of the sites I accidentally saw the signature "Design web
-						service Murat Toimet ". As a result of joint work, Murat invented
-						and drew the design for the main and internal pages of the service.
-						I was not mistaken in choosing a designer, I am more than satisfied
-						with the result.
-					</p>
-					<h3>Malika<br /><span>Art Director</span></h3>
-				</div>
-			</div>
 		</section> -->
+
+		<!----------START Project Section ------------>
+		<section id="projects">
+			<div class="heading divider-custom-line">
+				<h2>Projects</h2>
+			</div>
+			<section id="projects-wrapper">
+				<section class="project-tile">
+					<a href="#">
+						<img src="https://via.placeholder.com/300x300" alt="" />
+						<p>
+							<span class="code"><</span>Project Name<span class="code"
+								>/></span
+							>
+						</p>
+					</a>
+				</section>
+
+				<section class="project-tile">
+					<a href="#">
+						<img src="https://via.placeholder.com/300x300" alt="" />
+						<p>
+							<span class="code"><</span>Project Name<span class="code"
+								>/></span
+							>
+						</p>
+					</a>
+				</section>
+
+				<section class="project-tile">
+					<a href="#">
+						<img src="https://via.placeholder.com/300x300" alt="" />
+						<p>
+							<span class="code"><</span>Project Name<span class="code"
+								>/></span
+							>
+						</p>
+					</a>
+				</section>
+
+				<section class="project-tile">
+					<a href="#">
+						<img src="https://via.placeholder.com/300x300" alt="" />
+						<p>
+							<span class="code"><</span>Project Name<span class="code"
+								>/></span
+							>
+						</p>
+					</a>
+				</section>
+
+				<section class="project-tile">
+					<a href="#">
+						<img src="https://via.placeholder.com/300x300" alt="" />
+						<p>
+							<span class="code"><</span>Project Name<span class="code"
+								>/></span
+							>
+						</p>
+					</a>
+				</section>
+
+				<section class="project-tile">
+					<a href="#">
+						<img src="https://via.placeholder.com/300x300" alt="" />
+						<p>
+							<span class="code"><</span>Project Name<span class="code"
+								>/></span
+							>
+						</p>
+					</a>
+				</section>
+			</section>
+		</section>
+		<!----------END Project Section ------------>
 
 		<section class="contact" id="contact">
 			<div class="heading white">
@@ -251,6 +365,11 @@
 		</div>
 	</body>
 </html>
+
+<script
+	src="https://kit.fontawesome.com/5c4607dc13.js"
+	crossorigin="anonymous"
+></script>
 
 <script>
 	window.addEventListener("scroll", function () {
