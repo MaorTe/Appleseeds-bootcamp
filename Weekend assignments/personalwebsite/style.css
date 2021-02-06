@@ -427,7 +427,9 @@ header.sticky ul li a {
 /* ---------------- */
 
 .skills .divider-custom-line::before,
-.skills .divider-custom-line::after {
+.skills .divider-custom-line::after,
+.contact .divider-custom-line::before,
+.contact .divider-custom-line::after {
 	background-color: #fff;
 	border-color: #777777 !important;
 }
@@ -500,7 +502,7 @@ header.sticky ul li a {
 
 /* .skills-icon > div > div {
 } */
-.icons-row-1 {
+/* .icons-row-1 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -509,7 +511,7 @@ header.sticky ul li a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
+} */
 .skills-container {
 	padding: 1rem;
 }
@@ -590,20 +592,82 @@ header.sticky ul li a {
 /* Contact Page */
 .contact {
 	background: hsl(200, 68%, 35%);
+	/* background: #1ec3c7; */
+	min-height: 90vh;
+	/* color: #fff; */
+	/* color: #1ec3c7; */
+	background: #222;
 }
 
+.contact .heading > span {
+	font-size: 2.5rem;
+	margin: 0 1rem;
+	margin-bottom: 30px;
+}
+
+.contact-icons,
+.background-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+	width: 100%;
+}
+.contact-last-heading {
+	margin-bottom: 0;
+}
+.icon-background {
+	/* color: #c0ffc0; */
+	color: #1ec3c7;
+}
+.background-footer {
+	flex-direction: column;
+	width: auto;
+	background: #222;
+	color: #fff;
+	padding: 50px;
+	border-radius: 20px;
+	border: 2px #1ec3c7 solid;
+	/* border-top: 2px #1ec3c7 solid; */
+	margin-bottom: 10px;
+}
+.background-footer > span {
+	font-size: 2.5rem;
+	margin: 0 1rem;
+}
+.contact .heading {
+	color: #fff;
+	font-size: 2.25rem;
+}
 .contact-icons a {
+	/* display: flex; */
 	position: relative;
 	top: 0;
-	transition: all 0.3s ease-in-out;
+	color: #fff;
+	/* color: #1ec3c7; */
+	/* margin: 0px 5px; */
+	/* width: 100%; */
+	/* height: 100%; */
+	/* font-size: 2rem; */
+
+	/* border-radius: 50%; */
+
+	/* display: inline-block;
+	border-radius: 60px;
+	box-shadow: 0px 0px 2px #888;
+	padding: 0.5em 0.6em; */
+
+	/* overflow: hidden; */
 }
 
 .contact-icons a::after {
 	content: "";
 	position: absolute;
-	top: -5px;
+	/* top: -5px; */
+	transition: all 0.3s ease-in-out;
 }
-.contact-icons a:hover {
+.contact-icons a:hover::after {
+	transform: translateY(-5px);
 }
 .formBx {
 	min-width: 60%;
