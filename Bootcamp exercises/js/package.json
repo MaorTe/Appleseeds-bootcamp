@@ -1,0 +1,14 @@
+{
+	"name": "js",
+	"version": "1.0.0",
+	"description": "",
+	"main": "ex1.1.js",
+	"scripts": {
+		"start": "live-server"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"eslint": "^7.19.0"
+	}
+}
