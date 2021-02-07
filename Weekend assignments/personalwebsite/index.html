@@ -13,6 +13,18 @@
 		<link rel="stylesheet" href="normalize.css" />
 		<link rel="stylesheet" href="./style.css" />
 		<title>Personal Portfolio | Responsive Website Design</title>
+
+		<script
+			src="https://kit.fontawesome.com/5c4607dc13.js"
+			crossorigin="anonymous"
+		></script>
+
+		<script>
+			window.addEventListener("scroll", function () {
+				var header = document.querySelector("header");
+				header.classList.toggle("sticky", window.scrollY > 0);
+			});
+		</script>
 	</head>
 	<body>
 		<!-- Home -->
@@ -323,15 +335,3 @@
 		</footer>
 	</body>
 </html>
-
-<script
-	src="https://kit.fontawesome.com/5c4607dc13.js"
-	crossorigin="anonymous"
-></script>
-
-<script>
-	window.addEventListener("scroll", function () {
-		var header = document.querySelector("header");
-		header.classList.toggle("sticky", window.scrollY > 0);
-	});
-</script>
