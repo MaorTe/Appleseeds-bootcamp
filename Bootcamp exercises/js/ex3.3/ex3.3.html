@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function percentageOfWorld1(population) {
+				return ((population / 7900) * 100).toFixed(1);
+			}
+			const percentageOfWorld2 = (population) =>
+				((population / 7900) * 100).toFixed(1);
+
+			a = percentageOfWorld1(1440);
+			b = percentageOfWorld1(2440);
+			c = percentageOfWorld1(3440);
+
+			console.log(`first ${a},second ${b},third ${c}`);
+
+			aa = percentageOfWorld2(1440);
+			bb = percentageOfWorld2(2440);
+			cc = percentageOfWorld2(3440);
+
+			console.log(`first ${aa},second ${bb},third ${cc}`);
+		</script>
+	</body>
+</html>
