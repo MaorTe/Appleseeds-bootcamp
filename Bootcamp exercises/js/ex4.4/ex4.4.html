@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function sevenBoom(n) {
+				for (let i = 1; i <= n; i++) {
+					if (i.toString().includes(7) && i % 7 === 0)
+						console.log(i + ' BOOM-BOOM');
+					else if (i % 7 === 0) console.log(i + ' BOOM');
+				}
+			}
+			console.log(sevenBoom(18));
+		</script>
+	</body>
+</html>
