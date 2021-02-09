@@ -31,22 +31,20 @@
 				if (people[i] === 'Mary') break;
 			}
 			// 7
-			// const newPeopleArr = [...people.slice(2, 4)];
-			// console.log(newPeopleArr);
+			const newPeopleArr = [...people.slice(2, 4)];
+			console.log(newPeopleArr);
 
-			var newPeopleArr = [...people];
+			//more accurate way
+			const people = ['Matt', 'Mary', 'Devon', 'James'];
+			const matt = people.splice(people.indexOf('Matt'), 1).toString();
+			people.unshift(matt.toString());
 
-			newPeopleArr = newPeopleArr
-				.splice(newPeopleArr.indexOf('Matt'), 1)
-				.unshift();
-			// console.log(
-			// 	newPeopleArr.splice(newPeopleArr.indexOf('Matt'), 1) + 'aaaaaaaaaaaaaaa'
-			// );
-			// newPeopleArr = newPeopleArr
-			// 	.splice(newPeopleArr.indexOf('Mary'), 1)
-			// 	.unshift();
-			// newPeopleArr = [...people.slice(newPeopleArr.indexOf('Matt') + 1)];
-			// console.log(newPeopleArr);
+			const Mary = people.splice(people.indexOf('Mary'), 1).toString();
+			people.unshift(Mary.toString());
+
+			const newPeopleArr = [...people.slice(people.indexOf('Matt') + 1)];
+			console.log(newPeopleArr);
+
 			// 8
 			console.log(people.indexOf('Mary'));
 			// 9
