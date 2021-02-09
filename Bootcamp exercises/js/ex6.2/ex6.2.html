@@ -27,14 +27,26 @@
 			console.log(people);
 			// 6
 			for (let i = 0; i < people.length; i++) {
-				if (people[i] !== 'Mary') {
-					console.log(people[i]);
-					break;
-				}
+				console.log(people[i]);
+				if (people[i] === 'Mary') break;
 			}
 			// 7
-			const newPeopleArr = [...people.slice(2, 4)];
-			console.log(newPeopleArr);
+			// const newPeopleArr = [...people.slice(2, 4)];
+			// console.log(newPeopleArr);
+
+			var newPeopleArr = [...people];
+
+			newPeopleArr = newPeopleArr
+				.splice(newPeopleArr.indexOf('Matt'), 1)
+				.unshift();
+			// console.log(
+			// 	newPeopleArr.splice(newPeopleArr.indexOf('Matt'), 1) + 'aaaaaaaaaaaaaaa'
+			// );
+			// newPeopleArr = newPeopleArr
+			// 	.splice(newPeopleArr.indexOf('Mary'), 1)
+			// 	.unshift();
+			// newPeopleArr = [...people.slice(newPeopleArr.indexOf('Matt') + 1)];
+			// console.log(newPeopleArr);
 			// 8
 			console.log(people.indexOf('Mary'));
 			// 9
