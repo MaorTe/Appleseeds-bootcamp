@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const people = ['Greg', 'Mary', 'Devon', 'James'];
+			// 1
+			people.forEach((element) => {
+				console.log(element);
+			});
+			// 2 remove first index
+			let first = people.shift();
+			console.log(people);
+			// 3 remove last index
+			let last = people.pop();
+			console.log(people);
+			// 4 add first index
+			people.unshift('Matt');
+			console.log(people);
+			// 5 add last index
+			people.push('Maor');
+			console.log(people);
+			// 6
+			for (let i = 0; i < people.length; i++) {
+				if (people[i] !== 'Mary') {
+					console.log(people[i]);
+					break;
+				}
+			}
+			// 7
+			const newPeopleArr = [...people.slice(2, 4)];
+			console.log(newPeopleArr);
+			// 8
+			console.log(people.indexOf('Mary'));
+			// 9
+			console.log(people.indexOf('Foo'));
+			// 10
+			console.log(people.splice(2, 1, 'Elizabeth', 'Artie'));
+			console.log(people);
+			// 11
+			const withBob = [...people, 'Bob'];
+			console.log(withBob);
+		</script>
+	</body>
+</html>
