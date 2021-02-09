@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function countryToLiveIn(language, isIsland, population, country) {
+				if (language === 'English' && population < 50000000 && !isIsland)
+					return console.log(`You shold live in Finland`);
+				else {
+					console.log(`Finland does not meet your criteria`);
+					population = 5000000;
+					language = 'English';
+					isIsland = false;
+					return countryToLiveIn(language, isIsland, population, country);
+				}
+			}
+			countryToLiveIn('French', true, 100000, 'France');
+		</script>
+	</body>
+</html>
