@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- 1. create 2 book objects with properties: name, author, year.
+2. create an empty object bookUtils (utils = short for utilities).
+3. add to to the bookUtils object a function getFirstPublished, that recieves 2
+books and returns the book with the smaller year.
+4. add to to the bookUtils object a function setNewEdition, that recieves a
+book and an edition year and sets a new property latestEdition with the
+edition year, or updates an existing one.
+
+5. add to to the bookUtils object a setLanguage function, that recieves a book
+and a language and sets a new property language with the languahe, or
+updates an existing one.
+
+6. add to to the bookUtils object a setTranslation function, that recieves a
+book a language and a translator, and sets a new property of translation,
+which is an object that contains the translator and the language.
+
+7. add to to the bookUtils object a setPublisher function, that recieves a book
+a name and a location, and sets a new property named publisher, which is an
+object that contains the name and location.
+
+8. add to to the bookUtils object a function isSamePublisher, that recieves 2
+books and checks if the publisher name and location are identical in the 2
+books. -->
+		<script>
+			const myBook1 = {
+				name: 'A Song of Dark and Light',
+				author: 'David W. W. Smith',
+				publishYear: 'July 1, 1997',
+			};
+			const myBook2 = {
+				name: 'A Song of Ice and Fire',
+				author: 'George R. R. Martin',
+				publishYear: 'July 1, 1996',
+			};
+			const bookUtils = {
+				getFirstPublished(book1, book2) {
+					book1.publishYear < book2.publishYear
+						? book1.publishYear
+						: book2.publishYear;
+				},
+				setNewEdition(book, editionYear) {
+					book.latestEdition = editionYear;
+				},
+				setLanguage(book, language) {
+					book.language = language;
+				},
+				setTranslation(book, language, translator) {
+					book.translation = { translator, language };
+				},
+				setPublisher(book, name, location) {
+					book.publisher = { name, location };
+				},
+				isSamePublisher(book1, book2) {
+					return (
+						book1.publisher.name === book2.publisher.name &&
+						book1.publisher.location === book2.publisher.location
+					);
+				},
+			};
+			// console.log(bookUtils.getFirstPublished(myBook1, myBook2));
+			// console.log(bookUtils.setNewEdition(myBook1, 'gold edition'), myBook1);
+			// console.log(bookUtils.setLanguage(myBook1, 'spanish'), myBook1);
+			// console.log(
+			// 	bookUtils.setTranslation(myBook1, 'spanish', 'generictranslator'),
+			// 	myBook1
+			// );
+			console.log(bookUtils.setPublisher(myBook1, 'name1', 'israel'), myBook1);
+			console.log(
+				bookUtils.setPublisher(myBook2, 'naedme1', 'israel'),
+				myBook2
+			);
+			console.log(
+				bookUtils.isSamePublisher(myBook1, myBook2),
+				myBook1,
+				myBook2
+			);
+			console.log(myBook1, myBook2);
+		</script>
+	</body>
+</html>
