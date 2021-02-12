@@ -247,9 +247,7 @@ div #nav-swmslot .nav-swm-text-widget {
 	bottom: 0px;
 	right: 0px;
 	left: 0px;
-	float: none;
 	display: block;
-	clear: none;
 	z-index: 1;
 }
 /*------ Page Content ------ */
