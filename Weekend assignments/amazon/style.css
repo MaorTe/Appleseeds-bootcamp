@@ -138,7 +138,8 @@ div .nav-logo {
 
 .sub-nav-left,
 .sub-nav-center,
-.sub-nav-right {
+.sub-nav-right,
+.product-size-buttons {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -910,4 +911,27 @@ div .badge-wrapper {
 .price-span {
 	color: #b12704;
 	height: fit-content;
+}
+
+.product-size-btn {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 19px;
+	text-align: left;
+	vertical-align: middle;
+
+	/* Box */
+	height: 30px;
+	width: 60.2031px;
+	margin: 0px;
+	padding: 5px 10px 5px 11px;
+	cursor: pointer;
+	border: 1px solid #e0e0e0;
+	background: #fff;
+}
+
+.product-size-buttons {
+	display: block;
 }
