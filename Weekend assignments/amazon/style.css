@@ -1,0 +1,321 @@
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* @font-face {
+	font-family: 'Amazon Ember';
+	src: url('//db.onlinewebfonts.com/t/157c6cc36dd65b1b2adc9e7f3329c761.eot');
+	src: url('//db.onlinewebfonts.com/t/157c6cc36dd65b1b2adc9e7f3329c761.eot?#iefix')
+			format('embedded-opentype'),
+		url('//db.onlinewebfonts.com/t/157c6cc36dd65b1b2adc9e7f3329c761.woff2')
+			format('woff2'),
+		url('//db.onlinewebfonts.com/t/157c6cc36dd65b1b2adc9e7f3329c761.woff')
+			format('woff'),
+		url('//db.onlinewebfonts.com/t/157c6cc36dd65b1b2adc9e7f3329c761.ttf')
+			format('truetype'),
+		url('//db.onlinewebfonts.com/t/157c6cc36dd65b1b2adc9e7f3329c761.svg#Amazon Ember')
+			format('svg');
+} */
+@font-face {
+	font-family: 'Amazon Ember';
+	src: url(./fonts/AmazonEmber_Bd.ttf) format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Amazon Ember';
+	src: url(./fonts/AmazonEmber_Md.ttf) format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+html,
+body {
+	font-family: 'Amazon Ember';
+	font-weight: 300;
+	background: #f9f9f9;
+}
+body li,
+html li {
+	list-style: none;
+}
+.navbar,
+.sub-header-1 {
+	background-color: #131921;
+	color: #fff;
+	display: flex;
+	justify-content: space-between;
+}
+
+.sub-header-1 {
+	background-color: #232f3e;
+}
+.nav-logo a {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	text-decoration: none solid rgb(199, 81, 31);
+	color: rgb(199, 81, 31);
+	/* Box */
+	height: 50px;
+	width: 134px;
+	display: flex;
+	margin-top: 8px;
+	cursor: pointer;
+	border-radius: 2px;
+}
+.nav-logo > a > img {
+	display: block;
+	width: 100px;
+	height: 52px;
+}
+
+.nav-left {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 12px;
+	height: 60px;
+	width: 255.554px;
+	display: flex;
+	/* List */
+	list-style-image: none;
+	list-style-type: disc;
+	list-style-position: outside;
+}
+.nav-center {
+	background: red;
+	margin: 0px 18px;
+	padding: 10px 4px 10px 3px;
+	height: 60px;
+	width: 1057.13px;
+	border-radius: 4px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 12px;
+}
+.nav-right {
+	background: green;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 12px;
+	margin: 2px 0px 0px;
+	padding: 3px 0px 0px;
+	height: 58.0114px;
+	width: 381.321px;
+	list-style-type: disc;
+}
+
+.nav-left-location-slot a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+}
+
+.nav-left a:hover {
+	border: 1px solid #fff;
+}
+
+div .nav-logo {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 0px;
+	text-align: start;
+	/* Box */
+	height: 60px;
+	width: 112.969px;
+}
+
+.sub-nav-left,
+.sub-nav-center,
+.sub-nav-right {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.sub-header-1 .hamburger {
+	z-index: 1;
+	width: 60px;
+	height: 60px;
+	padding: 1rem;
+	background: var(--primary-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Hamburger Line */
+.sub-header-1 .hamburger > div {
+	position: relative;
+	flex: none;
+	width: 100%;
+	height: 2px;
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.4s ease;
+}
+
+/* Hamburger Lines - Top & Bottom */
+.sub-header-1 .hamburger > div::before,
+.sub-header-1 .hamburger > div::after {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	top: -10px;
+	width: 100%;
+	height: 2px;
+	background: inherit;
+}
+
+/* Moves Line Down */
+.sub-header-1 .hamburger > div::after {
+	top: 10px;
+}
+/* ------------- */
+
+div #nav-xshop .nav-progressive-content {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 12px;
+	text-align: start;
+	/* Box */
+	height: 38.9915px;
+	width: 1407.74px;
+	/* Positioning */
+	display: flex;
+}
+
+div #nav-swmslot .nav-swm-text-widget {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 12px;
+	/* Box */
+	height: 38.9915px;
+	width: 245.866px;
+	margin: 0px;
+	padding: 0px 14px 0px 2px;
+	display: flex;
+}
+
+.sub-header-2 {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 12px;
+	text-align: start;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgb(250, 250, 250);
+	color: rgb(15, 17, 17);
+
+	/* Box */
+	height: 33px;
+	width: 1903px;
+	border: 1px solid #fff;
+	border-top: 0.994318px solid rgba(0, 0, 0, 0.17);
+	border-right: 0px none rgb(15, 17, 17);
+	border-bottom: 0.994318px solid rgba(0, 0, 0, 0.1);
+	border-left: 0px none rgb(15, 17, 17);
+	margin: 0px;
+	padding: 0px 9px 0px 15px;
+	max-height: none;
+	min-height: 0px;
+	max-width: none;
+	min-width: 0px;
+
+	/* Positioning */
+	position: relative;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	float: none;
+	display: block;
+	clear: none;
+	z-index: 1;
+}
+
+/*------ Page Content ------ */
+/* .page-container {
+} */
+div #wayfinding-breadcrumbs_container,
+.a-section {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	text-align: start;
+	text-indent: 0px;
+	word-spacing: 0px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(15, 17, 17);
+
+	/* Box */
+	height: 14px;
+	width: 1500px;
+	margin: 8px 0px 0px;
+	padding: 0px 16px;
+
+	display: block;
+}
+
+div #dp,
+.speakers {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	text-decoration: none solid rgb(15, 17, 17);
+	text-align: start;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgb(255, 255, 255);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(15, 17, 17);
+
+	/* Box */
+	height: 14254.4px;
+	width: 1500px;
+	margin: 0px 201.5px;
+	padding: 0px;
+	max-height: none;
+	min-height: 0px;
+	max-width: 1500px;
+	min-width: 1000px;
+	display: flex;
+
+	/* Effects */
+	transform: none;
+	transition: all 0s ease 0s;
+	outline: rgb(255, 0, 0) dashed 1px;
+	outline-offset: 0px;
+}
