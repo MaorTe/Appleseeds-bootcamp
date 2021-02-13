@@ -444,6 +444,7 @@ img {
 	opacity: 1;
 }
 /* Product details */
+
 .product-details-container {
 	/* Font & Text */
 	font-family: 'Amazon Ember', Arial, sans-serif;
@@ -460,7 +461,6 @@ img {
 	/* Box */
 	height: 1181px;
 	width: 440.047px;
-	border: 1px solid green;
 	/* margin: 0px 270px 0px 753.953px; */
 }
 
@@ -749,14 +749,13 @@ div .badge-wrapper {
 	font-weight: 400;
 	line-height: 20px;
 	text-align: start;
-	white-space: normal;
-	word-spacing: 0px;
 
 	/* Box */
 	height: 20px;
 	width: 440.047px;
-	border-bottom: 1px solid rgb(15, 17, 17);
+	border-bottom: 1px solid #e7e7e7;
 	margin: 5px 0px 10px;
+	padding-bottom: 30px;
 }
 
 .price-block {
@@ -888,13 +887,21 @@ div .badge-wrapper {
 	color: #007600;
 }
 /* Product buy */
-.product-buy-container {
+.product-buy {
+	height: 977px;
 	width: 244px;
 	margin-left: 20px;
+	border: 1px solid green;
+}
+.product-buy-container {
+	width: 244px;
 	flex-direction: column;
 	border: 1px solid rgb(213, 217, 217);
 	border-radius: 10px;
 	padding: 14px 18px;
+}
+.product-buy-container a:link {
+	text-decoration: none;
 }
 .margin-top-bot {
 	margin: 21px 0px;
@@ -929,18 +936,26 @@ div .badge-wrapper {
 	position: relative;
 	margin-top: 15px;
 	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3px;
 }
+
 .a-button-inner:hover {
-	background: #f0c048;
+	background: #eeaf10;
+	text-decoration: none;
+	color: #000;
 }
 .a-button-input {
-	background: rgb(240, 193, 75);
+	background: #f0c14b;
 	border-color: #a88734 #9c7e31 #846a29;
 	color: #111;
 	width: 100%;
 	height: 29px;
 }
-#a-icon-cart {
+#a-icon-cart,
+#a-icon-play {
 	background: url(https://m.media-amazon.com/images/S/sash/McBZv0ZvnbehkIx.png);
 	background-position-x: -35px;
 	background-position-y: -5px;
@@ -962,4 +977,149 @@ background-repeat-y; */
 	text-size-adjust: 100%;
 	top: 2px;
 	width: 25px;
+}
+.btn-color-dark-orange {
+	background: #ed9220;
+}
+#a-icon-play {
+	background-position-x: -35px;
+	background-position-y: -60px;
+}
+.secure-transaction-icon {
+	color: #007184;
+	justify-content: flex-start;
+	align-items: center;
+}
+.secure-transaction-icon img {
+	height: 15px;
+	width: auto;
+	padding-right: 10px;
+}
+.btn-secure-transaction {
+	margin: 8px 0px;
+}
+.secure-transaction-icon:hover {
+	color: rgb(196, 85, 0);
+}
+.secure-transaction-details {
+	color: rgb(86, 89, 89);
+	font-size: 12px;
+	width: 62px;
+	height: 19px;
+	display: inline-block;
+}
+.secure-transaction-details-1 {
+	color: #0f1111;
+	font-size: 12px;
+	width: auto;
+	height: 19px;
+	padding-left: 5px;
+	margin-bottom: 10px;
+}
+
+.border-bottom {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e7e7e7;
+}
+.border-top {
+	padding-top: 10px;
+	border-bottom: 1px solid #e7e7e7;
+}
+#gift-wrap {
+	float: left;
+	margin-top: 3px;
+	margin-bottom: 20px;
+}
+.a-checkbox-label {
+	padding-left: 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+#icon-marker {
+	background-image: url('https://m.media-amazon.com/images/G/01/AUIClients/DeliveryStaticPackard-pin_desktop_1x-c944b6819f9e5642fdfd4ff3d1109d60d66d8f87._V2_.png');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	color: rgb(199, 81, 31);
+	/* Box */
+	height: 14px;
+	width: 16px;
+	margin: 2px 5px 0px 0px;
+	max-height: none;
+	min-height: auto;
+	max-width: none;
+	min-width: 16px;
+	float: left;
+	display: block;
+	cursor: pointer;
+}
+
+.quantity-dropdown-1 {
+	height: 29px;
+	width: 100%;
+	padding: 1px 6px;
+	line-height: 19px;
+	font-size: 14px;
+	margin-top: 12px;
+}
+
+.share-icons-content {
+	display: flex;
+	justify-content: space-around;
+	width: 62%;
+	align-items: center;
+	margin: 10px auto;
+}
+
+.icon-mail {
+	background-image: url('https://m.media-amazon.com/images/S/sash/-YXtK4io-KvrV8a.png');
+	background-position: -256px -221px;
+	background-repeat: no-repeat;
+	color: rgb(199, 81, 31);
+
+	position: relative;
+	cursor: pointer;
+	height: 17px;
+	width: 19px;
+}
+.icon-facebook {
+	background-image: url('https://m.media-amazon.com/images/S/sash/-YXtK4io-KvrV8a.png');
+	background-position: -297px -220px;
+	background-repeat: no-repeat;
+	color: rgb(199, 81, 31);
+	font-size: 13px;
+	height: 17px;
+	width: 17px;
+	position: relative;
+	cursor: pointer;
+}
+.icon-twitter {
+	background-image: url('https://m.media-amazon.com/images/S/sash/-YXtK4io-KvrV8a.png');
+	background-position: -277px -220px;
+	background-repeat: no-repeat;
+	color: rgb(199, 81, 31);
+
+	position: relative;
+	cursor: pointer;
+	height: 17px;
+	width: 18px;
+}
+.icon-pinterest {
+	background-image: url('https://m.media-amazon.com/images/S/sash/-YXtK4io-KvrV8a.png');
+	background-position: -373px -220px;
+	background-repeat: no-repeat;
+	color: rgb(199, 81, 31);
+
+	position: relative;
+	cursor: pointer;
+	height: 17px;
+	width: 17px;
+}
+
+.secure-transaction-details-center {
+	text-align: center;
+}
+.secure-transaction-details-width {
+	width: 100%;
 }
