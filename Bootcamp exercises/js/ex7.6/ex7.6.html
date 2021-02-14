@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let obj = { name: 'aaa', age: 'bbb', date: 'ccc' };
+			console.log(obj);
+			function swap(obj) {
+				let objSwapped = {};
+				Object.entries(obj).forEach((entry) => {
+					let key = entry[0];
+					let value = entry[1];
+					objSwapped[value] = key;
+				});
+				return objSwapped;
+			}
+
+			// function swapKeyVal(obj) {
+			// 	const swapedObj = {};
+
+			// 	for (const [key, value] of Object.entries(obj)) {
+			// 		console.log(`${key}: ${value}`);
+			// 		swapedObj[value] = key;
+			// 	}
+
+			// 	return swapedObj;
+			// }
+
+			console.log(swap(obj));
+		</script>
+	</body>
+</html>
