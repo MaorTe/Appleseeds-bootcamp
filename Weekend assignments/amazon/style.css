@@ -58,10 +58,20 @@ html a:hover {
 	color: #fff;
 	display: flex;
 	justify-content: space-between;
+	position: relative;
+	align-items: center;
+	height: 40px;
+}
+.navbar {
+	height: 60px;
 }
 
 .sub-header-1 {
 	background-color: #232f3e;
+	display: flex;
+	flex-direction: row;
+	justify-items: center;
+	align-items: center;
 }
 .nav-logo a {
 	/* Font & Text */
@@ -125,6 +135,7 @@ html a:hover {
 }
 
 .nav-left-location-slot a {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -150,50 +161,65 @@ div .nav-logo {
 .sub-nav-left,
 .sub-nav-center,
 .sub-nav-right,
-.product-size-buttons {
+.product-size-buttons,
+.deal-pics-container {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 }
-.sub-header-1 .hamburger {
-	z-index: 1;
-	width: 60px;
-	height: 60px;
-	padding: 1rem;
-	background: var(--primary-color);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
+.hm-icon {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 25px;
+	font-style: italic;
+	font-weight: 400;
+	line-height: 12px;
+	text-decoration: none solid rgb(255, 255, 255);
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background: url('https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global-1x-hm-dsk-reorg._CB405937547_.png');
+	background-position: -172px -255px;
+	background-repeat: repeat-x;
+	color: rgb(255, 255, 255);
+
+	/* Box */
+	height: 14px;
+	width: 17px;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+
+	/* Miscellaneous */
+	overflow: visible;
+	cursor: pointer;
+	visibility: visible;
 }
 
-/* Hamburger Line */
-.sub-header-1 .hamburger > div {
-	position: relative;
-	flex: none;
-	width: 100%;
-	height: 2px;
-	background: #fff;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: all 0.4s ease;
-}
+.nav-a {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 12px;
+	text-decoration: none solid rgb(255, 255, 255);
+	text-align: start;
 
-/* Hamburger Lines - Top & Bottom */
-.sub-header-1 .hamburger > div::before,
-.sub-header-1 .hamburger > div::after {
-	content: '';
-	position: absolute;
-	z-index: 1;
-	top: -10px;
-	width: 100%;
-	height: 2px;
-	background: inherit;
-}
+	color: rgb(255, 255, 255);
 
-/* Moves Line Down */
-.sub-header-1 .hamburger > div::after {
-	top: 10px;
+	/* Box */
+	height: 12px;
+	width: 84.8125px;
+	border: 1px solid rgb(255, 255, 255);
+	margin: 5px 0px 6px;
+	padding: 7px 11px;
+
+	/* Miscellaneous */
+	overflow: visible;
+	cursor: pointer;
+	visibility: visible;
+	border-radius: 2px;
 }
 /* ------------- */
 
@@ -243,24 +269,17 @@ div #nav-swmslot .nav-swm-text-widget {
 	width: 1903px;
 	border: 1px solid #fff;
 	border-top: 1px solid rgba(0, 0, 0, 0.17);
-	border-right: 0px none rgb(15, 17, 17);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-	border-left: 0px none rgb(15, 17, 17);
 	margin: 0px;
 	padding: 0px 9px 0px 15px;
-	max-height: none;
-	min-height: 0px;
-	max-width: none;
-	min-width: 0px;
 
-	/* Positioning */
-	position: relative;
-	top: 0px;
-	bottom: 0px;
-	right: 0px;
-	left: 0px;
-	display: block;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 	z-index: 1;
+}
+.sub-header-2 a {
+	margin: 0px 5px;
 }
 /*------------------ Page Content ------------------ */
 
@@ -888,7 +907,6 @@ div .badge-wrapper {
 	height: 977px;
 	width: 244px;
 	margin-left: 20px;
-	border: 1px solid green;
 }
 .product-buy-container {
 	width: 244px;
@@ -1052,6 +1070,31 @@ background-repeat-y; */
 	display: block;
 	cursor: pointer;
 }
+.icon-marker-white {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 39px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url('https://images-na.ssl-images-amazon.com/images/G/01/gno/sprites/nav-sprite-global-1x-hm-dsk-reorg._CB405937547_.png');
+	background-position: -71px -378px;
+	color: rgb(255, 255, 255);
+
+	/* Box */
+	height: 18px;
+	width: 15px;
+	border: 0px none rgb(255, 255, 255);
+	margin: 8px 0px 0px;
+	padding: 0px;
+	top: 8px;
+	left: 2px;
+	display: flex;
+	cursor: pointer;
+}
 
 .quantity-dropdown-1 {
 	height: 29px;
@@ -1194,6 +1237,64 @@ background-repeat-y; */
 	height: 36px;
 	width: 1464px;
 	border: 0px none rgb(204, 102, 0);
-	margin: 0px;
+	margin: 20px 5px;
 	padding: 0px 0px 4px;
+}
+.package-deal-container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: column;
+}
+.font-size-plus-sign {
+	font-size: 24px;
+}
+
+.btn-light-size {
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+	margin-top: 10px;
+}
+
+.deal-pics-container img {
+	width: fit-content;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin: 2px 7px;
+}
+.btn-light-size {
+	margin-top: 0;
+}
+
+.customer-name {
+	color: #cccccc;
+}
+.nav-search-field {
+	/* Font & Text */
+	font-family: 'Amazon Ember', Arial, sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 15px;
+	text-decoration: none solid rgb(17, 17, 17);
+	text-align: start;
+	text-indent: 8px;
+	vertical-align: middle;
+	word-spacing: 0px;
+	color: rgb(17, 17, 17);
+
+	/* Box */
+	height: 38px;
+	width: 1125.89px;
+	margin: 0px;
+	padding: 7px 10px 10px 0px;
+	display: flex;
+
+	/* Miscellaneous */
+	overflow: visible;
+	cursor: text;
+	visibility: visible;
+	border-radius: 3px;
 }
