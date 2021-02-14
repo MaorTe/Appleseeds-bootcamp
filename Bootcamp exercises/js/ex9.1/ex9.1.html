@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const logStr = (str) => console.log(str);
+
+			function isString(str, callback) {
+				typeof str === 'string' && callback(str);
+			}
+
+			logStr(isString('aaa', logStr));
+			// ---------
+
+			const makeDashes = (str) => console.log(str.replaceAll(' ', '-'));
+
+			function firstWordUpperCase(str, callback) {
+				let split = str.split(' ');
+				split[0] = split[0].toUpperCase();
+				callback(split.join(' '));
+			}
+
+			firstWordUpperCase('aa bb cc', makeDashes);
+		</script>
+	</body>
+</html>
