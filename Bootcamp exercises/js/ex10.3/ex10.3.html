@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const data = [
+				{
+					name: 'John',
+					birthday: '1-1-1995',
+					favoriteFoods: {
+						meats: ['hamburgers', 'sausages'],
+						fish: ['salmon', 'pike'],
+					},
+				},
+				{
+					name: 'Mark',
+					birthday: '10-5-1980',
+					favoriteFoods: {
+						meats: ['hamburgers', 'steak', 'lamb'],
+						fish: ['tuna', 'salmon', 'barracuda'],
+					},
+				},
+				{
+					name: 'Mary',
+					birthday: '1-10-1977',
+					favoriteFoods: {
+						meats: ['ham', 'chicken'],
+						fish: ['pike'],
+					},
+				},
+				{
+					name: 'Thomas',
+					birthday: '1-10-1990',
+					favoriteFoods: {
+						meats: ['bird', 'rooster'],
+						fish: ['salmon'],
+					},
+				},
+				{
+					name: 'Mary',
+					birthday: '1-10-1977',
+					favoriteFoods: {
+						meats: ['hamburgers', 'lamb'],
+						fish: ['anchovies', 'tuna'],
+					},
+				},
+			];
+			// 1.
+			function allNames(data) {
+				return data.forEach((element, i) => {
+					return (namesArr[i] = element.name);
+				});
+			}
+			console.log(allNames(data));
+			// 2.
+			function dates(data) {
+				let birthDates = [];
+				data.forEach((element, i) => {
+					let birthDate = element.birthday.split('-');
+					let lastWord = birthDate[birthDate.length - 1];
+
+					if (Number(lastWord) < 1990) birthDates[i] = element;
+				});
+				return birthDates;
+			}
+			console.log(dates(data));
+
+			// 3.
+			function allFood(arr) {
+				let obj = {};
+				arr.forEach((el) => {
+					el.favoriteFoods.meats.forEach((meatFoods) => {
+						obj[meatFoods] = obj[meatFoods] + 1 || 1;
+					});
+					el.favoriteFoods.meats.forEach((meatFoods) => {
+						obj[meatFoods] = obj[meatFoods] + 1 || 1;
+					});
+				});
+				return obj;
+			}
+			console.log(allFood(data));
+		</script>
+	</body>
+</html>
