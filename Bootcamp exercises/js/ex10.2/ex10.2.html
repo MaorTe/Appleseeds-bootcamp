@@ -52,7 +52,43 @@
 				});
 				return obj;
 			}
-			console.log(vowelCount('aabvcdeu'));
+			// console.log(vowelCount('aabvcdeu'));
+			// 5.
+			function capitalize(str) {
+				let cap = str.split(' ');
+
+				cap.forEach(function (element, i) {
+					cap[i] = element.toUpperCase();
+				});
+
+				return cap.join(' ');
+			}
+			// console.log(capitalize('aabvcdeu'));
+			//  6.
+			function shiftLetters(str) {
+				str = str.toLowerCase();
+				let str1 = str.split('');
+				var result = '';
+				var charcode = 0;
+
+				str1.forEach((element) => {
+					charcode = element.charCodeAt() + 1;
+					result += String.fromCharCode(charcode);
+				});
+				return result;
+			}
+			// console.log(shiftLetters('b'));
+			//  7.
+			function swapCase(str) {
+				let str1 = str.split(' ');
+				let str2 = '';
+				str1.forEach((element, i) => {
+					if (i % 2 === 0) console.log((str1[i] = capitalize(element)));
+					else console.log(str1[i]);
+				});
+				return str1;
+			}
+			console.log(swapCase('aa bb cc dd ee ff gg'));
 		</script>
 	</body>
 </html>
