@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 1.
+			function doubleValues(array) {
+				let arr = [];
+				array.forEach((element) => {
+					arr.push(element);
+				});
+				return arr;
+			}
+			// 2.
+			function onlyEvenValues(array) {
+				let arr = [];
+				array.forEach((element) => {
+					if (element % 2 === 0) arr.push(element);
+				});
+				return arr;
+			}
+			// 3.
+			function showFirstAndLast(array) {
+				let arr = [];
+				array.forEach((element, index, array) => {
+					if (typeof element === 'string') {
+						if (index === 0) arr.push(element);
+						if (index === array.length) arr.push(element);
+					}
+				});
+				return arr;
+			}
+			// 4.
+			function vowelCount(str) {
+				let obj = {};
+				let str1 = str.replace(' ', '');
+				let strArr = str1.toLowerCase().split('');
+				// console.log(strArr);
+				strArr.forEach((element) => {
+					if ('aeiou'.includes(element)) {
+						if (obj[element]) {
+							obj[element] = obj[element] + 1;
+						} else {
+							obj[element] = 1;
+						}
+					}
+				});
+				return obj;
+			}
+			console.log(vowelCount('aabvcdeu'));
+		</script>
+	</body>
+</html>
