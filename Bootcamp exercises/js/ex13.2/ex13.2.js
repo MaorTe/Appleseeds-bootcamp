@@ -15,3 +15,4 @@ function populationPercentages(populations) {
 }
 
 console.log(populationPercentages(populations));
+//for loop definetly better
