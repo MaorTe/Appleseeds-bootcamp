@@ -8,5 +8,4 @@ function step(N) {
 		console.log(`'${mat[i].join('')}'`);
 	}
 }
-
 step(3);
