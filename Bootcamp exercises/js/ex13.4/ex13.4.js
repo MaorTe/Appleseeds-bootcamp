@@ -1,4 +1,4 @@
-function step(N) {
+function ninjaStep(N) {
 	let mat = [];
 	for (let i = 0; i < N; i++) {
 		mat[i] = [];
@@ -8,4 +8,10 @@ function step(N) {
 		console.log(`'${mat[i].join('')}'`);
 	}
 }
-step(3);
+
+function regularStep(N) {
+	for (let i = 1; i <= N; i++) {
+		console.log(`'${'#'.repeat(i)}${' '.repeat(N - i)}'`);
+	}
+}
+ninjaStep(3);
