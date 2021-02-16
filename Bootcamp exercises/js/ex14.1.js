@@ -1,12 +1,4 @@
-function getSum(arr1, arr2) {
-	debugger;
-	let sum = 0;
-	for (let i = 0; i < arr1.length; i++) {
-		sum += arr1[i];
-	}
-	for (let i = 0; i < arr2.length; i++) {
-		sum += arr2[i];
-	}
-	return sum;
+function getSumOfEven(arr) {
+	return arr[2] + arr[4] + arr[6] + arr[8] + arr[10];
 }
-console.log(getSum([1, 2, 3], [5, 66, 23]));
+getSumOfEven([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
