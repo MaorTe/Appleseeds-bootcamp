@@ -8,16 +8,19 @@
 	</head>
 	<body>
 		<script>
-			function getSumOfEven(arr) {
+			function calcAverage(arr) {
 				debugger;
-				return arr[1] + arr[3] + arr[5] + arr[7] + arr[9];
+				var sum = 0;
+				for (var i = 0; i < arr.length; i++) {
+					sum += arr[i];
+				}
+				return sum;
 			}
-			getSumOfEven([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-
-			// 1. array index start from 0 and when we add arr[10] its index 10 but our array is index 9
+			calcAverage([85, 90, 92]);
+			// 1. sum must be 0 otherwise we get NaN when we add undefined
 
 			// 2.i used debugger with step over*
-			// 3.overflow error
+			// 3.NaN
 		</script>
 	</body>
 </html>
