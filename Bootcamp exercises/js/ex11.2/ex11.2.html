@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const school = {
+				teachers: [
+					{
+						id: 1,
+						name: 'Pinchas',
+						subjects: ['chemistry', 'biology', 'physics'],
+						students: [],
+						capacityLeft: 3,
+					},
+					{
+						id: 2,
+						name: 'Williams',
+						subjects: ['history', 'ethics'],
+						students: [],
+						capacityLeft: 2,
+					},
+				],
+				students: [
+					{
+						id: 10,
+						name: 'Jennifer',
+						age: 20,
+					},
+					{
+						id: 11,
+						name: 'Howard',
+						age: 23,
+					},
+					{
+						id: 12,
+						name: 'Old-Timmy',
+						age: 86,
+					},
+					{
+						id: 13,
+						name: 'Houston',
+						age: 21,
+					},
+				],
+			};
+			// 1
+			function findPerson(type, id) {
+				// if (type === school.students) {
+				return type.filter((el) => el.id === id);
+				// } else return type.filter((el) => el.id === id);
+			}
+			// console.log(findPerson(school.teachers, 1));
+
+			// 2
+			function assignStudent(studentId, subject) {
+				return school.teachers.forEach((el) => {
+					if (el.capacityLeft > 0) {
+						el.subjects.find((elSubject) => elSubject === subject) &&
+							el.students.push(findPerson(school.students, studentId));
+						el.capacityLeft--;
+					} else
+						console.log(`Sorry,
+			no available teachers left`);
+				});
+			}
+			// console.log(assignStudent(10, 'chemistry'));
+			// console.log(school);
+
+			// 3
+			function assignTeachersSubject(teacherId, newSubject) {
+				return school.teachers.forEach((el) => {
+					console.log(
+						el.id === teacherId &&
+							!el.subjects.find((elSubject) => elSubject === newSubject) &&
+							el.subjects.push(newSubject)
+					);
+				});
+			}
+
+			// console.log(assignTeachersSubject(1, 'math'));
+			// console.log(school);
+
+			// 4
+			function addStudent(studentId, name, age) {
+				return (
+					school.students.filter((el) => el.id === studentId) &&
+					school.students.push({
+						id: studentId,
+						name,
+						age,
+					})
+				);
+			}
+			console.log(addStudent(20, 'aaa', 15));
+			console.log(school);
+		</script>
+	</body>
+</html>
