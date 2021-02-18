@@ -9,6 +9,6 @@ let arr = [
 // 	return (sum1 += el[0] - el[1]);
 // });
 let sum = arr.reduce((acc, next) => {
-	return acc >= 0 ? (acc += next[0] - next[1]) : 'invalid input,less than 0';
+	return acc >= 0 ? (acc += next[0] - next[1]) : 'invalid input, less than 0';
 }, 0);
 console.log(sum);
