@@ -3,7 +3,6 @@ const shortestWord = (str) => {
 		.trim()
 		.split(' ')
 		.map((el) => (el.length > 0 ? (el = el.length) : Infinity));
-	console.log(arr);
 	return Math.min(...arr);
 };
 
