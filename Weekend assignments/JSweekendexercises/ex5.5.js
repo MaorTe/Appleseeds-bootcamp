@@ -4,3 +4,4 @@ function nameToInitials(str) {
 }
 
 console.log(nameToInitials('Sam Harris'));
+console.log(nameToInitials('Patrick Feeney'));
