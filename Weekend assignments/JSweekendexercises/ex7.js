@@ -1,4 +1,5 @@
 //---------filter---------
+
 function filterFunc(arr, callback) {
 	let newArr = [];
 	for (let i = 0; i < arr.length; i++)
@@ -20,14 +21,14 @@ console.log(filterFunc(arrFilter, callbackFilterFunc));
 
 //---------foreach---------
 
-function forEachFunc(arr, callback) {
+const forEachFunc = (arr, callback) => {
 	for (let i = 0; i < arr.length; i++) {
 		callback(arr[i]);
 	}
-}
+};
 const callbackForEachFunc = (param) => console.log(param);
 const arrForEach = ['h', 'e', 'l', 'l', 'o'];
-console.log(forEachFunc(arrForEach, callbackForEachFunc));
+forEachFunc(arrForEach, callbackForEachFunc);
 
 //---------map---------
 
@@ -40,4 +41,4 @@ function mapFunc(arr, callback) {
 }
 const callbackMapFunc = (param) => param * 2;
 const arrMap = [1, 4, 9, 16];
-// console.log(mapFunc(arrMap, callbackMapFunc));
+console.log(mapFunc(arrMap, callbackMapFunc));
