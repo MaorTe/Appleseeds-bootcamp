@@ -6,4 +6,5 @@ const LongestWord = (str) => {
 		.reduce((acc, cur) => (acc.length >= cur.length ? acc : cur));
 };
 
-console.log(LongestWord(`    I'm the  longest   word or are you?  `));
+// console.log(LongestWord(`    I'm the  longest   word or are you?  `));
+console.log(LongestWord(`the aaa bbb ccc ddd eee`));
