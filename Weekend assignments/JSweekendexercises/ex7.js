@@ -1,13 +1,43 @@
-const arr = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-let newArr = [];
-let len = 0;
-// const result = words.filter((word) => word.length > 6);
+//---------filter---------
+function filterFunc(arr, callback) {
+	let newArr = [];
+	for (let i = 0; i < arr.length; i++)
+		if (callback(arr[i])) {
+			newArr.push(arr[i]);
+		}
+	return newArr;
+}
+const callbackFilterFunc = (param) => param.length > 6;
+const arrFilter = [
+	'spray',
+	'limit',
+	'elite',
+	'exuberant',
+	'destruction',
+	'present',
+];
+console.log(filterFunc(arrFilter, callbackFilterFunc));
 
-for (let i = 0; i < arr.length; i++) {
-	if (arr[i].length > 6) {
-		newArr.length = len;
-		newArr[len] = arr[i];
-		len++;
+//---------foreach---------
+
+function forEachFunc(arr, callback) {
+	for (let i = 0; i < arr.length; i++) {
+		callback(arr[i]);
 	}
 }
-console.log(newArr);
+const callbackForEachFunc = (param) => console.log(param);
+const arrForEach = ['h', 'e', 'l', 'l', 'o'];
+console.log(forEachFunc(arrForEach, callbackForEachFunc));
+
+//---------map---------
+
+function mapFunc(arr, callback) {
+	let newArr = [];
+	for (let i = 0; i < arr.length; i++) {
+		newArr.push(callback(arr[i]));
+	}
+	return newArr;
+}
+const callbackMapFunc = (param) => param * 2;
+const arrMap = [1, 4, 9, 16];
+// console.log(mapFunc(arrMap, callbackMapFunc));
