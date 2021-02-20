@@ -6,4 +6,6 @@ function toWeirdCase(str) {
 	}
 	return arr.join('');
 }
-console.log(toWeirdCase('Weird string case cas'));
+
+console.log(toWeirdCase('String'));
+console.log(toWeirdCase('Weird string case'));

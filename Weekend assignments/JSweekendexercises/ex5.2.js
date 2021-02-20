@@ -1,4 +1,4 @@
-//my way
+//first way
 
 function repeatStr(timesToRepeat, str) {
 	let characters = (timesToRepeat - 1) * str.length;
