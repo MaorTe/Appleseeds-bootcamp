@@ -7,7 +7,6 @@ function countDuplicates(str) {
 		.join('')
 		.match(/(.)\1+/g);
 
-	// console.log(strArr);
 	if (strArr != null) {
 		strArr.forEach((el) => {
 			if (el.length > 1) {
@@ -15,11 +14,13 @@ function countDuplicates(str) {
 			}
 		});
 	}
-	return msg.length > 0 ? msg : `No character repeats more than once`;
+	return msg.length > 0 ? msg : `no characters repeats more than once`;
 }
 
-// console.log(countDuplicates('aabbcde'));
-// console.log(countDuplicates('123'));
-// console.log(countDuplicates('11223'));
-// console.log(countDuplicates('aabbcde11223'));
+console.log(countDuplicates('abcde'));
+console.log(countDuplicates('aabbcde'));
+console.log(countDuplicates('aabBcde'));
+console.log(countDuplicates('indivisibility'));
 console.log(countDuplicates('Indivisibilities'));
+console.log(countDuplicates('aA11'));
+console.log(countDuplicates('ABBA'));
