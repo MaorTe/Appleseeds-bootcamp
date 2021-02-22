@@ -118,9 +118,3 @@ linkedList.draw();
 
 // console.log(linkedList.getLast());
 // console.log(linkedList.getFirst());
-
-// let node1 = new Node(2);
-// let node2 = new Node(5);
-// node1.next = node2;
-// let list = new LinkedList(node1);
-// console.log(list.head.next.data);

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button class="btn-plus">+</button>
+		<button class="btn-minus">-</button>
+		<p class="paragraph">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum laudantium
+			aut quibusdam sapiente mollitia? Dolor voluptatem eum aut alias atque sunt
+			officia itaque? Pariatur ullam repudiandae vero ut suscipit dicta?
+		</p>
+
+		<script>
+			const btnPlus = document.querySelector('.btn-plus');
+			const btnMinus = document.querySelector('.btn-minus');
+			const p = document.querySelector('.paragraph');
+
+			function increase() {
+				style = window.getComputedStyle(p, null).getPropertyValue('font-size');
+				currentSize = parseFloat(style);
+				if (currentSize < 100) p.style.fontSize = currentSize + 6 + 'px';
+			}
+
+			function decrease() {
+				style = window.getComputedStyle(p, null).getPropertyValue('font-size');
+				currentSize = parseFloat(style);
+				if (currentSize > 6) p.style.fontSize = currentSize - 6 + 'px';
+			}
+			btnPlus.addEventListener('click', increase);
+			btnMinus.addEventListener('click', decrease);
+		</script>
+	</body>
+</html>
