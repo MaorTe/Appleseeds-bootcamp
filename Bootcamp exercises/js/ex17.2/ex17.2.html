@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h3>Why are you interested in this position?</h3>
+		<div>
+			<textarea name="textarea" class="textarea" cols="50" rows="5"></textarea>
+		</div>
+		<button class="btn">Click here!</button>
+		<p>You must enter at least 100 characters before clicking the button.</p>
+
+		<script>
+			const btn = document.querySelector('.btn');
+			const textarea = document.querySelector('.textarea');
+			const p = document.querySelector('p');
+
+			p.style.visibility = 'hidden';
+
+			function validate() {
+				console.log(textarea.value.length);
+				if (textarea.value.length < 100) {
+					p.style.visibility = 'visible';
+				}
+			}
+			btn.addEventListener('click', validate);
+		</script>
+	</body>
+</html>
