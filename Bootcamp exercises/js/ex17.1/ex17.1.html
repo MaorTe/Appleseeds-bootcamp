@@ -22,14 +22,14 @@
 
 			function increase() {
 				style = window.getComputedStyle(p, null).getPropertyValue('font-size');
-				currentSize = parseFloat(style);
-				if (currentSize < 100) p.style.fontSize = currentSize + 6 + 'px';
+				currentSize = parseFloat(style) - 6;
+				if (currentSize < 100) p.style.fontSize = currentSize + 'px';
 			}
 
 			function decrease() {
 				style = window.getComputedStyle(p, null).getPropertyValue('font-size');
-				currentSize = parseFloat(style);
-				if (currentSize > 6) p.style.fontSize = currentSize - 6 + 'px';
+				currentSize = parseFloat(style) - 6;
+				if (currentSize > 6) p.style.fontSize = currentSize + 'px';
 			}
 			btnPlus.addEventListener('click', increase);
 			btnMinus.addEventListener('click', decrease);
