@@ -19,7 +19,12 @@
 			const myFourthDiv = document.querySelector('#myFourthDiv');
 
 			//using querySelectorAll to select all divs
-			const all = document.querySelectorAll('div');
+			const allDivs = document.querySelectorAll('div');
+
+			// all.forEach((currentItem) => {});
+			const divs = new Map();
+			allDivs.forEach((val) => divs.set(val.id, val));
+			console.log(allDivs);
 		</script>
 	</body>
 </html>
