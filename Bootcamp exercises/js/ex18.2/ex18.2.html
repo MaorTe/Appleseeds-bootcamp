@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// h2
+			const header = document.createElement('h2');
+			header.innerText = 'How many smileys do you want to see?';
+			header.style.fontSize = '40px';
+			document.body.appendChild(header);
+
+			// error message
+			const errorMessage = document.createElement('error-message');
+			errorMessage.innerText = 'Enter only number';
+			// errorMessage.style.visibility = 'v';
+			errorMessage.style.color = 'red';
+			errorMessage.style.display = 'flex';
+			errorMessage.style.margin = '10px 10px';
+			document.body.appendChild(errorMessage);
+
+			// p
+			const p = document.createElement('paragraph');
+			p.innerText =
+				'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde eum quisquam voluptatem! Temporibus laboriosam debitis maxime est, sit cumque impedit tempore. A ullam alias unde dolore voluptatem quibusdam laborum quo, nobis blanditiis aperiam natus molestias, vero, eos fuga eaque aliquid iusto. Vero labore a iure adipisci non velit aut illo?';
+			p.style.padding = '10px 0px';
+			document.body.appendChild(p);
+
+			// button
+			const btn = document.createElement('button');
+			btn.innerText = 'Submit';
+
+			//input
+			const input = document.createElement('input');
+			input.style.margin = '0px 10px';
+
+			//button and input container
+			const div = document.createElement('div');
+			div.style.marginTop = '10px';
+			div.insertAdjacentElement('afterbegin', input);
+			div.insertAdjacentElement('beforeend', btn);
+			document.body.appendChild(div);
+
+			const img = document.createElement('img');
+			img.src =
+				'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Smiley2.svg/550px-Smiley2.svg.png';
+			img.width = '50px';
+			img.height = '50px';
+
+			const smileys = () => {
+				const inputText = Number(input.value);
+				if (!inputText) errorMessage.style.visibility = 'visible';
+				else
+					for (let i = 0; i < inputText; i++) {
+						const imgClone = img.cloneNode(true);
+						document.body.appendChild(imgClone);
+					}
+			};
+
+			btn.addEventListener('click', () => smileys);
+		</script>
+	</body>
+</html>
