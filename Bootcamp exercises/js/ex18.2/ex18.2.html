@@ -59,8 +59,10 @@
 
 			const smileys = () => {
 				const inputText = Number(input.value);
-				if (!inputText) errorMessage.style.visibility = 'visible';
-				else
+				imgContainer.innerHTML = '';
+				if (!inputText) {
+					errorMessage.style.visibility = 'visible';
+				} else
 					for (let i = 0; i < inputText; i++) {
 						const imgClone = img.cloneNode(true);
 						imgContainer.insertAdjacentElement('afterbegin', imgClone);
