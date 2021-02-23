@@ -5,7 +5,7 @@ button.addEventListener('click', function () {
 		document.querySelector('p').remove();
 	}
 	const message = document.createElement('p');
-	if (input.value > 18) {
+	if (input.value >= 18) {
 		message.textContent = 'you can drink a beer';
 		document.body.appendChild(message);
 	} else {
