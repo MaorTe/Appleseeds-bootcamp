@@ -2,87 +2,57 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<style>
-			* {
-				padding: 0;
-				margin: 0;
-				box-sizing: border-box;
-			}
-			body {
-				margin-top: 100px;
-			}
-			html,
-			body,
-			.fields-container,
-			.copy-container {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-			}
-			h1 {
-				margin-top: 1rem;
-			}
-			h2 {
-				margin-bottom: 3rem;
-			}
-			.copy-container {
-				border: 2px solid black;
-			}
-			.fields-container {
-				flex-direction: row;
-				margin: 30px;
-			}
-			.field {
-				width: 55px;
-				height: 55px;
-				border-radius: 3px;
-				margin: 0px 5px;
-				border: 3px solid #c4c4c4;
-				text-align: left;
-				font-size: 30px;
-			}
-			.btn {
-				color: #fff;
-				background: #000;
-				font-size: 30px;
-				margin-bottom: 25px;
-			}
-		</style>
 	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			min-height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+		}
+		form {
+			border: 1px solid black;
+			padding: 1rem;
+			margin: 2rem;
+		}
+
+		input[type='text'] {
+			width: 1rem;
+		}
+		.button-container {
+			margin-top: 1rem;
+			text-align: center;
+		}
+		input[type='submit'] {
+			background: black;
+			color: white;
+		}
+	</style>
 	<body>
-		<h1>Text to copy:</h1>
-		<h2>123456</h2>
-
-		<div class="copy-container">
-			<div class="fields-container">
-				<input type="text" maxlength="1" class="field" />
-				<input type="text" maxlength="1" class="field" />
-				<input type="text" maxlength="1" class="field" />
-				<input type="text" maxlength="1" class="field" />
-				<input type="text" maxlength="1" class="field" />
-				<input type="text" maxlength="1" class="field" />
-			</div>
-			<button class="btn">Verify</button>
+		<h3>Text to copy:</h3>
+		<h5>123456</h5>
+		<div class="container">
+			<form name="verify">
+				<div class="inputs">
+					<input type="text" name="n1" maxlength="1" />
+					<input type="text" name="n2" maxlength="1" />
+					<input type="text" name="n3" maxlength="1" />
+					<input type="text" name="n4" maxlength="1" />
+					<input type="text" name="n5" maxlength="1" />
+					<input type="text" name="n4" maxlength="1" />
+				</div>
+				<div class="button-container">
+					<input type="submit" value="Verify" />
+				</div>
+			</form>
 		</div>
-
-		<script>
-			const fieldsContainer = document.querySelector('.fields-container');
-			const input = document.querySelector('input');
-			const target = document.querySelector('div.target');
-
-			target.addEventListener('paste', (event) => {
-				let paste = (event.clipboardData || window.clipboardData).getData(
-					'text'
-				);
-				paste = paste.toUpperCase();
-
-				event.preventDefault();
-			});
-			input.addEventListener('paste', copyToClipboard);
-		</script>
+		<script src="script.js"></script>
 	</body>
 </html>
