@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<link
+		rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous"
+	/>
+	<style>
+		#watch {
+			padding: 20px;
+		}
+
+		#watch button.btn:focus {
+			outline: none;
+		}
+	</style>
+	<body>
+		<div id="watch">
+			<h2>The Time is:</h2>
+			<div id="stopwatch"></div>
+			<button id="start-watch" class="btn btn-primary">start</button>
+			<button id="stop-watch" class="btn btn-danger">stop</button>
+		</div>
+
+		<!-- <script>
+			const startBtn = document.querySelector('#start-watch');
+			const stopBtn = document.querySelector('#stop-watch');
+			const stopwatch = document.querySelector('#stopwatch');
+			document.getElementById('stopwatch').textContent = '00:00:00';
+			let timeStart;
+			let min = 0,
+				sec = 0,
+				censec = 0;
+			function add() {
+				censec++;
+				if (censec === 100) {
+					censec = 0;
+					sec++;
+					if (sec === 60) {
+						sec = 0;
+						min++;
+					}
+				}
+				stopwatch.textContent = `${min}:${sec}:${censec}`;
+			}
+			startBtn.addEventListener('click', function b() {
+				timeStart = setInterval(() => add(), 10);
+			});
+			stopBtn.addEventListener('click', function a(timeToStop) {
+				debugger;
+				clearInterval(timeStart);
+			});
+		</script> -->
+
+		<script>
+			let stopwatchInterval;
+			let startTime;
+			let passedTime = 0;
+			document.getElementById('stopwatch').innerText = '00:00:00';
+
+			document.getElementById('start-watch').addEventListener('click', (e) => {
+				startTime = Date.now();
+				setTimeout(() => {
+					clearInterval(stopwatchInterval);
+				}, 3600000);
+				stopwatchInterval = setInterval(() => {
+					const elapsed = new Date(Date.now() - startTime + passedTime);
+					const sec = ('0' + elapsed.getSeconds()).slice(-2);
+					const minutes = ('0' + elapsed.getMinutes()).slice(-2);
+					const milisec = (
+						'0' + parseInt(elapsed.getMilliseconds() / 10)
+					).slice(-2);
+					const time = `${minutes}:${sec}:${milisec}`;
+					document.getElementById('stopwatch').innerText = time;
+				}, 10);
+			});
+
+			document.getElementById('stop-watch').addEventListener('click', (e) => {
+				debugger;
+				clearInterval(stopwatchInterval);
+				passedTime += new Date(Date.now() - startTime).getTime();
+			});
+		</script>
+	</body>
+</html>
