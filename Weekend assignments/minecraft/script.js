@@ -1,10 +1,48 @@
+// --------------------- Landing page ----------------------
+const landingPage = document.querySelector('#landing-page');
+const restartGameButton = document.createElement('button');
+const startBtn = document.querySelector('.start-btn');
+
+startBtn.addEventListener('click', startGame);
+function startGame() {
+	if (world.childElementCount === 0) {
+		console.log(world.childElementCount);
+		createMatrix();
+	}
+	landingPage.classList.add('hidden');
+	resetWorld();
+	// by adding an event listener to the container, every tile will have it
+	// trick from pini :)
+	world.addEventListener('click', handleTileClick);
+}
+
+// add event listener to the restart game button to go back to the landing page
+restartGameButton.addEventListener('click', restartGame);
+function restartGame() {
+	debugger;
+	console.log(world.childElementCount);
+	if (world.childElementCount === 0) {
+		createMatrix();
+	}
+	landingPage.classList.remove('hidden');
+	resetWorld();
+	// by adding an event listener to the container, every tile will have it
+	// trick from pini :)
+	world.addEventListener('click', handleTileClick);
+	// for (let row = 0; row < worldSize; row++) {
+	// 	for (let col = 0; col < worldSize; col++) {
+	// 		worldMatrix[row][col].addEventListener('click', handleTileClick);
+	// 	}
+	// }
+}
+// --------------------- World Creation ----------------------
+// call create first game function
+let worldMatrix = [];
 // world size variables:
 let worldSize = 20;
-const groundHight = worldSize / 2 + 2;
 // change world size in the css file
 document.documentElement.style.setProperty('--world-size', worldSize);
 // select layout containers
-const minecraft = document.querySelector('#minecraft');
 const world = document.querySelector('.world');
 
 // make a matrix of 10*10 of sky:
@@ -46,7 +84,7 @@ function createWorld() {
 		[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
 		[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
 	];
-	console.log(worldMatrix);
+	// console.log(worldMatrix);
 
 	for (let row = 0; row < worldSize; row++) {
 		for (let col = 0; col < worldSize; col++) {
@@ -76,17 +114,40 @@ function createWorld() {
 				default:
 					break;
 			}
-			world.appendChild(worldMatrix[row][col]);
+			// world.appendChild(worldMatrix[row][col]);
 		}
 	}
 }
-
-
-
+// -------------------------------------------
 function resetWorld(size) {
 	createWorld();
-	
 }
+// reset inventory
+function resetInventory() {
+	document
+		.querySelectorAll('.inventoryBox')
+		.forEach((el) => (el.textContent = 0));
+}
+// -------------------------------------------
 
-// call create first game function
-let worldMatrix = [];
+function handleTileClick(event) {
+	let pressedTile = event.currentTarget.getAttribute('data-type');
+	// if a tool or element were selected:
+	selectedBlock = document.querySelector('.selected');
+	if (selectedBlock) {
+		let selectedTool = selectedBlock;
+		// check it's a tool and if the tile is accessible
+		if (
+			selectedTool.classList.contains('toolBox') &&
+			isMinable(event.currentTarget)
+		) {
+			mineTheTile(pressedTile, selectedTool.getAttribute('data-type'));
+			// an element was selected and needs to be positioned
+		} else if (
+			selectedTool.classList.contains('inventoryBox') &&
+			checkInventory(selectedTool.getAttribute('data-type'))
+		) {
+			placeTheTile(pressedTile, selectedTool.getAttribute('data-type'));
+		}
+	}
+}

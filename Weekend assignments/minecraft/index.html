@@ -19,7 +19,7 @@
 			</div>
 			<div class="tutorial-container">
 				<h1 class="tutorialHeader">How To Play</h1>
-				<h2>Pick a Tool</h2>
+				<!-- <h2>Pick a Tool</h2>
 				<div class="toolBox" data-type="axe"></div>
 				<div class="toolBox" data-type="pickaxe"></div>
 				<div class="toolBox" data-type="shovel"></div>
@@ -40,7 +40,7 @@
 					<div class="tutEl" data-type="sky"></div>
 					<div class="tutEl" data-type="cloud"></div>
 				</div>
-				<h4>Watch Your Inventory Elements Count!</h4>
+				<h4>Watch Your Inventory Elements Count!</h4> -->
 			</div>
 
 			<button class="start-btn" type="button">Start Game</button>
@@ -48,14 +48,27 @@
 
 		<div id="minecraft">
 			<div class="world"></div>
-			<div class="sideToolBar">
-				<div class="tools"></div>
-				<div class="inventory"></div>
+			<div class="toolbar">
+				<h1>Inventory</h1>
+				<div class="tools">
+					<h2>Tools</h2>
+					<div data-type="axe" class="toolBox"></div>
+					<div data-type="pickaxe" class="toolBox"></div>
+					<div data-type="shovel" class="toolBox"></div>
+				</div>
+				<div class="inventory">
+					<h2>Blocks</h2>
+					<div data-type="grass" class="inventoryBox"></div>
+					<div data-type="dirt" class="inventoryBox"></div>
+					<div data-type="leaves" class="inventoryBox"></div>
+					<div data-type="trunk" class="inventoryBox"></div>
+					<div data-type="rock" class="inventoryBox"></div>
+				</div>
+				<button class="resetBtn" type="button">Reset World</button>
+				<button class="restartGameButton" type="button">Restart World</button>
 			</div>
 		</div>
 
-		<script src="./createWorld.js"></script>
-		<script src="./landing_page.js"></script>
-		
+		<script src="./script.js"></script>
 	</body>
 </html>
