@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Minecraft 2D</title>
+		<link rel="stylesheet" href="./css/normalize.css" />
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+
+	<body>
+		<div id="landing-page">
+			<div>
+				<img
+					class="minecraftTitle"
+					src="../img/minecraft-logo-angle-text.png"
+					alt=""
+				/>
+			</div>
+			<div class="tutorial-container">
+				<h1 class="tutorialHeader">How To Play</h1>
+				<h2>Pick a Tool</h2>
+				<div class="toolBox" data-type="axe"></div>
+				<div class="toolBox" data-type="pickaxe"></div>
+				<div class="toolBox" data-type="shovel"></div>
+				<h2>collect Elements</h2>
+				<div>
+					<div class="tutEl" data-type="trunk">3</div>
+					<div class="tutEl" data-type="leaves">5</div>
+				</div>
+				<div class="tutEl" data-type="rock">1</div>
+				<div class="tutEl" data-type="dirt">6</div>
+				<h2>Place Elements on Empty Space</h2>
+				<div>
+					<h3>Sky -></h3>
+					<br />
+					<h3>Clouded -></h3>
+				</div>
+				<div>
+					<div class="tutEl" data-type="sky"></div>
+					<div class="tutEl" data-type="cloud"></div>
+				</div>
+				<h4>Watch Your Inventory Elements Count!</h4>
+			</div>
+
+			<button class="start-btn" type="button">Start Game</button>
+		</div>
+
+		<div id="minecraft">
+			<div class="world"></div>
+			<div class="sideToolBar">
+				<div class="tools"></div>
+				<div class="inventory"></div>
+			</div>
+		</div>
+
+		<script src="./createWorld.js"></script>
+		<script src="./landing_page.js"></script>
+		
+	</body>
+</html>
