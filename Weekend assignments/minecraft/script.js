@@ -1,24 +1,24 @@
 // --------------------- Landing page ----------------------
 const landingPage = document.querySelector('#landing-page');
-const restartGameButton = document.createElement('button');
 const startBtn = document.querySelector('.start-btn');
+const restartBtn = document.querySelector('.restart-btn');
+const resetBtn = document.querySelector('.reset-btn');
 
 startBtn.addEventListener('click', startGame);
 function startGame() {
+	debugger;
 	if (world.childElementCount === 0) {
 		console.log(world.childElementCount);
 		createMatrix();
 	}
 	landingPage.classList.add('hidden');
 	resetWorld();
-	// by adding an event listener to the container, every tile will have it
-	// trick from pini :)
 	world.addEventListener('click', handleclick);
 }
 
-// add event listener to the restart game button to go back to the landing page
-restartGameButton.addEventListener('click', restartGame);
-function restartGame() {
+// add event listener to restart the game button to go back to the landing page
+restartBtn.addEventListener('click', restart);
+function restart() {
 	debugger;
 	console.log(world.childElementCount);
 	if (world.childElementCount === 0) {
@@ -26,19 +26,11 @@ function restartGame() {
 	}
 	landingPage.classList.remove('hidden');
 	resetWorld();
-	// by adding an event listener to the container, every tile will have it
-	// trick from pini :)
 	world.addEventListener('click', handleclick);
-	// for (let row = 0; row < worldSize; row++) {
-	// 	for (let col = 0; col < worldSize; col++) {
-	// 		worldMatrix[row][col].addEventListener('click', handleTileClick);
-	// 	}
-	// }
 }
+
 // --------------------- World Creation ----------------------
-// call create first game function
 let worldMatrix = [];
-// world size variables:
 let worldSize = 20;
 // change world size in the css file
 document.documentElement.style.setProperty('--world-size', worldSize);
@@ -122,15 +114,14 @@ function resetWorld(size) {
 	createWorld();
 }
 // reset inventory
-function resetInventory() {
-	document
-		.querySelectorAll('.inventoryBox')
-		.forEach((el) => (el.textContent = 0));
-}
+// function resetInventory() {
+// 	document
+// 		.querySelectorAll('.inventoryBox')
+// 		.forEach((el) => (el.textContent = 0));
+// }
 // -------------------------------------------
 
 function MineableByTool(tool, tile) {
-	// debugger;
 	if (
 		(tool === 'shovel' && (tile === 'grass' || tile === 'dirt')) ||
 		(tool === 'axe' && (tile === 'trunk' || tile === 'leaves')) ||
@@ -145,14 +136,13 @@ function MineableByTool(tool, tile) {
 }
 const obj = {};
 function handleclick(e) {
-	// debugger;
 	let tileSelected = e.target.getAttribute('data-type');
-	console.log(tileSelected);
+	// console.log(tileSelected);
 
 	if (document.querySelector('.selected')) {
 		let selectedTool = document.querySelector('.selected');
+		// if mineable increase
 		if (MineableByTool(selectedTool.getAttribute('data-type'), tileSelected)) {
-			// debugger;
 			if (tileSelected && tileSelected !== 'sky') {
 				obj[tileSelected] = obj[tileSelected] + 1 || 1;
 				const inventoryBlocks = document.querySelector(
@@ -162,33 +152,40 @@ function handleclick(e) {
 			}
 			tileSelected = e.target.setAttribute('data-type', 'sky');
 		}
+		PlaceTile(selectedTool, tileSelected, e);
 	}
 
 	// else {
-	// 	inventory.addEventListener('click', useItem);
 	// }
 }
 
 // using item
 const inventory = document.querySelector('.inventory');
-inventory.addEventListener('click', useItem);
-function useItem(e) {
-	let tileSelected = e.target.getAttribute('data-type');
-	// let tilePlaced = document.querySelector(`[data-type = 'sky']`);
-	// console.log(world.addEventListener('click', tilePlaced));
-	const inventoryBlocks = document.querySelector(
-		`[data-type = '${tileSelected}'] > span`
-	);
-	console.log(tileSelected);
-	// if (inventoryBlocks.textContent === '1') {
-	// console.log(e.target.classList);
-	// e.target.classList.add('hidden');
-	// }
-	if (tileSelected && inventoryBlocks.textContent > '0') {
-		// console.log(e.currentTarget.classList);
-		// e.target.classList.remove('hidden');
-		inventoryBlocks.style.userSelect = 'none';
-		inventoryBlocks.textContent = --obj[tileSelected];
+function PlaceTile(selectedTool, tileSelected, e) {
+	if (
+		selectedTool.classList.contains('inventoryBox') &&
+		tileSelected === 'sky'
+	) {
+		let tileToPlace = selectedTool.getAttribute('data-type');
+		console.log(tileToPlace);
+		// if (tileSelected) {
+		// reduceCount(e);
+		const inventoryBlockItems = document.querySelector(
+			`[data-type = '${tileToPlace}'] > span`
+		);
+		// console.log(inventoryBlockItems);
+		if (tileSelected && inventoryBlockItems.textContent > '0') {
+			// console.log(e.currentTarget.classList);
+			// e.target.classList.remove('hidden');
+			inventoryBlockItems.style.userSelect = 'none';
+			// obj[tileToPlace] = obj[tileToPlace] - 1;
+			inventoryBlockItems.textContent = --obj[tileToPlace];
+			// return inventoryBlockItems.textContent;
+			tileSelected = e.target.setAttribute(
+				'data-type',
+				selectedTool.getAttribute('data-type')
+			);
+		}
 	}
 }
 
@@ -196,35 +193,18 @@ function useItem(e) {
 const inventoryItems = document.querySelector('.toolbar');
 inventoryItems.addEventListener('click', SelectItemFromInventory);
 function SelectItemFromInventory(e) {
-	// debugger;
+	console.log('aaaa');
 	const inventoryItem = document.querySelectorAll('.toolbar [data-type]');
 	// console.log(inventoryItem);
+	// if (e.target.classList.contains('toolbar')) {
 	if (e.target.classList.contains('selected')) {
 		e.target.classList.remove('selected');
 	} else {
 		inventoryItem.forEach((el) => el.classList.remove('selected'));
 		e.target.classList.add('selected');
 	}
+	// }
 }
 
-function handleTileClick(event) {
-	let pressedTile = event.currentTarget.getAttribute('data-type');
-	// if a tool or element were selected:
-	selectedBlock = document.querySelector('.selected');
-	if (selectedBlock) {
-		let selectedTool = selectedBlock;
-		// check it's a tool and if the tile is accessible
-		if (
-			selectedTool.classList.contains('toolBox') &&
-			isMinable(event.currentTarget)
-		) {
-			mineTheTile(pressedTile, selectedTool.getAttribute('data-type'));
-			// an element was selected and needs to be positioned
-		} else if (
-			selectedTool.classList.contains('inventoryBox') &&
-			checkInventory(selectedTool.getAttribute('data-type'))
-		) {
-			placeTheTile(pressedTile, selectedTool.getAttribute('data-type'));
-		}
-	}
-}
+// reset the game button
+resetBtn.addEventListener('click', resetWorld);
