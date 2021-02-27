@@ -258,7 +258,7 @@ body {
 	margin: 5px 0;
 	height: 5vh;
 	width: 5vh;
-	border: 1px solid white;
+	border: 1px solid #777777;
 	background: center / cover no-repeat;
 	font-size: 1.5rem;
 	text-align: center;
@@ -330,10 +330,12 @@ body {
 
 .toolBox.selected {
 	border-color: hsl(200, 82%, 24%);
-	/* border: 10px solid; */
 }
 .inventoryBox.selected {
-	border-color: hsl(200, 82%, 24%);
+	/* border-color: hsl(200, 82%, 24%); */
+	/* border: 10px solid hsl(200, 82%, 24%); */
+	/* transform: translateY(-10px); */
+	box-shadow: 1px 1px 2px 2px hsl(200, 46%, 60%);
 }
 .inventoryBox:hover,
 .toolBox:hover,
