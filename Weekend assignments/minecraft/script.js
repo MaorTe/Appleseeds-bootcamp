@@ -128,27 +128,49 @@ function resetInventory() {
 		.forEach((el) => (el.textContent = 0));
 }
 // -------------------------------------------
+
+function MineableByTool(tool, tile) {
+	// debugger;
+	if (
+		(tool === 'shovel' && (tile === 'grass' || tile === 'dirt')) ||
+		(tool === 'axe' && (tile === 'trunk' || tile === 'leaves')) ||
+		(tool === 'pickaxe' && tile === 'rock')
+	) {
+		return true;
+	} else if (
+		tile === 'cloud' &&
+		(tool === 'shovel' || tool === 'axe' || tool === 'pickaxe')
+	)
+		return true;
+}
 const obj = {};
 function handleclick(e) {
+	// debugger;
 	let tileSelected = e.target.getAttribute('data-type');
-	if (tileSelected && tileSelected !== 'sky') {
-		// console.log(tileSelected);
-		obj[tileSelected] = obj[tileSelected] + 1 || 1;
-		// console.log(obj);
-		// console.log(obj[tileSelected]);
-		const inventoryBlocks = document.querySelector(
-			`[data-type = '${tileSelected}'] > span`
-		);
-		inventoryBlocks.textContent = obj[tileSelected];
-		tileSelected = e.target.setAttribute('data-type', 'sky');
+	console.log(tileSelected);
+
+	if (document.querySelector('.selected')) {
+		let selectedTool = document.querySelector('.selected');
+		if (MineableByTool(selectedTool.getAttribute('data-type'), tileSelected)) {
+			// debugger;
+			if (tileSelected && tileSelected !== 'sky') {
+				obj[tileSelected] = obj[tileSelected] + 1 || 1;
+				const inventoryBlocks = document.querySelector(
+					`[data-type = '${tileSelected}'] > span`
+				);
+				inventoryBlocks.textContent = obj[tileSelected];
+			}
+			tileSelected = e.target.setAttribute('data-type', 'sky');
+		}
 	}
+
 	// else {
 	// 	inventory.addEventListener('click', useItem);
 	// }
 }
 
+// using item
 const inventory = document.querySelector('.inventory');
-// console.log(inventory);
 inventory.addEventListener('click', useItem);
 function useItem(e) {
 	let tileSelected = e.target.getAttribute('data-type');
@@ -169,20 +191,22 @@ function useItem(e) {
 		inventoryBlocks.textContent = --obj[tileSelected];
 	}
 }
-//
+
+// selecting item from inventory
 const inventoryItems = document.querySelector('.toolbar');
 inventoryItems.addEventListener('click', SelectItemFromInventory);
-
-function SelectItemFromInventory(event) {
+function SelectItemFromInventory(e) {
+	// debugger;
 	const inventoryItem = document.querySelectorAll('.toolbar [data-type]');
 	// console.log(inventoryItem);
-	if (event.target.classList.contains('selected')) {
-		event.target.classList.remove('selected');
+	if (e.target.classList.contains('selected')) {
+		e.target.classList.remove('selected');
 	} else {
 		inventoryItem.forEach((el) => el.classList.remove('selected'));
-		event.target.classList.add('selected');
+		e.target.classList.add('selected');
 	}
 }
+
 function handleTileClick(event) {
 	let pressedTile = event.currentTarget.getAttribute('data-type');
 	// if a tool or element were selected:
