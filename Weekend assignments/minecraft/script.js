@@ -129,7 +129,6 @@ function resetInventory() {
 }
 // -------------------------------------------
 const obj = {};
-// const iBlocks = document.querySelector('.item-count');
 function handleclick(e) {
 	let tileSelected = e.target.getAttribute('data-type');
 	if (tileSelected && tileSelected !== 'sky') {
@@ -139,12 +138,51 @@ function handleclick(e) {
 		// console.log(obj[tileSelected]);
 		const inventoryBlocks = document.querySelector(
 			`[data-type = '${tileSelected}'] > span`
-			);
-			inventoryBlocks.textContent = obj[tileSelected];
-			tileSelected = e.target.setAttribute('data-type', 'sky');
+		);
+		inventoryBlocks.textContent = obj[tileSelected];
+		tileSelected = e.target.setAttribute('data-type', 'sky');
 	}
+	// else {
+	// 	inventory.addEventListener('click', useItem);
+	// }
 }
 
+const inventory = document.querySelector('.inventory');
+// console.log(inventory);
+inventory.addEventListener('click', useItem);
+function useItem(e) {
+	let tileSelected = e.target.getAttribute('data-type');
+	// let tilePlaced = document.querySelector(`[data-type = 'sky']`);
+	// console.log(world.addEventListener('click', tilePlaced));
+	const inventoryBlocks = document.querySelector(
+		`[data-type = '${tileSelected}'] > span`
+	);
+	console.log(tileSelected);
+	// if (inventoryBlocks.textContent === '1') {
+	// console.log(e.target.classList);
+	// e.target.classList.add('hidden');
+	// }
+	if (tileSelected && inventoryBlocks.textContent > '0') {
+		// console.log(e.currentTarget.classList);
+		// e.target.classList.remove('hidden');
+		inventoryBlocks.style.userSelect = 'none';
+		inventoryBlocks.textContent = --obj[tileSelected];
+	}
+}
+//
+const inventoryItems = document.querySelector('.toolbar');
+inventoryItems.addEventListener('click', SelectItemFromInventory);
+
+function SelectItemFromInventory(event) {
+	const inventoryItem = document.querySelectorAll('.toolbar [data-type]');
+	// console.log(inventoryItem);
+	if (event.target.classList.contains('selected')) {
+		event.target.classList.remove('selected');
+	} else {
+		inventoryItem.forEach((el) => el.classList.remove('selected'));
+		event.target.classList.add('selected');
+	}
+}
 function handleTileClick(event) {
 	let pressedTile = event.currentTarget.getAttribute('data-type');
 	// if a tool or element were selected:

@@ -163,6 +163,10 @@ body {
 	cursor: auto;
 	box-shadow: none;
 }
+.hidden {
+	display: none;
+}
+
 #landing-page.hidden {
 	display: none;
 }
@@ -191,6 +195,7 @@ body {
 	justify-content: space-between;
 	padding: 2vh 2vw;
 	text-align: center;
+	user-select: none;
 }
 
 .toolbar h2 {
@@ -324,17 +329,18 @@ body {
 }
 
 .toolBox.selected {
-	background-color: blue;
+	border-color: hsl(200, 82%, 24%);
+	/* border: 10px solid; */
 }
 .inventoryBox.selected {
-	border: 3px solid blue;
+	border-color: hsl(200, 82%, 24%);
 }
 .inventoryBox:hover,
 .toolBox:hover,
 .restartGameButton:hover,
 .resetBtn:hover {
 	cursor: pointer;
-	border-color: hsl(200, 82%, 24%);
+	/* border-color: hsl(200, 82%, 24%); */
 	/* box-shadow: 5px 5px 5px hsl(200, 82%, 24%); */
 }
 
