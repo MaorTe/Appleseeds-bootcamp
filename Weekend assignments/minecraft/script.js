@@ -114,7 +114,6 @@ function createWorld() {
 				default:
 					break;
 			}
-			// world.appendChild(worldMatrix[row][col]);
 		}
 	}
 }
@@ -130,22 +129,22 @@ function resetInventory() {
 }
 // -------------------------------------------
 const obj = {};
-
 // const iBlocks = document.querySelector('.item-count');
 function handleclick(e) {
 	let tileSelected = e.target.getAttribute('data-type');
 	if (tileSelected && tileSelected !== 'sky') {
-		console.log(tileSelected);
+		// console.log(tileSelected);
 		obj[tileSelected] = obj[tileSelected] + 1 || 1;
-		console.log(obj);
+		// console.log(obj);
 		// console.log(obj[tileSelected]);
 		const inventoryBlocks = document.querySelector(
 			`[data-type = '${tileSelected}'] > span`
-		);
-		inventoryBlocks.textContent = obj[tileSelected];
-		tileSelected = e.target.setAttribute('data-type', 'sky');
+			);
+			inventoryBlocks.textContent = obj[tileSelected];
+			tileSelected = e.target.setAttribute('data-type', 'sky');
 	}
 }
+
 function handleTileClick(event) {
 	let pressedTile = event.currentTarget.getAttribute('data-type');
 	// if a tool or element were selected:

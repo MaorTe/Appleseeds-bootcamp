@@ -201,10 +201,13 @@ body {
 /* --------------tools-------------- */
 .tools,
 .inventory {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-gap: 5px;
 	padding-bottom: 2vh;
+	justify-items: center;
+	align-items: center;
 	/* background: #565759; */
 }
 .tools > div:hover,
@@ -214,7 +217,8 @@ body {
 	transform: scale(1.05);
 }
 .inventoryList,
-.toolsList {
+.toolsList,
+.tools {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -270,8 +274,17 @@ body {
 [data-type='sky'] {
 	background-color: rgb(50, 157, 245);
 }
+
 [data-type='cloud'] {
 	background-color: rgb(242, 247, 251);
+	position: relative;
+}
+[data-type='cloud'] > span {
+	color: #000;
+}
+
+[data-type='leaves'] {
+	background-image: url('../img/leaves_block.png');
 	position: relative;
 }
 
@@ -281,19 +294,14 @@ body {
 	position: relative;
 }
 
-[data-type='leaves'] {
-	background-image: url('../img/leaves_block.png');
+[data-type='grass'] {
+	background-image: url('../img/grass_top.png');
+	/* background: url('../img/blocks.png') -490px -618px; */
 	position: relative;
 }
 
 [data-type='rock'] {
 	background-image: url('../img/stone_block.png');
-	/* background: url('../img/blocks.png') -490px -618px; */
-	position: relative;
-}
-
-[data-type='grass'] {
-	background-image: url('../img/grass_top.png');
 	/* background: url('../img/blocks.png') -490px -618px; */
 	position: relative;
 }
