@@ -13,7 +13,7 @@ function startGame() {
 	resetWorld();
 	// by adding an event listener to the container, every tile will have it
 	// trick from pini :)
-	world.addEventListener('click', handleTileClick);
+	world.addEventListener('click', handleclick);
 }
 
 // add event listener to the restart game button to go back to the landing page
@@ -28,7 +28,7 @@ function restartGame() {
 	resetWorld();
 	// by adding an event listener to the container, every tile will have it
 	// trick from pini :)
-	world.addEventListener('click', handleTileClick);
+	world.addEventListener('click', handleclick);
 	// for (let row = 0; row < worldSize; row++) {
 	// 	for (let col = 0; col < worldSize; col++) {
 	// 		worldMatrix[row][col].addEventListener('click', handleTileClick);
@@ -129,7 +129,23 @@ function resetInventory() {
 		.forEach((el) => (el.textContent = 0));
 }
 // -------------------------------------------
+const obj = {};
 
+// const iBlocks = document.querySelector('.item-count');
+function handleclick(e) {
+	let tileSelected = e.target.getAttribute('data-type');
+	if (tileSelected && tileSelected !== 'sky') {
+		console.log(tileSelected);
+		obj[tileSelected] = obj[tileSelected] + 1 || 1;
+		console.log(obj);
+		// console.log(obj[tileSelected]);
+		const inventoryBlocks = document.querySelector(
+			`[data-type = '${tileSelected}'] > span`
+		);
+		inventoryBlocks.textContent = obj[tileSelected];
+		tileSelected = e.target.setAttribute('data-type', 'sky');
+	}
+}
 function handleTileClick(event) {
 	let pressedTile = event.currentTarget.getAttribute('data-type');
 	// if a tool or element were selected:
