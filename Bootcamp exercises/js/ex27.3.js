@@ -1,5 +1,5 @@
 //---------filter---------
-Array.prototype.filter = function myFilter(arr, callback) {
+Array.prototype.filter = function (arr, callback) {
 	let newArr = [];
 	for (let i = 0; i < arr.length; i++)
 		if (callback(arr[i])) {
@@ -8,14 +8,14 @@ Array.prototype.filter = function myFilter(arr, callback) {
 	return newArr;
 };
 //---------find---------
-Array.prototype.find = function myFind(arr, callback) {
+Array.prototype.find = function (arr, callback) {
 	for (let i = 0; i < arr.length; i++)
 		if (callback(arr[i])) {
 			return arr[i];
 		}
 };
 
-const callbackFilterFunc = (param) => param.length > 6;
+const callback = (param) => param.length > 6;
 const arr = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-console.log(myFilter(arr, callbackFilterFunc));
-console.log(myFind(arr, callbackFilterFunc));
+console.log(Array.prototype.filter(arr, callback));
+console.log(Array.prototype.find(arr, callback));
