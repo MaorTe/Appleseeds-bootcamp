@@ -6,7 +6,7 @@ const resetBtn = document.querySelector('.reset-btn');
 
 startBtn.addEventListener('click', startGame);
 function startGame() {
-	debugger;
+	// debugger;
 	if (world.childElementCount === 0) {
 		console.log(world.childElementCount);
 		createMatrix();
@@ -19,7 +19,7 @@ function startGame() {
 // add event listener to restart the game button to go back to the landing page
 restartBtn.addEventListener('click', restart);
 function restart() {
-	debugger;
+	// debugger;
 	console.log(world.childElementCount);
 	if (world.childElementCount === 0) {
 		createMatrix();
@@ -34,7 +34,7 @@ let worldMatrix = [];
 let worldSize = 20;
 // change world size in the css file
 document.documentElement.style.setProperty('--world-size', worldSize);
-// select layout containers
+// world container
 const world = document.querySelector('.world');
 
 // make a matrix of 10*10 of sky:
@@ -76,11 +76,9 @@ function createWorld() {
 		[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
 		[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
 	];
-	// console.log(worldMatrix);
 
 	for (let row = 0; row < worldSize; row++) {
 		for (let col = 0; col < worldSize; col++) {
-			// worldMatrix[row][col].setAttribute('data-type', 'sky');
 			switch (worldShape[row][col]) {
 				case 0:
 					worldMatrix[row][col].setAttribute('data-type', 'sky');
@@ -110,15 +108,16 @@ function createWorld() {
 	}
 }
 // -------------------------------------------
-function resetWorld(size) {
+function resetWorld() {
 	createWorld();
+	resetInventoryCount();
 }
-// reset inventory
-// function resetInventory() {
-// 	document
-// 		.querySelectorAll('.inventoryBox')
-// 		.forEach((el) => (el.textContent = 0));
-// }
+
+function resetInventoryCount() {
+	document
+		.querySelectorAll('.inventory-item > span')
+		.forEach((el) => (el.textContent = 0));
+}
 // -------------------------------------------
 
 function MineableByTool(tool, tile) {
@@ -163,7 +162,7 @@ function handleclick(e) {
 const inventory = document.querySelector('.inventory');
 function PlaceTile(selectedTool, tileSelected, e) {
 	if (
-		selectedTool.classList.contains('inventoryBox') &&
+		selectedTool.classList.contains('inventory-item') &&
 		tileSelected === 'sky'
 	) {
 		let tileToPlace = selectedTool.getAttribute('data-type');
