@@ -1,17 +1,17 @@
 //---------filter---------
-Array.prototype.filter = function (arr, callback) {
+Array.prototype.filter = function (callback) {
 	let newArr = [];
-	for (let i = 0; i < arr.length; i++)
-		if (callback(arr[i])) {
-			newArr.push(arr[i]);
+	for (let i = 0; i < this.length; i++)
+		if (callback(this[i], i, this)) {
+			newArr.push(this[i]);
 		}
 	return newArr;
 };
 //---------find---------
-Array.prototype.find = function (arr, callback) {
-	for (let i = 0; i < arr.length; i++)
-		if (callback(arr[i])) {
-			return arr[i];
+Array.prototype.find = function (callback) {
+	for (let i = 0; i < this.length; i++)
+		if (callback(this[i], i, this)) {
+			return this[i];
 		}
 };
 
