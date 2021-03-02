@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Star Wars Api</title>
+		<style>
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(5, 1fr);
+				border-top: 1px solid black;
+				border-right: 1px solid black;
+
+				text-align: center;
+				font-family: Calibri, Arial, sans-serif;
+				color: #eceff4;
+				/* color: #4c566a; */
+
+				/* background: #4c566a; */
+				grid-template-rows: repeat(12, 35px);
+				background: repeating-linear-gradient(
+					#434c5e 0 35px,
+					#4c566a 35px 70px
+				);
+			}
+
+			.grid > span {
+				padding: 8px 4px;
+				border-left: 1px solid black;
+				border-bottom: 1px solid black;
+			}
+
+			.grid span:first-child {
+				grid-column: 1 / span 5;
+				grid-row: 1/1;
+			}
+			/* .grid span:nth-child(odd) {
+				background: #4c566a;
+			} */
+			/* .grid span:nth-child(even) {
+				background: #434c5e;
+			}
+			.grid span:nth-child(5n + 2),
+			.grid span:nth-child(5n + 4),
+			.grid span:nth-child(5n + 6) {
+				background: red;
+			}
+            */
+			/* .grid span:nth-child(2n + 1) {
+				background: #434c5e;
+			} */
+		</style>
+	</head>
+	<body>
+		<script src="./ex34.1.js"></script>
+	</body>
+</html>
