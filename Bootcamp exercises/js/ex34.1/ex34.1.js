@@ -69,8 +69,6 @@ table.appendChild(grid);
 
 // hard-code first line and second line of the table
 const span = document.createElement('span');
-{
-}
 const html = `
 <span>
     <strong>star wars</strong>

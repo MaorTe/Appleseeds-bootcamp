@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			html,
+			body {
+				background: #4c566a;
+				color: #fff;
+			}
+			.container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				margin: 10px;
+			}
+			.details {
+				display: flex;
+				justify-content: center;
+				align-items: flex-start;
+				flex-wrap: wrap;
+				width: 75vw;
+				border: 1px solid #fff;
+			}
+			.space {
+				margin: 10px;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<form id="form">
+				<div>
+					<h3>Enter github name</h3>
+					<input type="text" />
+					<input type="submit" value="Search" class="btn" />
+				</div>
+			</form>
+		</div>
+		<div class="details"></div>
+		<script src="./script.js"></script>
+	</body>
+</html>
