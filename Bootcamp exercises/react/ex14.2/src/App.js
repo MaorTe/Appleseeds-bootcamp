@@ -24,6 +24,7 @@ class App extends React.Component {
 					style={{ marginTop: '10px' }}
 					onClick={() => {
 						this.textareaRef.current.select();
+						//require for exeCommand
 						document.designMode = 'on';
 						document.execCommand('copy');
 					}}>
