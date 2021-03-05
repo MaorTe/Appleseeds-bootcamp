@@ -24,7 +24,6 @@ form.addEventListener('submit', (e) => {
 });
 
 async function getUser(userName) {
-	debugger;
 	const userResponse = await fetch(`${baseEndPoint}/${userName}`);
 	console.log(userResponse);
 	const user = await userResponse.json();
