@@ -3,7 +3,6 @@ const baseEndPoint = `https://corona-api.com/countries`;
 const countriesContainer = document.querySelector('.countries');
 const countriesArr = [];
 let covidArr = [];
-let str = '';
 let obj = {};
 
 async function fetchURL(url) {
@@ -14,8 +13,7 @@ function getAllCountries() {
 	const url = `https://api.codetabs.com/v1/proxy/?quest=https://restcountries.herokuapp.com/api/v1`;
 	return fetchURL(url);
 }
-function getCovidByCountry(region) {
-	// const url = `https://corona-api.com/countries/${region}`;
+function getCovidByCountry() {
 	const url = `https://corona-api.com/countries`;
 	return fetchURL(url);
 }
@@ -25,19 +23,17 @@ const displayDataCountry = () => {
 const displayDataCovid = () => {
 	console.log(covidArr);
 };
-function sorted(obj) {
-	return obj.sort(function (a, b) {
-		return a.code.toLowerCase().localeCompare(b.code.toLowerCase());
-	});
-}
+
+//initializer
 draw('Asia');
+
 function ButtonRegionSelected(e) {
 	let regionSelected = e.target.textContent;
-	UpdateChartData(myChart, regionSelected);
+	UpdateChartData(myChart, regionSelected, e);
 }
 function ButtonCasesSelected(e) {
 	let caseSelected = e.target.textContent;
-	UpdateChartData(myChart, caseSelected);
+	UpdateChartData(myChart, caseSelected, e);
 }
 
 function setCountriestoDOM(countriesArr) {
@@ -45,32 +41,31 @@ function setCountriestoDOM(countriesArr) {
 	countriesArr.forEach(async (country) => {
 		const countryName = document.createElement('span');
 		countryName.textContent += country.name.common;
-		// str += countryName.textContent + ',';
 		countryName.classList.add('space');
 		countriesContainer.appendChild(countryName);
-		// console.log(str);
 	});
 }
 
 async function getData(regionFromListener) {
-	let covids = await getCovidByCountry(regionFromListener);
+	let covids = await getCovidByCountry();
 	let countries = await getAllCountries();
 
+	console.log(covids);
 	let countriesArr = [];
 	let countriesByCode = [];
-
+	// if (regionFromListener === 'World') {
+	// 	regionFromListener = '/';
+	// }
 	//get all countries of selected region
 	countries.forEach(async (country) => {
 		if (country.region === regionFromListener) {
-			// asiaObj = { [country.cca2]: country.name.common };
 			countriesArr.push(country);
 			countriesByCode.push(country.cca2);
-			// countriesByCode1.push(country.name.common);
 		}
 	});
 	console.log(countriesArr);
 
-	//set text to DOM
+	//set countries text to DOM
 	setCountriestoDOM(countriesArr);
 	// ======================================
 
@@ -114,18 +109,20 @@ async function draw(region) {
 		console.log('there was an error fetching user');
 		console.error(err);
 	});
-
 	const yLabels = Object.entries(data).map((currentItem) => {
 		return currentItem[1].confirmed;
+	});
+	const xLabels = Object.entries(data).map((currentItem) => {
+		return currentItem[1].name;
 	});
 	let ctx = document.querySelector('#myChart');
 	myChart = new Chart(ctx, {
 		type: 'line',
 		data: {
-			labels: str.split(','),
+			labels: xLabels,
 			datasets: [
 				{
-					label: `Covid 19 'confirmed'`,
+					label: `Covid 19 confirmed`,
 					// backgroundColor: '#1d2d506e',
 					// borderColor: '#133b5c',
 					borderWidth: '1',
@@ -185,28 +182,45 @@ async function draw(region) {
 	});
 }
 
-async function UpdateChartData(chart, region) {
+//
+async function UpdateChartData(chart, selected, e) {
 	// get the data by region
-	const data = await getData(region).catch((err) => {
-		console.log('there was an error fetching user');
-		console.error(err);
-	});
+	let data = obj;
 
-	// get the x-axis and y-axis data
-	const yLabels = Object.entries(data).map((currentItem) => {
-		return currentItem[1].confirmed;
-	});
-	const xLabels = Object.entries(data).map((currentItem) => {
-		return currentItem[1].name;
-	});
+	// if (region === 'World') region = '';
+	// console.log(e.target.classList.contains('btn-regions'));
+	if (e.target.classList.contains('btn-regions')) {
+		data = await getData(selected).catch((err) => {
+			console.log('there was an error fetching data');
+			console.error(err);
+		});
+		// get the x-axis and y-axis data
+		const yLabels = Object.entries(data).map((elY) => {
+			return elY[1].confirmed;
+		});
+		const xLabels = Object.entries(data).map((elX) => {
+			return elX[1].name;
+		});
 
-	// insert x and y axis data into graph
-	removeData(chart);
-	chart.data.datasets[0].label = `Covid 19 in ${region}`;
-	chart.data.datasets[0].data = yLabels;
-	chart.data.labels = xLabels;
-	chart.update();
+		// insert x and y axis data into graph
+		removeData(chart);
+		chart.data.datasets[0].label = `Covid 19 in confirmed`;
+		chart.data.datasets[0].data = yLabels;
+		chart.data.labels = xLabels;
+		chart.update();
+	} else {
+		//update only the y-axis for cases
+		let cases = selected.toLowerCase();
+		const yLabels = Object.entries(data).map((elY) => {
+			return elY[1][cases];
+		});
+		console.log(yLabels);
+		chart.data.datasets[0].label = `Covid 19 in ${cases}`;
+		chart.data.datasets[0].data = yLabels;
+		chart.update();
+	}
 }
+
 async function removeData(chart) {
 	chart.data.labels.pop();
 	chart.data.datasets.forEach((dataset) => {
