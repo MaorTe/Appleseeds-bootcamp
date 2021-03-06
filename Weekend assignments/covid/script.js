@@ -1,11 +1,10 @@
 const baseEndPoint = `https://corona-api.com/countries`;
-const btnAsia = document.querySelector('.btn-asia');
 
 const countriesContainer = document.querySelector('.countries');
 const countriesArr = [];
 let covidArr = [];
-const arr = [];
 let str = '';
+let obj = {};
 
 async function fetchURL(url) {
 	const response = await fetch(url);
@@ -26,54 +25,101 @@ const displayDataCountry = () => {
 const displayDataCovid = () => {
 	console.log(covidArr);
 };
-draw('Asia');
-btnAsia.addEventListener('click', (e) => {
-	let continent = btnAsia.value;
-	// if (continent !== '' && !arr.includes(continent)) {
-	draw(continent);
-
-	arr.push(continent);
-	// }
-
-	// console.log(countriesArr);
-});
-
-async function getData(countryName) {
-	let covids = await getCovidByCountry(countryName);
-	console.log(covids);
-	let countries = await getAllCountries();
-
-	countries.forEach(async (country) => {
-		const countryName = document.createElement('span');
-
-		if (country.region === 'Asia') {
-			countriesArr.push(country.cca2);
-			countryName.textContent += country.name.common;
-			str += countryName.textContent + ',';
-			countryName.classList.add('space');
-		}
-		countriesContainer.appendChild(countryName);
+function sorted(obj) {
+	return obj.sort(function (a, b) {
+		return a.code.toLowerCase().localeCompare(b.code.toLowerCase());
 	});
-
-	//filter
-	covidArr = covids.data.filter((cov) => countriesArr.includes(cov.code));
-	console.log(covidArr);
-
-	displayDataCountry();
-	// displayDataCovid();
-	// countriesContainer.appendChild(card);
-	//countriesContainer.appendChild(countryName);
+}
+draw('Asia');
+function ButtonRegionSelected(e) {
+	let regionSelected = e.target.textContent;
+	UpdateChartData(myChart, regionSelected);
+}
+function ButtonCasesSelected(e) {
+	let caseSelected = e.target.textContent;
+	UpdateChartData(myChart, caseSelected);
 }
 
+function setCountriestoDOM(countriesArr) {
+	countriesContainer.innerHTML = '';
+	countriesArr.forEach(async (country) => {
+		const countryName = document.createElement('span');
+		countryName.textContent += country.name.common;
+		// str += countryName.textContent + ',';
+		countryName.classList.add('space');
+		countriesContainer.appendChild(countryName);
+		// console.log(str);
+	});
+}
+
+async function getData(regionFromListener) {
+	let covids = await getCovidByCountry(regionFromListener);
+	let countries = await getAllCountries();
+
+	let countriesArr = [];
+	let countriesByCode = [];
+
+	//get all countries of selected region
+	countries.forEach(async (country) => {
+		if (country.region === regionFromListener) {
+			// asiaObj = { [country.cca2]: country.name.common };
+			countriesArr.push(country);
+			countriesByCode.push(country.cca2);
+			// countriesByCode1.push(country.name.common);
+		}
+	});
+	console.log(countriesArr);
+
+	//set text to DOM
+	setCountriestoDOM(countriesArr);
+	// ======================================
+
+	//filter countries
+	const filtered = covids.data.filter((cov) =>
+		countriesByCode.includes(cov.code)
+	);
+
+	obj = {};
+	filtered.forEach((country) => {
+		obj[country.code] = {
+			name: country.name,
+			deaths: country.latest_data.deaths,
+			confirmed: country.latest_data.confirmed,
+			recovered: country.latest_data.recovered,
+			critical: country.latest_data.critical,
+		};
+	});
+	console.log(obj);
+	return obj;
+}
+// ------------------------------------
+// selecting a region button
+const regionContainer = document.querySelectorAll('.container-regions button');
+// this forEach will attach event listeners to all childnodes buttons NodeList
+regionContainer.forEach((el) => {
+	el.addEventListener('click', ButtonRegionSelected);
+});
+// ------------------------------------
+// selecting a case button
+const casesContainer = document.querySelectorAll('.container-cases button');
+// this forEach will attach event listeners to all childnodes buttons NodeList
+casesContainer.forEach((el) => {
+	el.addEventListener('click', ButtonCasesSelected);
+});
+
 // ----------------graph----------------
-async function draw(continent) {
-	await getData(continent).catch((err) => {
+let myChart;
+async function draw(region) {
+	const data = await getData(region).catch((err) => {
 		console.log('there was an error fetching user');
 		console.error(err);
 	});
 
+	const yLabels = Object.entries(data).map((currentItem) => {
+		return currentItem[1].confirmed;
+	});
 	let ctx = document.querySelector('#myChart');
-	let myChart = new Chart(ctx, {
+	myChart = new Chart(ctx, {
 		type: 'line',
 		data: {
 			labels: str.split(','),
@@ -83,7 +129,7 @@ async function draw(continent) {
 					// backgroundColor: '#1d2d506e',
 					// borderColor: '#133b5c',
 					borderWidth: '1',
-					data: [12, 19, 3, 5, 2, 3],
+					data: yLabels,
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
@@ -136,5 +182,34 @@ async function draw(continent) {
 				],
 			},
 		},
+	});
+}
+
+async function UpdateChartData(chart, region) {
+	// get the data by region
+	const data = await getData(region).catch((err) => {
+		console.log('there was an error fetching user');
+		console.error(err);
+	});
+
+	// get the x-axis and y-axis data
+	const yLabels = Object.entries(data).map((currentItem) => {
+		return currentItem[1].confirmed;
+	});
+	const xLabels = Object.entries(data).map((currentItem) => {
+		return currentItem[1].name;
+	});
+
+	// insert x and y axis data into graph
+	removeData(chart);
+	chart.data.datasets[0].label = `Covid 19 in ${region}`;
+	chart.data.datasets[0].data = yLabels;
+	chart.data.labels = xLabels;
+	chart.update();
+}
+async function removeData(chart) {
+	chart.data.labels.pop();
+	chart.data.datasets.forEach((dataset) => {
+		dataset.data.pop();
 	});
 }
