@@ -2,9 +2,10 @@ const baseEndPoint = `https://corona-api.com/countries`;
 const btnAsia = document.querySelector('.btn-asia');
 
 const countriesContainer = document.querySelector('.countries');
-let countriesArr = [];
+const countriesArr = [];
 let covidArr = [];
 const arr = [];
+let str = '';
 
 async function fetchURL(url) {
 	const response = await fetch(url);
@@ -14,61 +15,74 @@ function getAllCountries() {
 	const url = `https://api.codetabs.com/v1/proxy/?quest=https://restcountries.herokuapp.com/api/v1`;
 	return fetchURL(url);
 }
-function getCovidByCountry(country) {
-	// const url = `https://corona-api.com/countries/${country}`;
+function getCovidByCountry(region) {
+	// const url = `https://corona-api.com/countries/${region}`;
 	const url = `https://corona-api.com/countries`;
 	return fetchURL(url);
 }
+const displayDataCountry = () => {
+	console.log(countriesArr);
+};
+const displayDataCovid = () => {
+	console.log(covidArr);
+};
+draw('Asia');
 btnAsia.addEventListener('click', (e) => {
 	let continent = btnAsia.value;
-	draw();
 	// if (continent !== '' && !arr.includes(continent)) {
-	getUser(continent).catch((err) => {
-		console.log('there was an error fetching user');
-		console.error(err);
-	});
+	draw(continent);
+
 	arr.push(continent);
 	// }
+
+	// console.log(countriesArr);
 });
 
-async function getUser(countryName) {
-	let covid = await getCovidByCountry(countryName);
-	console.log(covid);
+async function getData(countryName) {
+	let covids = await getCovidByCountry(countryName);
+	console.log(covids);
 	let countries = await getAllCountries();
-	const card = document.createElement('div');
-	// name.textContent = countries.data.name;
-	// console.log(countries.data);
-	// console.log(covid.data.latest_data.confirmed);
-	// covidArr = covid.map((currentItem) => {
-	// console.log(currentItem);
-	// covidArr.push(currentItem.data.latest_data.confirmed);
-	// console.log(currentItem.data.latest_data.confirmed);
-	// });
-	debugger;
-	countriesArr = countries.map((currentItem) => {
+
+	countries.forEach(async (country) => {
 		const countryName = document.createElement('span');
-		countriesArr.push(currentItem.name.common);
-		if (currentItem.region === 'Asia') {
-			countryName.textContent += currentItem.name.common;
+
+		if (country.region === 'Asia') {
+			countriesArr.push(country.cca2);
+			countryName.textContent += country.name.common;
+			str += countryName.textContent + ',';
 			countryName.classList.add('space');
 		}
 		countriesContainer.appendChild(countryName);
 	});
-	// console.log(covidArr);
+
+	//filter
+	covidArr = covids.data.filter((cov) => countriesArr.includes(cov.code));
+	console.log(covidArr);
+
+	displayDataCountry();
+	// displayDataCovid();
 	// countriesContainer.appendChild(card);
 	//countriesContainer.appendChild(countryName);
 }
 
-// // ----------------graph----------------
-function draw() {
+// ----------------graph----------------
+async function draw(continent) {
+	await getData(continent).catch((err) => {
+		console.log('there was an error fetching user');
+		console.error(err);
+	});
+
 	let ctx = document.querySelector('#myChart');
 	let myChart = new Chart(ctx, {
 		type: 'line',
 		data: {
-			labels: [countriesArr],
+			labels: str.split(','),
 			datasets: [
 				{
-					label: '# of Votes',
+					label: `Covid 19 'confirmed'`,
+					// backgroundColor: '#1d2d506e',
+					// borderColor: '#133b5c',
+					borderWidth: '1',
 					data: [12, 19, 3, 5, 2, 3],
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
@@ -109,13 +123,6 @@ function draw() {
 						ticks: {
 							fontColor: '#fff',
 							beginAtZero: true,
-							// Include a dollar sign in the ticks
-							callback: function (value, index, countriesArr) {
-								return countriesArr;
-								// .forEach((currentItem) => {
-								// 	return (value = currentItem);
-								// });
-							},
 						},
 					},
 				],
