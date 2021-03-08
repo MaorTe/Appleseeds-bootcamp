@@ -23,14 +23,11 @@ class Point {
 	}
 
 	addPoint(point) {
-		point.x = x;
-		point.y = y;
+		point.x += x;
+		point.y += y;
 	}
 	isSame(point) {
 		return (this.point.x = point.x && (this.point.y = point.y));
-	}
-	remove(num) {
-		return this.numList.filter((item) => item !== num);
 	}
 	print() {
 		console.log(`x value is: ${this.x}

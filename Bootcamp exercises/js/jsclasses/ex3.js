@@ -1,6 +1,6 @@
 class sortNumber {
-	constructor(numList) {
-		this.numList = numList;
+	constructor() {
+		this.numList = [];
 	}
 	addNum(num) {
 		for (let i = 2; i < num; i++) {
