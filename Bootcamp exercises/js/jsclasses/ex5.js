@@ -54,6 +54,17 @@ class PointWorld {
 		}
 		return newArr;
 	}
+	//another way
+	// isUnique() {
+	// 	const uniqueArr = [];
+	// 	this.list.forEach(point => {
+	// 	  const x = point.x;
+	// 	  const y = point.y;
+	// 	  if (!uniqueArr.find((point2) => point2.isSame(point))) {
+	// 		uniqueArr.push(point);
+	// 	}})
+	// 	return uniqueArr;
+	//   }
 	sumAllX() {
 		return this.pointList.reduce((acc, x) => acc + x.getX(), 0);
 	}

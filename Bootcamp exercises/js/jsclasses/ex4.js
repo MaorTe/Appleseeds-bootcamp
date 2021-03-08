@@ -27,7 +27,7 @@ class Point {
 		point.y += y;
 	}
 	isSame(point) {
-		return (this.point.x = point.x && (this.point.y = point.y));
+		return this.point.x === point.x && this.point.y === point.y;
 	}
 	print() {
 		console.log(`x value is: ${this.x}
