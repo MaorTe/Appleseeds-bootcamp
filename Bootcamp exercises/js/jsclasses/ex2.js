@@ -43,4 +43,3 @@ console.log(
 		return parseFloat(a.getSpeed()) - parseFloat(b.getSpeed());
 	})
 );
-// console.log(carArr.getSpeed().sort());
