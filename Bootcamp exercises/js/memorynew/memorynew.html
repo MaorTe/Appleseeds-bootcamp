@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				display: flex;
+				margin: 10px;
+				justify-content: center;
+				align-items: center;
+			}
+			.background01 {
+				background: url('./img/9C.png') no-repeat center center/cover;
+			}
+			.background02 {
+				background: url('./img/JC.png') no-repeat center center/cover;
+			}
+			.card {
+				height: 150px;
+				width: 150px;
+				border: 1px solid #000;
+				margin: 10px;
+				margin-top: 50px;
+			}
+			.bg {
+				background: url('./img/red_back.png') no-repeat center center/cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="card bg background01"></div>
+			<div class="card bg background02"></div>
+			<div class="card bg background02"></div>
+			<div class="card bg background01"></div>
+		</div>
+		<script>
+			let isFirstCardFlipped = 1;
+			let elmPreviousCard = null;
+
+			const container = document.querySelector('.container');
+			const card = document.querySelector('.card');
+			container.addEventListener('click', (e) => {
+				let elmcard = e.target;
+				handleclick(elmcard);
+			});
+
+			function handleclick(e) {
+				console.log(e);
+				let card1, card2;
+				if (isFirstCardFlipped) {
+					isFirstCardFlipped = 0;
+				}
+				debugger;
+				if (e.className.includes('flipped')) return;
+
+				e.classList.add('flipped');
+				e.classList.remove('bg');
+				if (elmPreviousCard === null) {
+					elmPreviousCard = e;
+				} else {
+					card1 = elmPreviousCard.classList;
+					card2 = e.classList;
+				}
+				if (card2) {
+					// console.log(card1.item(0), card2.item(0));
+					// console.log(card1.item(1), card2.item(1));
+					// console.log(card1.item(2), card2.item(2));
+
+					if (card1.item(1) !== card2.item(1)) {
+						elmPreviousCard.classList.remove('flipped');
+						e.classList.remove('flipped');
+						setTimeout(() => {
+							elmPreviousCard.classList.add('bg');
+							e.classList.add('bg');
+						}, 1000);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

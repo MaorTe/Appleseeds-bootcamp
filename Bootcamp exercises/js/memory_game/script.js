@@ -38,15 +38,24 @@ const state = {
 	numberOfClicks: 1,
 	wrongGuesses: 0,
 	isMatch: [],
-	prevCardTarget: 0,
+	prevCardTarget: null,
 };
 const handleClick = (e) => {
-	// let span = document.createElement('span');
+	let card1, card2;
+	e.target.parentNode.classList.add('flipped');
+	if (state.prevCardTarget === null) {
+		state.prevCardTarget = e.target;
+	} else {
+		card1 = state.prevCardTarget.classList;
+		card2 = e.classList;
+		console.log(card1);
+	}
 
+	
 	if (e.target.parentNode.classList.contains('card')) {
 		if (!e.target.parentNode.classList.contains('opacity')) {
-			e.target.parentNode.classList.add('opacity');
-			console.log(e.target.parentNode.textContent);
+			// e.target.parentNode.classList.add('opacity');
+			// console.log(e.target.parentNode.textContent);
 
 			state.isMatch.push(e.target.parentNode.textContent);
 			if (state.isMatch.length === 2) {
@@ -62,6 +71,16 @@ const handleClick = (e) => {
 					guesses.textContent = `Wrong Guesses: ${state.wrongGuesses}`;
 					setTimeout(() => {
 						console.log(state.prevCardTarget.classList);
+
+						if (card1.item(1) !== card2.item(1)) {
+							state.prevCardTarget.classList.remove('flipped');
+							e.classList.remove('flipped');
+							// setTimeout(() => {
+							// 	state.prevCardTarget.classList.add('bg');
+							// 	e.classList.add('bg');
+							// }, 1000);
+						}
+
 						if (state.prevCardTarget)
 							state.prevCardTarget.classList.remove('flipped');
 
@@ -85,11 +104,11 @@ const handleClick = (e) => {
 			}
 		}
 
-		[...cards.children].forEach((child) => {
-			if (child.classList.contains('opacity')) {
-				e.target.parentNode.classList.remove('opacity');
-			}
-		});
+		// [...cards.children].forEach((child) => {
+		// 	if (child.classList.contains('opacity')) {
+		// 		e.target.parentNode.classList.remove('opacity');
+		// 	}
+		// });
 		state.numberOfClicks++;
 	}
 	e.target.parentNode.classList.add('flipped');
