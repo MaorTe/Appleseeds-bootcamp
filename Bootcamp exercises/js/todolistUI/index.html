@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<main class="app">
+			<nav class="nav">
+				<a href="" class="nav-item active">All</a>
+				<!-- <a href="" class="nav-item">Active</a>
+				<a href="" class="nav-item">Complete</a> -->
+			</nav>
+			<div class="add">
+				<!-- <div class="add-priority">
+					<label class="add-radio" title="Priority 0">
+						<input checked type="radio" name="priority" />
+						<span class="add-circle"></span>
+					</label>
+					<label class="add-radio add-radio-1" title="Priority 1">
+						<input type="radio" name="priority" />
+						<span class="add-circle"></span>
+					</label>
+					<label class="add-radio add-radio-2" title="Priority 2">
+						<input type="radio" name="priority" />
+						<span class="add-circle"></span>
+					</label>
+					<label class="add-radio add-radio-3" title="Priority 3">
+						<input type="radio" name="priority" />
+						<span class="add-circle"></span>
+					</label>
+				</div> -->
+				<input placeholder="+ Add todo item" type="text" class="add-input" />
+			</div>
+
+			<ul class="list">
+				<li class="item">
+					<label class="item-checkbox item-checkbox-3"
+						><input type="checkbox" /><i class="fas fa-check"></i></label
+					>Lorem ipsum dolor sit<button class="item-delete">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</li>
+
+				<li class="item done">
+					<label class="item-checkbox item-checkbox-2">
+						<input checked type="checkbox" /><i class="fas fa-check"></i></label
+					>Amet consectetur adipisicing elit andae magni molestiae magni<button
+						class="item-delete"
+					>
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</li>
+
+				<li class="item">
+					<label class="item-checkbox item-checkbox-1">
+						<input type="checkbox" />
+						<i class="fas fa-check"></i> </label
+					>Andae magni molestiae<button class="item-delete">
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</li>
+
+				<li class="item">
+					<label class="item-checkbox"
+						><input type="checkbox" /><i class="fas fa-check"></i></label
+					><span class="item-priority"></span>Possimus nam<button
+						class="item-delete"
+					>
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</li>
+			</ul>
+		</main>
+		<script src="./script.js"></script>
+	</body>
+</html>
