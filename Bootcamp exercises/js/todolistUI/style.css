@@ -48,6 +48,9 @@ body {
 	box-shadow: 10px 10px 14px 1px rgba(0, 0, 0, 0.2);
 	border-radius: 8px;
 }
+.hidden {
+	display: none;
+}
 
 @media (max-width: 530px) {
 	.app {
@@ -80,7 +83,9 @@ body {
 	margin-right: 0;
 }
 /* new task input */
-.add {
+.add-container {
+	display: flex;
+	justify-content: space-around;
 	margin-bottom: 30px;
 	padding: 0 25px;
 	color: #222222;
@@ -159,11 +164,11 @@ body {
 /* list container for the tasks */
 .list {
 	margin-top: 5px;
-	padding: 0 20px;
+	padding: 0;
 }
 /* each task container */
 .item {
-	padding: 5px 35px 5px 20px;
+	padding: 5px 0px 5px 20px;
 	margin-bottom: 20px;
 	transition: all 0.1s linear;
 	color: #222222;
@@ -176,7 +181,9 @@ body {
 .item:last-child {
 	margin-bottom: 0;
 }
-.item-delete {
+.item-delete,
+.item-update,
+.item-create {
 	border: 0;
 	background: none;
 	padding: 0;
@@ -184,13 +191,21 @@ body {
 	cursor: pointer;
 	font-size: 18px;
 	position: absolute;
-	right: 0;
+	right: 0px;
 	color: #ff5a5a;
-	transform: scale(0);
+	/* transform: scale(0); */
 	transition: all 0.2s ease-in-out;
 }
-.item:hover .item-delete {
-	transform: scale(1);
+.item-update {
+	right: 25px;
+}
+.item-create {
+	position: relative;
+}
+.item:hover .item-create,
+.item:hover .item-delete,
+.item:hover .item-update {
+	/* transform: scale(1); */
 }
 .item.done {
 	opacity: 0.3;
@@ -199,7 +214,9 @@ body {
 	transition: all 0.15s ease-in-out;
 	transform: scale(0);
 }
-
+button {
+	z-index: 10;
+}
 /* checkboxes */
 .item-checkbox {
 	border: 2px solid #e0e0e0;
@@ -234,3 +251,85 @@ body {
 	color: #008984;
 	border-color: #008984;
 }
+
+/* task color */
+.col {
+	display: inline-block;
+	position: relative;
+}
+
+.textbox {
+	border: 0;
+	padding: 2px 0;
+	border-bottom: 1px solid #ccc;
+	font: 15px/24px 'Lato', Arial, sans-serif;
+	color: #333;
+	width: 275px;
+	letter-spacing: 1px;
+}
+.textbox ~ .focus-border {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background-color: #3399ff;
+	background-color: #54b4ad;
+	background-color: #00b9a0;
+	transition: 0.4s;
+}
+.textbox:focus {
+	outline: none;
+}
+.textbox:focus ~ .focus-border {
+	width: 100%;
+	transition: 0.4s;
+}
+.label-color {
+	color: #c7c7cd;
+}
+/* ------------ */
+/* 
+.textbox::-webkit-input-placeholder {
+	font-family: 'roboto', sans-serif;
+	-webkit-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.textbox {
+	margin: 15px 25px;
+	width: 200px;
+	display: block;
+	border: none;
+	padding: 10px 0;
+	border-bottom: solid 1px #1abc9c;
+	-webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+	transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+	background: -webkit-linear-gradient(
+		top,
+		rgba(255, 255, 255, 0) 96%,
+		#1abc9c 4%
+	);
+	background: linear-gradient(
+		to bottom,
+		rgba(255, 255, 255, 0) 96%,
+		#1abc9c 4%
+	);
+	background-position: -200px 0;
+	background-size: 200px 100%;
+	background-repeat: no-repeat;
+	color: #0e6252;
+}
+.textbox:focus,
+.textbox:valid {
+	box-shadow: none;
+	outline: none;
+	background-position: 0 0;
+}
+.textbox:focus::-webkit-input-placeholder,
+.textbox:valid::-webkit-input-placeholder {
+	color: #1abc9c;
+	font-size: 11px;
+	-webkit-transform: translateY(-20px);
+	transform: translateY(-20px);
+	visibility: visible !important;
+} */

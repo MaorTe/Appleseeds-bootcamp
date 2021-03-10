@@ -10,11 +10,14 @@
 	<body>
 		<main class="app">
 			<nav class="nav">
-				<a href="" class="nav-item active">All</a>
-				<!-- <a href="" class="nav-item">Active</a>
-				<a href="" class="nav-item">Complete</a> -->
+				<button href="#" class="nav-item active" data-index-sorted>All</button>
+				<button href="#" class="nav-item" data-checked-sorted>
+					Sort by completed
+				</button>
+				<!-- <a href="" class="nav-item">Active</a> -->
+				<!-- <a href="" class="nav-item">Complete</a> -->
 			</nav>
-			<div class="add">
+			<div class="add-container">
 				<!-- <div class="add-priority">
 					<label class="add-radio" title="Priority 0">
 						<input checked type="radio" name="priority" />
@@ -33,48 +36,91 @@
 						<span class="add-circle"></span>
 					</label>
 				</div> -->
-				<input placeholder="+ Add todo item" type="text" class="add-input" />
+				<input
+					placeholder="+ Add todo item"
+					type="text"
+					name="name"
+					class="add-input"
+					required
+				/>
+				<button class="item-create" data-create>
+					<i class="far fa-plus-square"></i>
+				</button>
 			</div>
 
 			<ul class="list">
 				<li class="item">
-					<label class="item-checkbox item-checkbox-3"
-						><input type="checkbox" /><i class="fas fa-check"></i></label
-					>Lorem ipsum dolor sit<button class="item-delete">
+					<label class="item-checkbox item-checkbox-3">
+						<input type="checkbox" checked /><i class="fas fa-check"></i
+					></label>
+					<div>
+						<label class="label-color" for="">01/01/2021</label>
+						<div class="col">
+							<input
+								class="textbox"
+								type="text"
+								disabled
+								value="New task example"
+							/>
+							<span class="focus-border"></span>
+						</div>
+					</div>
+
+					<button class="item-update" data-update>
+						<i class="far fa-edit"></i>
+					</button>
+					<button class="item-delete" data-delete>
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</li>
+				<!-- 
+				<li class="item done">
+					<label class="item-checkbox">
+						<input checked type="checkbox" /><i class="fas fa-check"></i></label
+					>Amet consectetur adipisicing elit andae magni molestiae magni
+
+					<button class="item-update" data-update>
+						<i class="far fa-edit"></i>
+					</button>
+					<button class="item-delete" data-delete>
+						<i class="fas fa-trash-alt"></i>
+					</button>
+				</li>
+
+				<li class="item">
+					<label class="item-checkbox item-checkbox-3">
+						<input type="checkbox" />
+						<i class="fas fa-check"></i></label
+					>Andae magni molestiae
+
+					<button class="item-update" data-update>
+						<i class="far fa-edit"></i>
+					</button>
+					<button class="item-delete" data-delete>
 						<i class="fas fa-trash-alt"></i>
 					</button>
 				</li>
 
 				<li class="item done">
-					<label class="item-checkbox item-checkbox-2">
-						<input checked type="checkbox" /><i class="fas fa-check"></i></label
-					>Amet consectetur adipisicing elit andae magni molestiae magni<button
-						class="item-delete"
-					>
-						<i class="fas fa-trash-alt"></i>
-					</button>
-				</li>
-
-				<li class="item">
-					<label class="item-checkbox item-checkbox-1">
+					<label class="item-checkbox item-checkbox-3">
 						<input type="checkbox" />
-						<i class="fas fa-check"></i> </label
-					>Andae magni molestiae<button class="item-delete">
-						<i class="fas fa-trash-alt"></i>
-					</button>
-				</li>
+						<i class="fas fa-check"></i>
+					</label>
+					<span class="item-priority"></span>Possimus nam
 
-				<li class="item">
-					<label class="item-checkbox"
-						><input type="checkbox" /><i class="fas fa-check"></i></label
-					><span class="item-priority"></span>Possimus nam<button
-						class="item-delete"
-					>
+					<button class="item-update" data-update>
+						<i class="far fa-edit"></i>
+					</button>
+					<button class="item-delete" data-delete>
 						<i class="fas fa-trash-alt"></i>
 					</button>
-				</li>
+				</li> -->
 			</ul>
 		</main>
+		<script
+			src="https://kit.fontawesome.com/5c4607dc13.js"
+			crossorigin="anonymous"
+		></script>
 		<script src="./script.js"></script>
 	</body>
 </html>
