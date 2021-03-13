@@ -112,55 +112,55 @@ const renderData = () => {
 
 		tableBody.innerHTML += tableHtml;
 	});
-	deleteRowEventListener();
-	updateRowEventListener();
+	deleteOrConfirmEventListener();
+	editOrCancelEventListener();
 	localStorage.setItem(`tableData`, JSON.stringify(tableData));
 };
 
 // async function print() {
 // 	console.log(await getUsers());
 // }
-function makeTable() {
-	let table = document.querySelector('table'),
-		ths = table.querySelectorAll('thead th'),
-		row = table.querySelectorAll('tbody tr'),
-		tBody = table.querySelector('tbody'),
-		docF = document.createDocumentFragment();
+// function makeTable() {
+// 	let table = document.querySelector('table'),
+// 		ths = table.querySelectorAll('thead th'),
+// 		row = table.querySelectorAll('tbody tr'),
+// 		tBody = table.querySelector('tbody'),
+// 		docF = document.createDocumentFragment();
 
-	function sortMe(e) {
-		let thsArray = [].slice.call(ths),
-			rowArray = [].slice.call(row),
-			target = e.target,
-			thsIndex = thsArray.indexOf(target);
+// 	function sortMe(e) {
+// 		let thsArray = [].slice.call(ths),
+// 			rowArray = [].slice.call(row),
+// 			target = e.target,
+// 			thsIndex = thsArray.indexOf(target);
 
-		rowArray.sort(function (a, b) {
-			let tdA = a.children[thsIndex].textContent,
-				tdB = b.children[thsIndex].textContent;
+// 		rowArray.sort(function (a, b) {
+// 			let tdA = a.children[thsIndex].textContent,
+// 				tdB = b.children[thsIndex].textContent;
 
-			if (tdA > tdB) {
-				return 1;
-			} else if (tdA < tdB) {
-				return -1;
-			} else {
-				return 0;
-			}
-		});
+// 			if (tdA > tdB) {
+// 				return 1;
+// 			} else if (tdA < tdB) {
+// 				return -1;
+// 			} else {
+// 				return 0;
+// 			}
+// 		});
 
-		rowArray.forEach(function (row) {
-			docF.appendChild(row);
-		});
+// 		rowArray.forEach(function (row) {
+// 			docF.appendChild(row);
+// 		});
 
-		tBody.appendChild(docF);
-	}
+// 		tBody.appendChild(docF);
+// 	}
 
-	for (let i = 0; i < ths.length; i++) {
-		ths[i].addEventListener('click', sortMe, false);
-	}
-}
+// 	for (let i = 0; i < ths.length; i++) {
+// 		ths[i].addEventListener('click', sortMe, false);
+// 	}
+// }
 // makeTable();
 //-------------event listeners-------------
 //delete
-const deleteRowEventListener = () => {
+const deleteOrConfirmEventListener = () => {
 	const rowDelete = document.querySelectorAll('tbody [data-delete]');
 	rowDelete.forEach((el, index) => {
 		el.addEventListener('click', () => {
@@ -182,33 +182,34 @@ const deleteRowEventListener = () => {
 
 	function confirmPerson(el, index) {
 		console.log(index);
-		// const tableData = JSON.parse(localStorage.getItem('tableData'));
-		// tableData.splice(index, 1);
-		// tableData.forEach((person, index) => {
-		// 	person.id = index;
-		// });
-		// localStorage.setItem('tableData', JSON.stringify(tableData));
-		// // renderData();
-
-		// confirmButton.classList.add('confirm-btn');
-		// confirmButton.textContent = 'confirm';
-		// el.parentElement.nextElementSibling.appendChild(confirmButton);
-		// confirmButton.addEventListener('click', confirmPersonInfo);
-		// console.log(confirmButton);
-
 		const tableData = JSON.parse(localStorage.getItem('tableData'));
 		for (let i = 1; i <= 7; i++) {
+			// debugger;
 			const childInput = el.parentElement.parentElement.children[i].children[0];
+			console.log(childInput.value);
+			console.log(Object.values(tableData[index]));
+			// localStorage.setItem('userName', childInput.value);
+			// tableData[index].hobby = childInput.value;
 			Object.values(tableData[index])[i] = childInput.value;
 			childInput.disabled = true;
-			// child.value = Object.values(tableData[index])[i];
-			localStorage.setItem('tableData', JSON.stringify(tableData));
 		}
+		localStorage.setItem('tableData', JSON.stringify(tableData));
+		console.log(tableData[index]);
+
+		//replace previous style of cancel button to edit
+		el.classList.remove('confirm-btn');
+		el.classList.add('delete-btn');
+		el.textContent = 'delete';
+		//replace previous style of delete button to confirm
+		const editButton = el.parentElement.previousElementSibling.firstChild;
+		editButton.classList.remove('cancel-btn');
+		editButton.classList.add('edit-btn');
+		editButton.textContent = 'edit';
 	}
 };
 
 //update
-const updateRowEventListener = () => {
+const editOrCancelEventListener = () => {
 	const rowUpdate = document.querySelectorAll('tbody [data-update]');
 	rowUpdate.forEach((el, index) => {
 		el.addEventListener('click', () => {
