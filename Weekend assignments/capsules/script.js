@@ -1,45 +1,10 @@
-// class Person {
-//   constructor(fname, lname, age) {
-//     this.fname = fname;
-//     this.lname = lname;
-//     this.age = age;
-//   }
-// }
-
-// let p1 = new Person("John", "Doe", 30);
-// let p2 = new Person("Mike", "Doe", 50);
-// let p3 = new Person("Sara", "Doe", 22);
-// let p4 = new Person("Jerry", "Doe", 55);
-// let persons = [p1, p2, p3, p4];
-
-// // This function reflecs the array in the UI (table)
-// function refreshTable() {
-//   let tbodyElement = document.getElementById("table-data");
-
-//   // 1) Delete table content
-//   tbodyElement.innerHTML = "";
-
-//   // 2) Add all persons from array to table
-//   persons.forEach(person => {
-//     let row = tbodyElement.insertRow();
-
-//     let cellFname = row.insertCell();
-//     let cellLname = row.insertCell();
-//     let cellAge = row.insertCell();
-//     cellFname.innerHTML = person.fname;
-//     cellLname.innerHTML = person.lname;
-//     cellAge.innerHTML = person.age;
-//   });
-
-// }
-// Testing
-
 function init() {
 	if (!Array.isArray(JSON.parse(localStorage.getItem('tableData')))) {
 		localStorage.setItem('tableData', JSON.stringify([]));
 		getUsers();
 		setTimeout(() => {
-			renderData();
+			const tableData = renderData();
+			localStorage.setItem(`tableData`, JSON.stringify(tableData));
 		}, 10000);
 	}
 }
@@ -63,13 +28,13 @@ const getUsers = async () => {
 
 const tableBody = document.querySelector('.tableBody');
 // render data (read)
-const renderData = () => {
+const renderData = (filtered) => {
 	tableBody.innerHTML = '';
-	const tableData = JSON.parse(localStorage.getItem('tableData'));
-
+	const tableData = filtered
+		? filtered
+		: JSON.parse(localStorage.getItem('tableData'));
 	// setting table body
 	tableData.forEach((person) => {
-		// debugger;
 		const tableHtml = `<tbody>
 			<tr>
 				<td>${person.id}</td>
@@ -114,7 +79,7 @@ const renderData = () => {
 	});
 	deleteOrConfirmEventListener();
 	editOrCancelEventListener();
-	localStorage.setItem(`tableData`, JSON.stringify(tableData));
+	return tableData;
 };
 
 // async function print() {
@@ -161,8 +126,8 @@ const renderData = () => {
 //-------------event listeners-------------
 //delete
 const deleteOrConfirmEventListener = () => {
-	const rowDelete = document.querySelectorAll('tbody [data-delete]');
-	rowDelete.forEach((el, index) => {
+	const row = document.querySelectorAll('tbody [data-delete]');
+	row.forEach((el, index) => {
 		el.addEventListener('click', () => {
 			el.textContent === 'delete'
 				? deletePerson(index)
@@ -181,20 +146,16 @@ const deleteOrConfirmEventListener = () => {
 	}
 
 	function confirmPerson(el, index) {
-		console.log(index);
 		const tableData = JSON.parse(localStorage.getItem('tableData'));
-		for (let i = 1; i <= 7; i++) {
-			// debugger;
+
+		//insert the new data into localStorage
+		Object.keys(tableData[index]).forEach((key, i) => {
+			if (i === 0) return;
 			const childInput = el.parentElement.parentElement.children[i].children[0];
-			console.log(childInput.value);
-			console.log(Object.values(tableData[index]));
-			// localStorage.setItem('userName', childInput.value);
-			// tableData[index].hobby = childInput.value;
-			Object.values(tableData[index])[i] = childInput.value;
+			tableData[index][key] = childInput.value;
 			childInput.disabled = true;
-		}
+		});
 		localStorage.setItem('tableData', JSON.stringify(tableData));
-		console.log(tableData[index]);
 
 		//replace previous style of cancel button to edit
 		el.classList.remove('confirm-btn');
@@ -233,7 +194,7 @@ const editOrCancelEventListener = () => {
 		deleteButton.classList.add('confirm-btn');
 		deleteButton.textContent = 'confirm';
 
-		//row inputs enabling or disabling each input upon click
+		//row inputs enabling or disabling each input upon event button clicked
 		let isFocused = document.activeElement === currentPerson;
 		if (!isFocused) {
 			for (let i = 1; i <= 7; i++) {
@@ -258,17 +219,21 @@ const editOrCancelEventListener = () => {
 				localStorage.setItem('tableData', JSON.stringify(tableData));
 			}
 		}
-
-		// EventListener for each Person input
-		// currentPerson.addEventListener('blur', () => {
-		// 	const tableData = JSON.parse(localStorage.getItem('tableData'));
-		// 	console.log(tableData[index].firstName);
-		// 	tableData[index].firstName = currentPerson.value;
-		// 	localStorage.setItem('tableData', JSON.stringify(tableData));
-		// 	// renderData();
-		// });
 	}
 };
+
+const searchInput = document.querySelector('[data-search]');
+searchInput.addEventListener('keyup', (e) => {
+	const tableData = JSON.parse(localStorage.getItem('tableData'));
+	const selectedDropDownValue = document.querySelector('.persons').value;
+	const searchString = e.target.value;
+	const filteredCharacters = tableData.filter((character, i) => {
+		return (
+			character[selectedDropDownValue].toLowerCase().includes(searchString) && i
+		);
+	});
+	renderData(filteredCharacters);
+});
 
 init();
 renderData();
