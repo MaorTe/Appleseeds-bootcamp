@@ -182,27 +182,47 @@ const updateRowEventListener = () => {
 		el.addEventListener('click', () => {
 			const currentPerson =
 				el.parentElement.parentElement.children[1].children[0];
+			console.log(el.parentElement.parentElement.childNodes);
 			currentPerson.focus();
 			updateItem(el, currentPerson, index);
 		});
 	});
 
 	function updateItem(el, currentPerson, index) {
+		el.classList.remove('edit-btn');
+		el.classList.add('cancel-btn');
+		el.textContent = 'cancel';
+		//row inputs enable or disable upon click
 		let isFocused = document.activeElement === currentPerson;
 		if (!isFocused) {
-			currentPerson.disabled = false;
+			for (let i = 1; i <= 7; i++) {
+				el.parentElement.parentElement.children[i].children[0].disabled = false;
+			}
 			currentPerson.focus();
-		}
-		if (isFocused) currentPerson.disabled = true;
-		// console.log(currentPerson.value);
-		// EventListener for each Person input
-		currentPerson.addEventListener('blur', () => {
+		} else {
+			el.classList.add('edit-btn');
+			el.classList.remove('cancel-btn');
+			el.textContent = 'edit';
+			// console.log(Object.values(tableData[index])[2]);
 			const tableData = JSON.parse(localStorage.getItem('tableData'));
-			console.log(tableData[index].firstName);
-			tableData[index].firstName = currentPerson.value;
-			localStorage.setItem('tableData', JSON.stringify(tableData));
-			renderData();
-		});
+			for (let i = 1; i <= 7; i++) {
+				// debugger;
+				el.parentElement.parentElement.children[i].children[0].disabled = true;
+				el.parentElement.parentElement.children[
+					i
+				].children[0].value = Object.values(tableData[index])[i];
+				localStorage.setItem('tableData', JSON.stringify(tableData));
+			}
+		}
+
+		// EventListener for each Person input
+		// currentPerson.addEventListener('blur', () => {
+		// 	const tableData = JSON.parse(localStorage.getItem('tableData'));
+		// 	console.log(tableData[index].firstName);
+		// 	tableData[index].firstName = currentPerson.value;
+		// 	localStorage.setItem('tableData', JSON.stringify(tableData));
+		// 	// renderData();
+		// });
 	}
 };
 

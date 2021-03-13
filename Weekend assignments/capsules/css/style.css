@@ -91,7 +91,8 @@ input:focus {
 }
 
 .edit-btn,
-.delete-btn {
+.delete-btn,
+.cancel-btn {
 	outline: none;
 	display: inline-block;
 	padding: 7px 20px;
@@ -108,7 +109,8 @@ input:focus {
 	background-image: linear-gradient(45deg, #ff2c07 0%, #ff8b5f 100%);
 }
 
-.edit-btn:hover {
+.edit-btn:hover,
+.cancel-btn:hover {
 	cursor: pointer;
 	background-image: -webkit-linear-gradient(45deg, #ffc107 0%, #f76a35 100%);
 	background-image: linear-gradient(45deg, #ffc107 0%, #f76a35 100%);
@@ -117,4 +119,10 @@ input:focus {
 	cursor: pointer;
 	background-image: -webkit-linear-gradient(45deg, #ff2c07 0%, #f76a35 100%);
 	background-image: linear-gradient(45deg, #ff2c07 0%, #f76a35 100%);
+}
+
+.cancel-btn {
+	/* border-radius: 0px 25px 25px 0px; */
+	border-radius: 0px 25px 0px 25px;
+	/* border-radius: 25px; */
 }
