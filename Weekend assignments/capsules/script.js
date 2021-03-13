@@ -32,6 +32,8 @@
 //   });
 
 // }
+// Testing
+
 function init() {
 	if (!Array.isArray(JSON.parse(localStorage.getItem('tableData')))) {
 		localStorage.setItem('tableData', JSON.stringify([]));
@@ -161,7 +163,11 @@ function makeTable() {
 const deleteRowEventListener = () => {
 	const rowDelete = document.querySelectorAll('tbody [data-delete]');
 	rowDelete.forEach((el, index) => {
-		el.addEventListener('click', () => deletePerson(index));
+		el.addEventListener('click', () => {
+			el.textContent === 'delete'
+				? deletePerson(index)
+				: confirmPerson(el, index);
+		});
 	});
 
 	function deletePerson(index) {
@@ -172,6 +178,32 @@ const deleteRowEventListener = () => {
 		});
 		localStorage.setItem('tableData', JSON.stringify(tableData));
 		renderData();
+	}
+
+	function confirmPerson(el, index) {
+		console.log(index);
+		// const tableData = JSON.parse(localStorage.getItem('tableData'));
+		// tableData.splice(index, 1);
+		// tableData.forEach((person, index) => {
+		// 	person.id = index;
+		// });
+		// localStorage.setItem('tableData', JSON.stringify(tableData));
+		// // renderData();
+
+		// confirmButton.classList.add('confirm-btn');
+		// confirmButton.textContent = 'confirm';
+		// el.parentElement.nextElementSibling.appendChild(confirmButton);
+		// confirmButton.addEventListener('click', confirmPersonInfo);
+		// console.log(confirmButton);
+
+		const tableData = JSON.parse(localStorage.getItem('tableData'));
+		for (let i = 1; i <= 7; i++) {
+			const childInput = el.parentElement.parentElement.children[i].children[0];
+			Object.values(tableData[index])[i] = childInput.value;
+			childInput.disabled = true;
+			// child.value = Object.values(tableData[index])[i];
+			localStorage.setItem('tableData', JSON.stringify(tableData));
+		}
 	}
 };
 
@@ -189,10 +221,18 @@ const updateRowEventListener = () => {
 	});
 
 	function updateItem(el, currentPerson, index) {
+		//replace style of edit button to cancel
 		el.classList.remove('edit-btn');
 		el.classList.add('cancel-btn');
 		el.textContent = 'cancel';
-		//row inputs enable or disable upon click
+
+		//replace style of delete button to confirm
+		const deleteButton = el.parentElement.nextElementSibling.firstChild;
+		deleteButton.classList.remove('delete-btn');
+		deleteButton.classList.add('confirm-btn');
+		deleteButton.textContent = 'confirm';
+
+		//row inputs enabling or disabling each input upon click
 		let isFocused = document.activeElement === currentPerson;
 		if (!isFocused) {
 			for (let i = 1; i <= 7; i++) {
@@ -200,17 +240,20 @@ const updateRowEventListener = () => {
 			}
 			currentPerson.focus();
 		} else {
-			el.classList.add('edit-btn');
+			//replace previous style of cancel button to edit
 			el.classList.remove('cancel-btn');
+			el.classList.add('edit-btn');
 			el.textContent = 'edit';
-			// console.log(Object.values(tableData[index])[2]);
+			//replace previous style of delete button to confirm
+			deleteButton.classList.remove('confirm-btn');
+			deleteButton.classList.add('delete-btn');
+			deleteButton.textContent = 'delete';
+
 			const tableData = JSON.parse(localStorage.getItem('tableData'));
 			for (let i = 1; i <= 7; i++) {
-				// debugger;
-				el.parentElement.parentElement.children[i].children[0].disabled = true;
-				el.parentElement.parentElement.children[
-					i
-				].children[0].value = Object.values(tableData[index])[i];
+				const child = el.parentElement.parentElement.children[i].children[0];
+				child.disabled = true;
+				child.value = Object.values(tableData[index])[i];
 				localStorage.setItem('tableData', JSON.stringify(tableData));
 			}
 		}
