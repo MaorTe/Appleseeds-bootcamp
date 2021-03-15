@@ -12,27 +12,27 @@
 		<div id="landing-page">
 			<div>
 				<img
-					class="minecraftTitle"
-					src="../img/minecraft-logo-angle-text.png"
-					alt=""
+					class="minecraft-logo"
+					src="../img/minecraft-logo.png"
+					alt="logo"
 				/>
 			</div>
 			<div class="tutorial-container">
-				<h1 class="tutorialHeader"></h1>
+				<h1 class="space"></h1>
 				<h2>Use one of three tools</h2>
-				<div class="toolBox" data-type="axe"></div>
-				<div class="toolBox" data-type="pickaxe"></div>
-				<div class="toolBox" data-type="shovel"></div>
+				<div class="tool-box" data-type="axe"></div>
+				<div class="tool-box" data-type="pickaxe"></div>
+				<div class="tool-box" data-type="shovel"></div>
 				<h2>Destroy Blocks</h2>
 				<div>
-					<div class="tutEl" data-type="cloud"></div>
+					<div class="description-blocks" data-type="cloud"></div>
 				</div>
-				<div class="tutEl" data-type="leaves"></div>
-				<div class="tutEl" data-type="trunk"></div>
+				<div class="description-blocks" data-type="leaves"></div>
+				<div class="description-blocks" data-type="trunk"></div>
 				<h2>Build</h2>
-				<div><div class="tutEl" data-type="grass"></div></div>
-				<div><div class="tutEl" data-type="dirt"></div></div>
-				<div><div class="tutEl" data-type="rock"></div></div>
+				<div><div class="description-blocks" data-type="grass"></div></div>
+				<div><div class="description-blocks" data-type="dirt"></div></div>
+				<div><div class="description-blocks" data-type="rock"></div></div>
 			</div>
 
 			<button class="start-btn" type="button">Start Game</button>
@@ -40,16 +40,17 @@
 
 		<div id="minecraft">
 			<div class="world"></div>
-			<div class="toolbar">
+			<section class="toolbar">
 				<h1>Inventory</h1>
-				<h2>Tools</h2>
 				<section class="tools">
-					<div data-type="axe" class="toolBox"></div>
-					<div data-type="pickaxe" class="toolBox"></div>
-					<div data-type="shovel" class="toolBox"></div>
+					<h2>Tools</h2>
+					<div data-type="axe" class="tool-box"></div>
+					<div data-type="pickaxe" class="tool-box"></div>
+					<div data-type="shovel" class="tool-box"></div>
 				</section>
 				<h2>Blocks</h2>
 				<section class="inventory">
+					<h2 class="hidden">Blocks</h2>
 					<div data-type="cloud" class="inventory-item">
 						<span class="item-count">0</span>
 					</div>
@@ -71,7 +72,7 @@
 				</section>
 				<button class="reset-btn" type="button">Reset World</button>
 				<button class="restart-btn" type="button">Restart World</button>
-			</div>
+			</section>
 		</div>
 
 		<script src="./script.js"></script>

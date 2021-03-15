@@ -9,19 +9,18 @@ const indexList = document.querySelector('[data-index-sorted]');
 const checkedList = document.querySelector('[data-checked-sorted]');
 const container = document.querySelector('.list');
 const taskInput = document.querySelector('.add-input');
-// task buttons
-const itemUpdate = document.querySelectorAll('[data-update]');
-const itemDelete = document.querySelector('[data-delete]');
+
+// create task button
 const itemCreate = document.querySelector('[data-create]');
 
 // render data (read)
 const renderData = () => {
 	container.innerHTML = '';
 	const todoListJSON = JSON.parse(localStorage.getItem('todoList'));
-	todoListJSON.forEach((task) => {
+	todoListJSON.forEach((task, i) => {
 		const html = `<li class="item">
 		<label class="item-checkbox item-checkbox-3">
-			<input type="checkbox" ${''}/><i class="fas fa-check"></i></label
+			<input type="checkbox" class="box" ${''}/><i class="fas fa-check"></i></label
 		>
 		<div>
 			<label class="label-color" for="">${dateNow()}</label>
@@ -39,7 +38,21 @@ const renderData = () => {
 		</button>
 	</li>`;
 		container.innerHTML += html;
-		localStorage.setItem('todoList', JSON.stringify(todoListJSON));
+		// let checked = JSON.parse(localStorage.getItem('todoList'));
+		// console.log(document.querySelector('.box'));
+		// document.querySelector('.box').checked = task.checkbox;
+		const isChecked = document.querySelector('.item-checkbox input');
+		todoListJSON.forEach(() => {
+			isChecked.checked = task.checkbox;
+		});
+
+		// const itemCheckbox = document.querySelectorAll(
+		// 	'.list .item-checkbox input'
+		// );
+		// itemCheckbox.forEach((el, index) => {
+		// 	el.checked = task.checkbox;
+		// });
+		// localStorage.setItem('todoList', JSON.stringify(todoListJSON));
 	});
 
 	// update
@@ -57,12 +70,13 @@ const renderData = () => {
 	itemDelete.forEach((el, index) => {
 		el.addEventListener('click', () => deleteItem(index));
 	});
+
 	//checkbox
 	const itemCheckbox = document.querySelectorAll('.list .item-checkbox input');
 	itemCheckbox.forEach((el, index) => {
 		el.addEventListener('click', () => listStatus(el, index));
 	});
-	// localStorage.setItem('todoList', JSON.stringify(todoListJSON));
+	localStorage.setItem('todoList', JSON.stringify(todoListJSON));
 };
 // ------------------------
 function dateNow() {
@@ -97,9 +111,6 @@ function deleteItem(index) {
 	renderData();
 }
 function updateItem(el, currentTask, index) {
-	console.log(el);
-	console.log(currentTask.value);
-
 	let isFocused = document.activeElement === currentTask;
 	if (!isFocused) currentTask.disabled = false;
 	if (isFocused) currentTask.disabled = true;
@@ -112,10 +123,15 @@ function updateItem(el, currentTask, index) {
 }
 
 function listStatus(el, index) {
+	console.log(el);
+	// console.log(document.querySelector('.box'));
 	const todoListJSON = JSON.parse(localStorage.getItem('todoList'));
 	todoListJSON.forEach((task) => {
 		if (task.generateId === index) {
+			console.log(el.checked);
 			task.checkbox = el.checked;
+			el.checked = task.checkbox;
+			// document.querySelector('.box').checked = task.checkbox;
 			localStorage.setItem('todoList', JSON.stringify(todoListJSON));
 		}
 	});
@@ -136,17 +152,6 @@ function sortByChecked() {
 	});
 }
 
-// function setCheck() {
-// 	if (todoList.length > 1) {
-// 		if (todoList.checkbox.checked) {
-// 			return 'checked';
-// 		} else {
-// 			return '';
-// 		}
-// 	}
-// 	return;
-// }
-
 //sorted by index
 function sortByIndex() {
 	const todoListJSON = JSON.parse(localStorage.getItem('todoList'));
@@ -157,11 +162,8 @@ function sortByIndex() {
 	renderData();
 }
 
-// console.log(JSON.parse(localStorage.getItem('todoList')));
-// const todoListJSON = JSON.parse(localStorage.getItem('todoList'));
-// renderData();
 itemCreate.addEventListener('click', addItem);
 checkedList.addEventListener('click', sortByChecked);
 indexList.addEventListener('click', sortByIndex);
-// localStorage.setItem('todoList', JSON.stringify(todoListJSON));
+
 renderData();

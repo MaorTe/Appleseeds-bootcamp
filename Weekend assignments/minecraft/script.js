@@ -6,9 +6,7 @@ const resetBtn = document.querySelector('.reset-btn');
 
 startBtn.addEventListener('click', startGame);
 function startGame() {
-	// debugger;
 	if (world.childElementCount === 0) {
-		console.log(world.childElementCount);
 		createMatrix();
 	}
 	landingPage.classList.add('hidden');
@@ -19,8 +17,6 @@ function startGame() {
 // add event listener to restart the game button to go back to the landing page
 restartBtn.addEventListener('click', restart);
 function restart() {
-	// debugger;
-	console.log(world.childElementCount);
 	if (world.childElementCount === 0) {
 		createMatrix();
 	}
@@ -32,12 +28,11 @@ function restart() {
 // --------------------- World Creation ----------------------
 let worldMatrix = [];
 let worldSize = 20;
-// change world size in the css file
+// sync world size to css
 document.documentElement.style.setProperty('--world-size', worldSize);
 // world container
 const world = document.querySelector('.world');
 
-// make a matrix of 10*10 of sky:
 function createMatrix() {
 	for (let row = 0; row < worldSize; row++) {
 		worldMatrix[row] = [];
@@ -51,7 +46,6 @@ function createMatrix() {
 		}
 	}
 }
-// reset the world tiles to the origin
 
 function createWorld() {
 	worldShape = [
@@ -137,14 +131,15 @@ function MineableByTool(tool, tile) {
 let obj = {};
 function handleclick(e) {
 	let tileSelected = e.target.getAttribute('data-type');
-	// console.log(tileSelected);
+	// debugger;
 
 	if (document.querySelector('.selected')) {
 		let selectedTool = document.querySelector('.selected');
-		// if mineable increase
+		// if mineable ,increase
 		if (MineableByTool(selectedTool.getAttribute('data-type'), tileSelected)) {
 			if (tileSelected && tileSelected !== 'sky') {
 				obj[tileSelected] = obj[tileSelected] + 1 || 1;
+				// span
 				const inventoryBlocks = document.querySelector(
 					`[data-type = '${tileSelected}'] > span`
 				);
@@ -152,35 +147,26 @@ function handleclick(e) {
 			}
 			tileSelected = e.target.setAttribute('data-type', 'sky');
 		}
-		PlaceTile(selectedTool, tileSelected, e);
-	}
 
-	// else {
-	// }
+		placeTile(selectedTool, tileSelected, e);
+	}
 }
 
 // using item
 const inventory = document.querySelector('.inventory');
-function PlaceTile(selectedTool, tileSelected, e) {
+function placeTile(selectedTool, tileSelected, e) {
+	// debugger;
 	if (
 		selectedTool.classList.contains('inventory-item') &&
 		tileSelected === 'sky'
 	) {
 		let tileToPlace = selectedTool.getAttribute('data-type');
-		console.log(tileToPlace);
-		// if (tileSelected) {
-		// reduceCount(e);
 		const inventoryBlockItems = document.querySelector(
 			`[data-type = '${tileToPlace}'] > span`
 		);
-		// console.log(inventoryBlockItems);
 		if (tileSelected && inventoryBlockItems.textContent > '0') {
-			// console.log(e.currentTarget.classList);
-			// e.target.classList.remove('hidden');
 			inventoryBlockItems.style.userSelect = 'none';
-			// obj[tileToPlace] = obj[tileToPlace] - 1;
 			inventoryBlockItems.textContent = --obj[tileToPlace];
-			// return inventoryBlockItems.textContent;
 			tileSelected = e.target.setAttribute(
 				'data-type',
 				selectedTool.getAttribute('data-type')
@@ -190,20 +176,26 @@ function PlaceTile(selectedTool, tileSelected, e) {
 }
 
 // selecting item from inventory
-const inventoryItems = document.querySelector('.toolbar');
-inventoryItems.addEventListener('click', SelectItemFromInventory);
+const inventoryItems = document.querySelectorAll('.toolbar [data-type]');
+// this forEach will attach event listeners to all childnodes inventoryItems NodeList
+inventoryItems.forEach((el) => {
+	el.addEventListener('click', SelectItemFromInventory);
+});
 function SelectItemFromInventory(e) {
-	console.log('aaaa');
-	const inventoryItem = document.querySelectorAll('.toolbar [data-type]');
-	// console.log(inventoryItem);
-	// if (e.target.classList.contains('toolbar')) {
-	if (e.target.classList.contains('selected')) {
-		e.target.classList.remove('selected');
+	// debugger;
+	if (e.target.classList.contains('item-count')) {
+		e.target.removeEventListener('click', () => {
+			console.log(e.target.textContent);
+			e.target.classList.remove('selected');
+		});
 	} else {
-		inventoryItem.forEach((el) => el.classList.remove('selected'));
-		e.target.classList.add('selected');
+		if (e.target.classList.contains('selected')) {
+			e.target.classList.remove('selected');
+		} else {
+			inventoryItems.forEach((el) => el.classList.remove('selected'));
+			e.target.classList.add('selected');
+		}
 	}
-	// }
 }
 
 // reset the game button

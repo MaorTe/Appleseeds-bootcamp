@@ -2,14 +2,16 @@ const baseEndPoint = `https://corona-api.com/countries`;
 
 const countriesContainer = document.querySelector('.countries');
 const countriesArr = [];
-let covidArr = [];
 let obj = {};
+let ctx;
+let filtered;
 
 async function fetchURL(url) {
 	const response = await fetch(url);
 	return response.json();
 }
 function getAllCountries() {
+	// const url1 = `https://cors-anywere-pini85.herokuapp.com/restcountries.herokuapp.com/api/v1/`;
 	const url = `https://api.codetabs.com/v1/proxy/?quest=https://restcountries.herokuapp.com/api/v1`;
 	return fetchURL(url);
 }
@@ -17,45 +19,28 @@ function getCovidByCountry() {
 	const url = `https://corona-api.com/countries`;
 	return fetchURL(url);
 }
-const displayDataCountry = () => {
-	console.log(countriesArr);
-};
-const displayDataCovid = () => {
-	console.log(covidArr);
-};
 
 //initializer
 draw('Asia');
 
-function ButtonRegionSelected(e) {
-	let regionSelected = e.target.textContent;
-	UpdateChartData(myChart, regionSelected, e);
-}
-function ButtonCasesSelected(e) {
-	let caseSelected = e.target.textContent;
-	UpdateChartData(myChart, caseSelected, e);
-}
-
-function setCountriestoDOM(countriesArr) {
+function setCountriesToDOM(countriesArr) {
 	countriesContainer.innerHTML = '';
 	countriesArr.forEach(async (country) => {
 		const countryName = document.createElement('span');
-		countryName.textContent += country.name.common;
-		countryName.classList.add('space');
+		countryName.textContent = country.name.common;
+		countryName.classList.add('span-space');
 		countriesContainer.appendChild(countryName);
 	});
+	setSpanListener();
 }
 
 async function getData(regionFromListener) {
 	let covids = await getCovidByCountry();
 	let countries = await getAllCountries();
 
-	console.log(covids);
 	let countriesArr = [];
 	let countriesByCode = [];
-	// if (regionFromListener === 'World') {
-	// 	regionFromListener = '/';
-	// }
+
 	//get all countries of selected region
 	countries.forEach(async (country) => {
 		if (country.region === regionFromListener) {
@@ -63,16 +48,18 @@ async function getData(regionFromListener) {
 			countriesByCode.push(country.cca2);
 		}
 	});
-	console.log(countriesArr);
-
-	//set countries text to DOM
-	setCountriestoDOM(countriesArr);
-	// ======================================
 
 	//filter countries
-	const filtered = covids.data.filter((cov) =>
-		countriesByCode.includes(cov.code)
-	);
+	filtered = covids.data.filter((cov) => countriesByCode.includes(cov.code));
+
+	//set countries text to DOM
+	setCountriesToDOM(countriesArr, filtered);
+
+	//if world selected get all countries
+	if (regionFromListener === 'World') {
+		filtered = covids.data;
+		setCountriesToDOM(countries);
+	}
 
 	obj = {};
 	filtered.forEach((country) => {
@@ -84,25 +71,83 @@ async function getData(regionFromListener) {
 			critical: country.latest_data.critical,
 		};
 	});
-	console.log(obj);
 	return obj;
 }
-// ------------------------------------
+// ----------------set listeners to buttons----------------
 // selecting a region button
 const regionContainer = document.querySelectorAll('.container-regions button');
-// this forEach will attach event listeners to all childnodes buttons NodeList
+// this forEach will attach event listeners to all child-nodes buttons NodeList
 regionContainer.forEach((el) => {
 	el.addEventListener('click', ButtonRegionSelected);
 });
-// ------------------------------------
-// selecting a case button
+
+function ButtonRegionSelected(e) {
+	let regionSelected = e.target.textContent;
+	UpdateChartData(myChart, regionSelected, e);
+}
+// ---
 const casesContainer = document.querySelectorAll('.container-cases button');
-// this forEach will attach event listeners to all childnodes buttons NodeList
 casesContainer.forEach((el) => {
 	el.addEventListener('click', ButtonCasesSelected);
 });
 
+function ButtonCasesSelected(e) {
+	let caseSelected = e.target.textContent;
+	UpdateChartData(myChart, caseSelected, e);
+}
+
+// --- selecting a country name text
+function setSpanListener() {
+	const countriesContainerSpan = document.querySelectorAll('.countries span');
+	countriesContainerSpan.forEach((el) => {
+		el.addEventListener('click', ShowCountryCovidStats);
+	});
+}
+function ShowCountryCovidStats(e) {
+	ctx.style.display = 'none';
+
+	//find selected country from countries
+	let countryName = e.target.textContent;
+	let found = filtered.find((data) => {
+		return data.name === countryName;
+	});
+	//set found country necessary details into an arr of objects
+	let arr = [
+		{ 'Total cases': found.latest_data.confirmed },
+		{ 'New cases': found.today.confirmed },
+		{ 'Total deaths': found.latest_data.deaths },
+		{ 'New deaths': found.today.deaths },
+		{ 'Total recovered': found.latest_data.recovered },
+		{ Critical: found.latest_data.critical },
+	];
+
+	//create elements on the DOM and set details
+	let canvasContainer = document.querySelector('.canvas-container');
+	canvasContainer.innerHTML = '';
+	for (let i = 0; i < 6; i++) {
+		const title = document.createElement('h2');
+		const value = document.createElement('h3');
+		const card = document.createElement('div');
+
+		title.textContent = Object.keys(arr[i])[0];
+		value.textContent = Object.values(arr[i])[0];
+
+		card.appendChild(title);
+		card.appendChild(value);
+		card.classList.add('space');
+		card.classList.add('card');
+		canvasContainer.appendChild(card);
+	}
+}
 // ----------------graph----------------
+colors = [
+	'rgba(255, 99, 132, 1)',
+	'rgba(54, 162, 235, 1)',
+	'rgba(255, 206, 86, 1)',
+	'rgba(75, 192, 192, 1)',
+	'rgba(153, 102, 255, 1)',
+	'rgba(255, 159, 64, 1)',
+];
 let myChart;
 async function draw(region) {
 	const data = await getData(region).catch((err) => {
@@ -115,7 +160,7 @@ async function draw(region) {
 	const xLabels = Object.entries(data).map((currentItem) => {
 		return currentItem[1].name;
 	});
-	let ctx = document.querySelector('#myChart');
+	ctx = document.querySelector('#myChart');
 	myChart = new Chart(ctx, {
 		type: 'line',
 		data: {
@@ -123,8 +168,6 @@ async function draw(region) {
 			datasets: [
 				{
 					label: `Covid 19 confirmed`,
-					// backgroundColor: '#1d2d506e',
-					// borderColor: '#133b5c',
 					borderWidth: '1',
 					data: yLabels,
 					backgroundColor: [
@@ -135,22 +178,21 @@ async function draw(region) {
 						'rgba(153, 102, 255, 0.2)',
 						'rgba(255, 159, 64, 0.2)',
 					],
-					borderColor: [
-						'rgba(255, 99, 132, 1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)',
-					],
+					borderColor: [colors],
 					borderWidth: 1,
+					pointBorderColor: (() => {
+						let bgcolors = [];
+						for (let i = 0; i < 1000; ++i)
+							bgcolors.push(colors[i % colors.length]);
+						return bgcolors;
+					})(),
 				},
 			],
 		},
 		options: {
+			// maintainAspectRatio: false,
 			legend: {
 				labels: {
-					// This more specific font property overrides the global property
 					fontColor: '#fff',
 				},
 			},
@@ -182,13 +224,10 @@ async function draw(region) {
 	});
 }
 
-//
+// ----------------updating graph----------------
 async function UpdateChartData(chart, selected, e) {
 	// get the data by region
 	let data = obj;
-
-	// if (region === 'World') region = '';
-	// console.log(e.target.classList.contains('btn-regions'));
 	if (e.target.classList.contains('btn-regions')) {
 		data = await getData(selected).catch((err) => {
 			console.log('there was an error fetching data');
@@ -204,7 +243,7 @@ async function UpdateChartData(chart, selected, e) {
 
 		// insert x and y axis data into graph
 		removeData(chart);
-		chart.data.datasets[0].label = `Covid 19 in confirmed`;
+		chart.data.datasets[0].label = `Covid 19 confirmed`;
 		chart.data.datasets[0].data = yLabels;
 		chart.data.labels = xLabels;
 		chart.update();
@@ -214,8 +253,7 @@ async function UpdateChartData(chart, selected, e) {
 		const yLabels = Object.entries(data).map((elY) => {
 			return elY[1][cases];
 		});
-		console.log(yLabels);
-		chart.data.datasets[0].label = `Covid 19 in ${cases}`;
+		chart.data.datasets[0].label = `Covid 19 ${cases}`;
 		chart.data.datasets[0].data = yLabels;
 		chart.update();
 	}
