@@ -2,10 +2,21 @@ import React from 'react';
 
 class Button extends React.Component {
 	render() {
+		if (this.props.showPrevForm) {
+			return (
+				<div>
+					<input
+						type="submit"
+						value={this.props.btnName}
+						// onClick={this.onClick}
+						onChange={this.props.onChange}
+					/>
+				</div>
+			);
+		}
 		return (
 			<div>
-				{/* <label htmlFor="input"></label> */}
-				<input type="button" value={this.props.btnName} />
+				<button onChange={this.props.onChange}>{this.props.btnName}</button>
 			</div>
 		);
 	}

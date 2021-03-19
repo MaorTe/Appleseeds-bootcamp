@@ -5,7 +5,10 @@ class TextArea extends React.Component {
 		return (
 			<div>
 				<label htmlFor="textarea">Free Text:</label>
-				<textarea name="textarea" id="textarea"></textarea>
+				<textarea
+					name={this.props.name}
+					id={this.props.name}
+					onChange={this.props.onChange}></textarea>
 			</div>
 		);
 	}
