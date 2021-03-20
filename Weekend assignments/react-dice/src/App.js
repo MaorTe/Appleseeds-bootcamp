@@ -12,6 +12,8 @@ import dice6 from './img/dice-6.png';
 import ScoreInput from './components/ScoreInput';
 class App extends React.Component {
 	state = {
+		disabledPanel: '',
+		activePanel: 'active',
 		turnSwapped: true,
 		GameStarted: false,
 		scoreP1: 0,
@@ -28,11 +30,12 @@ class App extends React.Component {
 		//save initial state for new game
 		this.initialState = this.state;
 	}
+
 	renderNewGame = () => {
 		return (
 			<div className="wrapper clearfix">
 				<PlayerPanel
-					classes="player-0-panel active"
+					classes={`player-0-panel ${this.state.activePanel}`}
 					nameId="name-0"
 					scoreId="score-0"
 					currentId="current-0"
@@ -40,7 +43,7 @@ class App extends React.Component {
 					score={this.state.scoreP1}
 					currentScore={this.state.currentScoreP1}></PlayerPanel>
 				<PlayerPanel
-					classes="player-1-panel"
+					classes={`player-1-panel ${this.state.disabledPanel}`}
 					nameId="name-1"
 					scoreId="score-1"
 					currentId="current-1"
@@ -96,12 +99,18 @@ class App extends React.Component {
 	swapTurnOrGameStarted = () => {
 		return this.state.turnSwapped && this.state.GameStarted;
 	};
+	activePlayerPanel = () => {
+		if (this.state.activePanel === '' && this.state.disabledPanel === 'active')
+			this.setState({ activePanel: 'active', disabledPanel: '' });
+		else this.setState({ activePanel: '', disabledPanel: 'active' });
+	};
 	setScoreAndSwapTurn = () => {
 		this.setState({
 			scoreP1: this.state.currentScoreP1 + this.state.scoreP1,
 			currentScoreP1: 0,
 			turnSwapped: false,
 		});
+		this.activePlayerPanel();
 	};
 	handleChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
