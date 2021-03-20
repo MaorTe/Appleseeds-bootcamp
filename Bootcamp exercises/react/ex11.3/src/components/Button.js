@@ -16,7 +16,7 @@ class Button extends React.Component {
 		}
 		return (
 			<div>
-				<button onChange={this.props.onChange}>{this.props.btnName}</button>
+				<button onClick={this.props.onChange}>{this.props.btnName}</button>
 			</div>
 		);
 	}
