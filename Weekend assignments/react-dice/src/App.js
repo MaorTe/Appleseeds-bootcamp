@@ -12,6 +12,7 @@ import dice6 from './img/dice-6.png';
 import ScoreInput from './components/ScoreInput';
 class App extends React.Component {
 	state = {
+		turnSwapped: true,
 		GameStarted: false,
 		scoreP1: 0,
 		scoreP2: 0,
@@ -72,14 +73,14 @@ class App extends React.Component {
 						icon="ion-ios-download-outline"
 						btnName="Hold"
 						name="scoreLimit"
-						onClick={this.setScoreAndMoveToPlayer}></Button>
+						onClick={this.setScoreAndSwapTurn}></Button>
 				)}
-				{this.state.GameStarted && (
+				{this.swapTurnOrGameStarted() && (
 					<DiceImage
 						classes="dice"
 						diceNum={this.state.images[this.state.randNum1 - 1]}></DiceImage>
 				)}
-				{this.state.GameStarted && (
+				{this.swapTurnOrGameStarted() && (
 					<DiceImage
 						classes="dice dice-2"
 						diceNum={this.state.images[this.state.randNum2 - 1]}></DiceImage>
@@ -92,14 +93,24 @@ class App extends React.Component {
 			</div>
 		);
 	};
-	setScoreAndMoveToPlayer = () => {
-		this.setState({ scoreP1: this.state.currentScoreP1 });
+	swapTurnOrGameStarted = () => {
+		return this.state.turnSwapped && this.state.GameStarted;
+	};
+	setScoreAndSwapTurn = () => {
+		this.setState({
+			scoreP1: this.state.currentScoreP1 + this.state.scoreP1,
+			currentScoreP1: 0,
+			turnSwapped: false,
+		});
 	};
 	handleChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 	isPlayerWon = () => {
-		if (this.state.currentScoreP1 > this.state.scoreLimit) {
+		if (
+			this.state.scoreP1 + this.state.currentScoreP1 >
+			this.state.scoreLimit
+		) {
 			console.log('player won');
 			return true;
 		}
@@ -113,6 +124,7 @@ class App extends React.Component {
 			randNum1,
 			randNum2,
 			GameStarted: true,
+			turnSwapped: true,
 		});
 	};
 	render() {
