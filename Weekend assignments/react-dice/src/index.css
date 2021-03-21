@@ -32,7 +32,7 @@ body {
 	background: linear-gradient(rgba(62, 20, 20, 0.4), rgba(62, 20, 20, 0.4)),
 		url('http://static-games.isoftbet.com/games/dev/custom_assets/custom_background_1_f_g1069_c25_r5.jpg')
 			no-repeat center center/cover;
-	/* url('https://free4kwallpapers.com/uploads/originals/2020/03/30/cyan-and-ruby-red-tunnels-wallpaper.jpg')
+	/* url('https://wallpapercave.com/wp/wp7766039.png')
 			no-repeat center center/cover; */
 	/* url('https://thewallpaper.co/wp-content/uploads/2020/07/light-pink-picture-free-background-wallpapers-free-amazing-cool-tablet-smart-phone-4k-high-definition-1920x1200-1.jpg')
 			no-repeat center center/cover; */
@@ -53,14 +53,6 @@ body {
 	z-index: -1;
 } */
 
-.hidden {
-	display: none !important;
-}
-
-.visible {
-	display: block !important;
-}
-
 .wrapper {
 	width: 1000px;
 	position: absolute;
@@ -74,8 +66,8 @@ body {
 	overflow: hidden;
 }
 
-.player-0-panel,
-.player-1-panel {
+.player-1-panel,
+.player-2-panel {
 	width: 50%;
 	float: left;
 	height: 600px;
@@ -204,9 +196,11 @@ i {
 }
 
 .winner {
-	background-color: #f7f7f7;
+	background: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v346-filmful-02-confettibackground_2.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=13f8cba53e301b14d03668c0096891ef')
+		no-repeat center center/cover;
 }
-.winner .player-name {
+
+.player-name-winner {
 	font-weight: 300;
 	color: #eb4d4d;
 }
@@ -279,31 +273,4 @@ i {
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: cubic-bezier(1, 0, 0, 1);
 	-webkit-animation-duration: 500ms;
-}
-
-.help {
-	position: absolute;
-	right: 0;
-	top: 15px;
-}
-
-.help-rules {
-	position: absolute;
-	width: 600px;
-	background: #fff;
-	left: calc(50% - 300px);
-	top: 40px;
-	padding: 30px;
-	line-height: 1.8;
-	border: 1px solid #000;
-	display: none;
-}
-
-.help-rules-close {
-	margin-top: 25px;
-	display: block;
-	text-align: center;
-	text-transform: uppercase;
-	text-decoration: none;
-	font-size: 20px;
 }

@@ -12,6 +12,8 @@ import dice6 from './img/dice-6.png';
 import ScoreInput from './components/ScoreInput';
 class App extends React.Component {
 	state = {
+		isP1Winner: '',
+		isP2Winner: '',
 		disabledPanel: '',
 		activePanel: 'active',
 		turnSwapped: true,
@@ -25,9 +27,14 @@ class App extends React.Component {
 		images: [dice1, dice2, dice3, dice4, dice5, dice6],
 		scoreLimit: 100,
 	};
-
+	isWinnerP1 = () => {
+		if (this.state.activePanel === 'active') return 'Winner!';
+	};
+	isWinnerP2 = () => {
+		if (this.state.disabledPanel === 'active') return 'Winner!';
+	};
 	componentDidMount() {
-		//save initial state for new game
+		//save initial state for a new game
 		this.initialState = this.state;
 	}
 
@@ -35,19 +42,41 @@ class App extends React.Component {
 		return (
 			<div className="wrapper clearfix">
 				<PlayerPanel
-					classes={`player-0-panel ${this.state.activePanel}`}
-					nameId="name-0"
-					scoreId="score-0"
-					currentId="current-0"
-					playerName="Player 1"
-					score={this.state.scoreP1}
-					currentScore={this.state.currentScoreP1}></PlayerPanel>
-				<PlayerPanel
-					classes={`player-1-panel ${this.state.disabledPanel}`}
+					classes={`player-1-panel ${this.state.activePanel} ${
+						this.isPlayerWon() && !this.isWinnerP2() ? 'winner' : ''
+					}`}
 					nameId="name-1"
 					scoreId="score-1"
 					currentId="current-1"
-					playerName="Player 2"
+					playerName={
+						this.isPlayerWon() && !this.isWinnerP2()
+							? this.isWinnerP1()
+							: 'Player 1'
+					}
+					winner={
+						this.isPlayerWon() && !this.isWinnerP2()
+							? 'player-name-winner winner'
+							: ''
+					}
+					score={this.state.scoreP1}
+					currentScore={this.state.currentScoreP1}></PlayerPanel>
+				<PlayerPanel
+					classes={`player-2-panel ${this.state.disabledPanel} ${
+						this.isPlayerWon() && !this.isWinnerP1() ? 'winner' : ''
+					}`}
+					nameId="name-2"
+					scoreId="score-2"
+					currentId="current-2"
+					playerName={
+						this.isPlayerWon() && !this.isWinnerP1()
+							? this.isWinnerP2()
+							: 'Player 2'
+					}
+					winner={
+						this.isPlayerWon() && !this.isWinnerP1()
+							? 'player-name-winner winner'
+							: ''
+					}
 					score={this.state.scoreP2}
 					currentScore={this.state.currentScoreP2}></PlayerPanel>
 
@@ -56,12 +85,7 @@ class App extends React.Component {
 					icon="ion-ios-plus-outline"
 					btnName="New game"
 					onClick={() => {
-						// let prevScore = this.state.scoreLimit;
-						// console.log(prevScore);
 						this.setState(this.initialState);
-						// this.setState({
-						// 	scoreLimit: prevScore,
-						// });
 					}}></Button>
 				{!this.isPlayerWon() && (
 					<Button
@@ -104,12 +128,19 @@ class App extends React.Component {
 			this.setState({ activePanel: 'active', disabledPanel: '' });
 		else this.setState({ activePanel: '', disabledPanel: 'active' });
 	};
+
 	setScoreAndSwapTurn = () => {
-		this.setState({
-			scoreP1: this.state.currentScoreP1 + this.state.scoreP1,
-			currentScoreP1: 0,
-			turnSwapped: false,
-		});
+		this.state.activePanel === 'active'
+			? this.setState({
+					scoreP1: this.state.currentScoreP1 + this.state.scoreP1,
+					currentScoreP1: 0,
+					turnSwapped: false,
+			  })
+			: this.setState({
+					scoreP2: this.state.currentScoreP2 + this.state.scoreP2,
+					currentScoreP2: 0,
+					turnSwapped: false,
+			  });
 		this.activePlayerPanel();
 	};
 	handleChange = (e) => {
@@ -117,29 +148,44 @@ class App extends React.Component {
 	};
 	isPlayerWon = () => {
 		if (
-			this.state.scoreP1 + this.state.currentScoreP1 >
-			this.state.scoreLimit
-		) {
-			console.log('player won');
+			this.state.scoreP1 + this.state.currentScoreP1 >= this.state.scoreLimit ||
+			this.state.scoreP2 + this.state.currentScoreP2 >= this.state.scoreLimit
+		)
 			return true;
-		}
 	};
 	randomNumber = () => {
 		//random number between 1 and 6
 		const randNum1 = Math.floor(Math.random() * (6 - 1 + 1) + 1);
 		const randNum2 = Math.floor(Math.random() * (6 - 1 + 1) + 1);
 		this.setState({
-			currentScoreP1: this.state.currentScoreP1 + randNum1 + randNum2,
 			randNum1,
 			randNum2,
 			GameStarted: true,
 			turnSwapped: true,
 		});
+		this.state.activePanel === 'active'
+			? this.setState({
+					currentScoreP1: this.state.currentScoreP1 + randNum1 + randNum2,
+			  })
+			: this.setState({
+					currentScoreP2: this.state.currentScoreP2 + randNum1 + randNum2,
+			  });
+		this.isDoubleSix(randNum1, randNum2);
 	};
+	isDoubleSix(randNum1, randNum2) {
+		if (randNum1 === 6 && randNum2 === 6) {
+			this.setScoreAndSwapTurn();
+			this.state.activePanel === 'active'
+				? this.setState({
+						scoreP1: 0,
+				  })
+				: this.setState({
+						scoreP2: 0,
+				  });
+		}
+	}
 	render() {
-		// return !this.isPlayerWon() ? this.renderNewGame() : null;
 		return this.renderNewGame();
 	}
 }
-
 export default App;

@@ -4,7 +4,7 @@ class PlayerPanel extends React.Component {
 	render() {
 		return (
 			<div className={this.props.classes}>
-				<div className="player-name" id={this.props.id}>
+				<div className={`player-name ${this.props.winner}`} id={this.props.id}>
 					{this.props.playerName}
 				</div>
 				<div className="player-score" id={this.props.scoreId}>
