@@ -12,6 +12,7 @@ class App extends React.Component {
 	}
 	render() {
 		console.log(this.state.users);
+		console.log(this.state.users);
 		return <div></div>;
 	}
 }
