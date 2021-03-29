@@ -11,9 +11,9 @@ const Paragraph = ({ text, maxLength }) => {
 		<span>
 			{hidden ? `${text.substr(0, maxLength).trim()} ...` : text}
 			{hidden ? (
-				<a onClick={() => setHidden(false)}> read more</a>
+				<a onClick={() => setHidden(false)}> Read more</a>
 			) : (
-				<a onClick={() => setHidden(true)}> read less</a>
+				<a onClick={() => setHidden(true)}> Show less</a>
 			)}
 		</span>
 	);
