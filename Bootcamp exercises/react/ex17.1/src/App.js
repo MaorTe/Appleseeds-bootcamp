@@ -48,7 +48,7 @@ class App extends React.Component {
 		};
 		//in  Update we update the API...
 		const { data } = await API.put(`users/${id}`, updatedItem);
-		//and also the state.
+		//and also the state...
 		const index = this.state.data.findIndex((el) => el.id === id);
 		const newItems = [...this.state.data];
 		const newItem = (newItems[index] = data);
