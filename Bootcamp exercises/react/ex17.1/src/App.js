@@ -25,6 +25,7 @@ class App extends React.Component {
 			}
 			const newItem = { name: value.name };
 			const { data } = await API.post(`/users`, newItem);
+			//must mutate the copy to avoid a bug
 			this.setState((state) => {
 				return { data: [...state.data, data] };
 			});
