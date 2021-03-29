@@ -8,7 +8,7 @@ class App extends React.Component {
 
 	//async function WONT patch all setStates together, under the hood behavior of React
 	async componentDidMount() {
-		this.setState({ isloading: true });
+		this.setState({ isLoading: true });
 		try {
 			const { data } = await API.get(`/users`);
 			this.setState({ data });
@@ -21,7 +21,7 @@ class App extends React.Component {
 	create = async (value) => {
 		try {
 			if (value.name.length < 6) {
-				throw new Error('must be more thab 5 letters');
+				throw new Error('must be more than 5 letters');
 			}
 			const newItem = { name: value.name };
 			const { data } = await API.post(`/users`, newItem);
@@ -52,7 +52,7 @@ class App extends React.Component {
 		//and also the state...
 		const index = this.state.data.findIndex((el) => el.id === id);
 		const newItems = [...this.state.data];
-		const newItem = (newItems[index] = data);
+		newItems[index] = data;
 		this.setState({ data: newItems });
 	};
 	render() {
