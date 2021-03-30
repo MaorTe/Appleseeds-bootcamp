@@ -18,8 +18,8 @@ const App = () => {
 	};
 	// delete
 	const handleDelete = () => {
-		const itemsLeft = listItems.filter((item) => !item.isChecked);
-		setListItems(itemsLeft);
+		const filtered = listItems.filter((item) => !item.isChecked);
+		setListItems(filtered);
 	};
 	//reset
 	const handleReset = () => {
