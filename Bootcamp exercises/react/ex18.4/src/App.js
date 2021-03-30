@@ -23,7 +23,7 @@ const App = () => {
 	};
 	//reset
 	const handleReset = () => {
-		const temp = listItems.map((item) => {
+		const temp = initItems.map((item) => {
 			return { ...item, isChecked: false };
 		});
 		setListItems(temp);
