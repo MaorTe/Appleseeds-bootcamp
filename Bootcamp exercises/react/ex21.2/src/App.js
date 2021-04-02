@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import './App.css';
+// @ts-ignore
 import video from './videos/video.mp4';
 const App = () => {
 	const vidRef = useRef(null);
