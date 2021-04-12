@@ -1,5 +1,4 @@
 const yargs = require('yargs');
-// node calculator.js add --num1=1 --num2=2
 yargs.command({
 	command: 'add',
 	describe: 'addition',
@@ -39,5 +38,7 @@ yargs.command({
 	},
 });
 
+// node ex4.js add --num1=1 --num2=2
+// node ex4.js sub --num1=1 --num2=2
 console.log(yargs.argv);
 yargs.parse();
