@@ -6,11 +6,13 @@ yargs.command({
 		num1: {
 			describe: 'num1',
 			demandOptions: true,
+			// @ts-ignore
 			type: 'integer',
 		},
 		num2: {
 			describe: 'num2',
 			demandOptions: true,
+			// @ts-ignore
 			type: 'integer',
 		},
 	},
@@ -25,11 +27,13 @@ yargs.command({
 		num1: {
 			describe: 'num1',
 			demandOptions: true,
+			// @ts-ignore
 			type: 'integer',
 		},
 		num2: {
 			describe: 'num2',
 			demandOptions: true,
+			// @ts-ignore
 			type: 'integer',
 		},
 	},
