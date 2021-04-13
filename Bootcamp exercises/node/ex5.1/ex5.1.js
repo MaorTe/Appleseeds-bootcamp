@@ -24,7 +24,7 @@ const add = (user) => {
 		(el) => el.email === user.email || el.name === user.name
 	);
 	if (duplicateUser) {
-		console.log('email alrerady exists');
+		console.log('email already exists');
 	} else {
 		usersData.push(user);
 		save(usersData);
@@ -67,7 +67,7 @@ const read = (id) => {
 	if (user) {
 		console.log(user);
 	} else {
-		console.log('user doesnt exsits');
+		console.log("user doesn't exists");
 	}
 };
 
