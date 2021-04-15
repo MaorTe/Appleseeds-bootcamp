@@ -1,0 +1,16 @@
+[
+	{
+		"id": "1",
+		"title": "Zack Snyder's Justice League",
+		"rating": "8.6",
+		"genre": "Action | Adventure | Fantasy | Science Fiction",
+		"length": "90mins"
+	},
+	{
+		"id": "2",
+		"title": "Zack Snyder's Justice League2",
+		"rating": "7.6",
+		"genre": "Action | Adventure",
+		"length": "100mins"
+	}
+]
