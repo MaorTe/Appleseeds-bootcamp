@@ -10,7 +10,7 @@ app.get('/api/movies', (req, res) => {
 	res.status(200).send(movies);
 });
 
-//Add a movie
+//add a movie
 app.post('/api/movies', (req, res) => {
 	const newMovie = add(req.body);
 	res.status(200).send(newMovie);
