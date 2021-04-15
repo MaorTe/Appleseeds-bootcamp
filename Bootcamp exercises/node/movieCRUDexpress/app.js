@@ -12,8 +12,12 @@ app.get('/api/movies', (req, res) => {
 
 //add a movie
 app.post('/api/movies', (req, res) => {
-	const newMovie = add(req.body);
-	res.status(200).send(newMovie);
+	try {
+		const newMovie = add(req.body);
+		res.status(200).send(newMovie);
+	} catch (e) {
+		res.status(200).send({ error: e.message });
+	}
 });
 
 //get a single movie
