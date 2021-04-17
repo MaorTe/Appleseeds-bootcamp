@@ -1,74 +1,147 @@
 const fs = require('fs');
 
 //---- save ----
-const save = (movies) => {
-	const dataJSON = JSON.stringify(movies);
-	fs.writeFileSync('./Database/movies.json', dataJSON);
+const save = (users) => {
+	const dataJSON = JSON.stringify(users);
+	fs.writeFileSync('./database/users.json', dataJSON);
 };
 
 //---- add ----
-const add = (movie) => {
-	const moviesData = findMovies();
-	const duplicateMovie = moviesData.find((el) => el.id === movie.id);
-	if (duplicateMovie) {
-		console.log('Movie id already exists');
+const add = (user) => {
+	const usersData = findUsers();
+	const duplicateUser = usersData.find((el) => el.id === user.id);
+	if (duplicateUser) {
+		console.log('User id already exists');
 	} else {
-		moviesData.push(movie);
-		save(moviesData);
+		usersData.push(user);
+		save(usersData);
 	}
 };
 //---- remove ----
 const remove = (id) => {
-	const moviesData = findMovies();
-	const removeMovie = moviesData.filter((el) => el.id !== id);
+	const usersData = findUsers();
+	const removeUser = usersData.filter((el) => el.id !== id);
 
-	if (moviesData.length !== removeMovie.length) {
-		save(removeMovie);
+	if (usersData.length !== removeUser.length) {
+		save(removeUser);
 	} else {
-		console.log("couldn't find movie");
+		console.log("couldn't find user");
 	}
 };
 
-//---- update ----
-const update = (id, title, rating, genre, length) => {
-	const currentMoviesData = findMovies();
-	const movieIndex = currentMoviesData.findIndex((el) => el.id === id);
-	const movie = currentMoviesData.find((el) => el.id === id);
+//---- cash to deposit ----
+const cashToDeposit = (id, cash) => {
+	const currentUsersData = findUsers();
+	const userIndex = currentUsersData.findIndex((el) => el.id === id);
+	const user = currentUsersData.find((el) => el.id === id);
 
-	if (movieIndex !== -1) {
-		const editedMovie = {
-			...movie,
-			title: title || movie.title,
-			rating: rating || movie.rating,
-			genre: genre || movie.genre,
-			length: length || movie.length,
+	if (userIndex !== -1) {
+		const editedUser = {
+			...user,
+			cash: +user.cash + +cash,
 		};
-		currentMoviesData.splice(movie, 1, editedMovie);
-		save(currentMoviesData);
+		currentUsersData.splice(user, 1, editedUser);
+		save(currentUsersData);
+	} else {
+		return 'user not found';
+	}
+};
+//---- credit to update ----
+const updateCredit = (id, credit) => {
+	const currentUsersData = findUsers();
+	const userIndex = currentUsersData.findIndex((el) => el.id === id);
+	const user = currentUsersData.find((el) => el.id === id);
+
+	if (userIndex !== -1) {
+		const editedUser = {
+			...user,
+			credit: credit > 0 ? +credit || +user.credit : 0,
+		};
+		currentUsersData.splice(user, 1, editedUser);
+		save(currentUsersData);
+	} else {
+		return 'user not found';
+	}
+};
+//---- withdraw ----
+const withdraw = (id, cash) => {
+	const currentUsersData = findUsers();
+	const userIndex = currentUsersData.findIndex((el) => el.id === id);
+	const user = currentUsersData.find((el) => el.id === id);
+
+	if (user.cash > 0) {
+		if (cash > user.cash + user.credit)
+			return `cant withdraw more than ${user.cash + user.credit}`;
+		user.cash -= cash;
+		if (user.cash < 0) {
+			user.credit += user.cash;
+		}
+	} else if (user.credit > 0 && user.cash <= 0) {
+		if (user.credit - cash < 0) return `cant withdraw more than ${user.credit}`;
+		user.credit -= cash;
+		user.cash -= cash;
+	} else return 'cannot withdraw anymore';
+
+	if (userIndex !== -1) {
+		const editedUser = {
+			...user,
+			cash: user.cash,
+			credit: user.credit,
+		};
+		currentUsersData.splice(user, 1, editedUser);
+		save(currentUsersData);
+	} else {
+		return 'user not found';
+	}
+	return user.cash;
+};
+const transferCredit = (uid1, uid2, cash) => {
+	const uid1CashLeft = withdraw(uid1, cash);
+	console.log(uid1CashLeft);
+	cashToDeposit(uid2, uid1CashLeft);
+};
+//---- update ----
+const update = (id, cash) => {
+	const currentUsersData = findUsers();
+	const userIndex = currentUsersData.findIndex((el) => el.id === id);
+	const user = currentUsersData.find((el) => el.id === id);
+
+	if (userIndex !== -1) {
+		const editedUser = {
+			...user,
+			cash: cash || user.cash,
+		};
+		currentUsersData.splice(user, 1, editedUser);
+		save(currentUsersData);
+	} else {
 	}
 };
 
-const findMovies = () => {
+const findUsers = () => {
 	try {
-		const dataJSON = fs.readFileSync('./Database/movies.json', 'utf-8');
+		const dataJSON = fs.readFileSync('./database/users.json', 'utf-8');
 		const data = JSON.parse(dataJSON);
 		return data;
 	} catch (e) {
 		return [];
 	}
 };
-const findMovie = (id) => {
-	const moviesData = findMovies();
-	const movie = moviesData.find((el) => el.id === id);
-	if (movie) {
-		return movie;
+const findUser = (id) => {
+	const usersData = findUsers();
+	const user = usersData.find((el) => el.id === id);
+	if (user) {
+		return user;
 	} else {
-		console.log("movie doesn't exists");
+		console.log("user doesn't exists");
 	}
 };
 module.exports = {
-	findMovies,
-	findMovie,
+	findUsers,
+	findUser,
+	cashToDeposit,
+	updateCredit,
+	withdraw,
+	transferCredit,
 	add,
 	remove,
 	update,
