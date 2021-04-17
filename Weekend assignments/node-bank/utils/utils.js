@@ -93,7 +93,7 @@ const withdraw = (id, cash) => {
 	} else {
 		return 'user not found';
 	}
-	return user.cash;
+	return user;
 };
 const transferCredit = (uid1, uid2, cash) => {
 	const uid1CashLeft = withdraw(uid1, cash);
