@@ -15,8 +15,12 @@ app.use(express.json());
 
 //get all users
 app.get('/api/users', (req, res) => {
-	const users = findUsers();
-	res.status(200).send(users);
+	try {
+		const users = findUsers();
+		res.status(200).send(users);
+	} catch (e) {
+		res.status(400).send({ error: e.message });
+	}
 });
 
 //add a user
@@ -32,7 +36,6 @@ app.post('/api/users', (req, res) => {
 //fetch users by amount of cash they have
 app.get('/api/users/filterbycash', (req, res) => {
 	const filterByCash = moreThan500('100');
-	console.log(filterByCash);
 	res.status(200).send(filterByCash);
 });
 
