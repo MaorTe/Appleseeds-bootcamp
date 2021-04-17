@@ -22,9 +22,10 @@ const addUser = (user) => {
 const cashToDeposit = (id, cash) => {
 	const currentUsersData = findUsers();
 	const userIndex = currentUsersData.findIndex((el) => el.id === id);
-	console.log(userIndex);
 	const user = currentUsersData.find((el) => el.id === id);
-	console.log(user);
+	if (!user.isActive) {
+		return 'user account is not active';
+	}
 	if (userIndex !== -1) {
 		const editedUser = {
 			...user,
@@ -33,10 +34,10 @@ const cashToDeposit = (id, cash) => {
 		};
 		currentUsersData.splice(userIndex, 1, editedUser);
 		save(currentUsersData);
-		console.log(currentUsersData);
 	} else {
 		return 'user not found';
 	}
+
 	return user;
 };
 //---- credit to update ----
@@ -44,7 +45,9 @@ const updateCredit = (id, credit) => {
 	const currentUsersData = findUsers();
 	const userIndex = currentUsersData.findIndex((el) => el.id === id);
 	const user = currentUsersData.find((el) => el.id === id);
-
+	if (!user.isActive) {
+		return 'user account is not active';
+	}
 	if (userIndex !== -1) {
 		const editedUser = {
 			...user,
@@ -62,6 +65,9 @@ const withdraw = (id, cash) => {
 	const userIndex = currentUsersData.findIndex((el) => el.id === id);
 	const user = currentUsersData.find((el) => el.id === id);
 
+	if (!user.isActive) {
+		return 'user account is not active';
+	}
 	if (user.cash > 0) {
 		if (cash > user.cash + user.credit)
 			return `cant withdraw more than ${user.cash + user.credit}`;
@@ -89,8 +95,14 @@ const withdraw = (id, cash) => {
 	return user;
 };
 const transferCredit = (uid1, uid2, cash) => {
-	const uid1Status = withdraw(uid1, cash);
-	if (typeof uid1Status !== 'string') return cashToDeposit(uid2, cash);
+	const currentUsersData = findUsers();
+	const user2 = currentUsersData.find((el) => el.id === uid2);
+	if (user2.isActive) {
+		const uid1Status = withdraw(uid1, cash);
+		if (typeof uid1Status !== 'string') return cashToDeposit(uid2, cash);
+	} else {
+		return 'second user account is not active, cant transfer';
+	}
 };
 
 const findUsers = () => {
@@ -108,14 +120,13 @@ const findUser = (id) => {
 	if (user) {
 		return user;
 	} else {
-		console.log("user doesn't exists");
+		return "user doesn't exists";
 	}
 };
 
 //---- filter by amount of cash ----
 const moreThan500 = (cash) => {
 	const usersData = findUsers();
-	console.log(usersData);
 	const cash500Plus = usersData.filter((el) => el.cash >= cash);
 	if (usersData.length !== cash500Plus.length) {
 		return cash500Plus;
@@ -123,7 +134,6 @@ const moreThan500 = (cash) => {
 		console.log(`no users with cash lower than ${cash}`);
 	}
 };
-
 module.exports = {
 	findUsers,
 	findUser,
