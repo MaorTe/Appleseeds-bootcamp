@@ -43,7 +43,7 @@ const update = (id, title, rating, genre, length) => {
 			genre: genre || movie.genre,
 			length: length || movie.length,
 		};
-		currentMoviesData.splice(movie, 1, editedMovie);
+		currentMoviesData.splice(movieIndex, 1, editedMovie);
 		save(currentMoviesData);
 	}
 };
