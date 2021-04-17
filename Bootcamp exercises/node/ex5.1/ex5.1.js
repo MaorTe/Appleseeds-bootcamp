@@ -55,7 +55,7 @@ const update = (id, name, email) => {
 			name: name || user.name,
 			email: email || user.email,
 		};
-		currentUsersData.splice(user, 1, editedUser);
+		currentUsersData.splice(userIndex, 1, editedUser);
 		save(currentUsersData);
 	}
 };
