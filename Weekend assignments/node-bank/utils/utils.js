@@ -6,8 +6,8 @@ const save = (users) => {
 	fs.writeFileSync('./database/users.json', dataJSON);
 };
 
-//---- add ----
-const add = (user) => {
+//---- add new user----
+const addUser = (user) => {
 	const usersData = findUsers();
 	const duplicateUser = usersData.find((el) => el.id === user.id);
 	if (duplicateUser) {
@@ -17,34 +17,27 @@ const add = (user) => {
 		save(usersData);
 	}
 };
-//---- remove ----
-const remove = (id) => {
-	const usersData = findUsers();
-	const removeUser = usersData.filter((el) => el.id !== id);
-
-	if (usersData.length !== removeUser.length) {
-		save(removeUser);
-	} else {
-		console.log("couldn't find user");
-	}
-};
 
 //---- cash to deposit ----
 const cashToDeposit = (id, cash) => {
 	const currentUsersData = findUsers();
 	const userIndex = currentUsersData.findIndex((el) => el.id === id);
+	console.log(userIndex);
 	const user = currentUsersData.find((el) => el.id === id);
-
+	console.log(user);
 	if (userIndex !== -1) {
 		const editedUser = {
 			...user,
 			cash: +user.cash + +cash,
+			credit: +user.credit,
 		};
-		currentUsersData.splice(user, 1, editedUser);
+		currentUsersData.splice(userIndex, 1, editedUser);
 		save(currentUsersData);
+		console.log(currentUsersData);
 	} else {
 		return 'user not found';
 	}
+	return user;
 };
 //---- credit to update ----
 const updateCredit = (id, credit) => {
@@ -57,7 +50,7 @@ const updateCredit = (id, credit) => {
 			...user,
 			credit: credit > 0 ? +credit || +user.credit : 0,
 		};
-		currentUsersData.splice(user, 1, editedUser);
+		currentUsersData.splice(userIndex, 1, editedUser);
 		save(currentUsersData);
 	} else {
 		return 'user not found';
@@ -88,7 +81,7 @@ const withdraw = (id, cash) => {
 			cash: user.cash,
 			credit: user.credit,
 		};
-		currentUsersData.splice(user, 1, editedUser);
+		currentUsersData.splice(userIndex, 1, editedUser);
 		save(currentUsersData);
 	} else {
 		return 'user not found';
@@ -96,25 +89,8 @@ const withdraw = (id, cash) => {
 	return user;
 };
 const transferCredit = (uid1, uid2, cash) => {
-	const uid1CashLeft = withdraw(uid1, cash);
-	console.log(uid1CashLeft);
-	cashToDeposit(uid2, uid1CashLeft);
-};
-//---- update ----
-const update = (id, cash) => {
-	const currentUsersData = findUsers();
-	const userIndex = currentUsersData.findIndex((el) => el.id === id);
-	const user = currentUsersData.find((el) => el.id === id);
-
-	if (userIndex !== -1) {
-		const editedUser = {
-			...user,
-			cash: cash || user.cash,
-		};
-		currentUsersData.splice(user, 1, editedUser);
-		save(currentUsersData);
-	} else {
-	}
+	const uid1Status = withdraw(uid1, cash);
+	if (typeof uid1Status !== 'string') return cashToDeposit(uid2, cash);
 };
 
 const findUsers = () => {
@@ -135,6 +111,22 @@ const findUser = (id) => {
 		console.log("user doesn't exists");
 	}
 };
+
+//---- filter by amount of cash ----
+const moreThan500 = (cash) => {
+	const usersData = findUsers();
+	console.log(usersData);
+	const cash500Plus = usersData.filter((el) => el.cash >= cash);
+	// console.log(cash500Plus);
+	// console.log(usersData.length);
+	// console.log(cash500Plus.length);
+	if (usersData.length !== cash500Plus.length) {
+		return cash500Plus;
+	} else {
+		console.log(`no users with cash lower than ${cash}`);
+	}
+};
+
 module.exports = {
 	findUsers,
 	findUser,
@@ -142,7 +134,6 @@ module.exports = {
 	updateCredit,
 	withdraw,
 	transferCredit,
-	add,
-	remove,
-	update,
+	addUser,
+	moreThan500,
 };

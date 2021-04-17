@@ -2,14 +2,13 @@ const express = require('express');
 const app = express();
 const {
 	findUsers,
-	add,
+	addUser,
 	findUser,
-	remove,
-	update,
 	cashToDeposit,
 	updateCredit,
 	withdraw,
 	transferCredit,
+	moreThan500,
 } = require('./utils/utils');
 
 app.use(express.json());
@@ -23,11 +22,18 @@ app.get('/api/users', (req, res) => {
 //add a user
 app.post('/api/users', (req, res) => {
 	try {
-		const newUser = add(req.body);
+		const newUser = addUser(req.body);
 		res.status(200).send(newUser);
 	} catch (e) {
-		res.status(200).send({ error: e.message });
+		res.status(400).send({ error: e.message });
 	}
+});
+
+//fetch users by amount of cash they have
+app.get('/api/users/filterbycash', (req, res) => {
+	const filterByCash = moreThan500('100');
+	console.log(filterByCash);
+	res.status(200).send(filterByCash);
 });
 
 //get a single user
@@ -46,34 +52,20 @@ app.put('/api/users/cash/:id', (req, res) => {
 //update a user credit
 app.put('/api/users/credit/:id', (req, res) => {
 	const { id } = req.params;
-	const updatedCredit = updateCredit(id, '110');
+	const updatedCredit = updateCredit(id, '100');
 	res.status(200).send(updatedCredit);
 });
 //withdraw cash from a user
 app.put('/api/users/withdraw/:id', (req, res) => {
 	const { id } = req.params;
-	const updatedCredit = withdraw(id, '300');
+	const updatedCredit = withdraw(id, '250');
 	res.status(200).send(updatedCredit);
 });
 //transfer cash from user1 to user2
 app.put('/api/users/transfer/:uid1&:uid2', (req, res) => {
 	const { uid1, uid2 } = req.params;
-	const transferedCredit = transferCredit(uid1, uid2, '300');
-	res.status(200).send(transferedCredit);
-});
-
-//update an existing user
-app.put('/api/users/:id', (req, res) => {
-	const { id } = req.params;
-	const userToUpdate = update(id, 'aaa');
-	res.status(200).send(userToUpdate);
-});
-
-//deletes an existing user
-app.delete('/api/users/:id', (req, res) => {
-	const { id } = req.params;
-	const userToRemove = remove(id);
-	res.status(200).send(userToRemove);
+	const transferredCredit = transferCredit(uid1, uid2, '100');
+	res.status(200).send(transferredCredit);
 });
 
 const PORT = 3000;

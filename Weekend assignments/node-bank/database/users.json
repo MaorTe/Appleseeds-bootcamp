@@ -1,1 +1,5 @@
-[{"id":"d95a2581-6298-4c6c-b369-3219bf15a98d","cash":null,"credit":"0"},{"id":"d95a2581-6298-4c6c-b369-3219bf15a98d","cash":"0","credit":"0"},{"id":"09d315a7-752e-4b3f-905a-4487981bd6a7","cash":"0","credit":"0"}]
+[
+	{ "id": "06f2ec1b-fee6-450d-9531-3d9b16f8f37a", "cash": 500, "credit": 0 },
+	{ "id": "d95a2581-6298-4c6c-b369-3219bf15a98d", "cash": 501, "credit": 72 },
+	{ "id": "09d315a7-752e-4b3f-905a-4487981bd6a7", "cash": 56, "credit": 1 }
+]
