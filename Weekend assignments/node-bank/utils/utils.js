@@ -117,9 +117,6 @@ const moreThan500 = (cash) => {
 	const usersData = findUsers();
 	console.log(usersData);
 	const cash500Plus = usersData.filter((el) => el.cash >= cash);
-	// console.log(cash500Plus);
-	// console.log(usersData.length);
-	// console.log(cash500Plus.length);
 	if (usersData.length !== cash500Plus.length) {
 		return cash500Plus;
 	} else {
