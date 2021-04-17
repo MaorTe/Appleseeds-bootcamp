@@ -23,7 +23,7 @@ app.get('/api/users', (req, res) => {
 	}
 });
 
-//add a user
+//add a new user
 app.post('/api/users', (req, res) => {
 	try {
 		const newUser = addUser(req.body);
