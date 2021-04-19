@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { tmdb } = require('./keys');
+const { tmdb } = require('./config/keys');
 
 const popularMovies = async () => {
 	const data = await axios.get(
