@@ -32,6 +32,7 @@ app.use(express.static(publicDirectory));
 
 app.get('/api/movies/popular', async (req, res) => {
 	try {
+		// @ts-ignore
 		const popular = await popularMovieData();
 		res.send(popular.data);
 	} catch (e) {
