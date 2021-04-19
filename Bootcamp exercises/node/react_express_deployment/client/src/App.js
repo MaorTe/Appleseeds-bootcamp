@@ -8,10 +8,11 @@ const App = () => {
 	// const [fetched, setFetched] = useState(false);
 	useEffect(() => {
 		const fetchData = async () => {
+			const movieData = await api.get('movies/popular');
+			console.log(movieData);
 			const { data } = await api.get('test');
 			setUserData(data);
 			console.log(data);
-			// setUserData(JSON.stringify(data));
 		};
 		fetchData();
 	}, []);

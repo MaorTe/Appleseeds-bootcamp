@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const path = require('path');
 const data = require('./database/users.json');
+const popularMovieData = require('./tmdb');
 const {
 	findUsers,
 	addUser,
@@ -15,6 +17,27 @@ const {
 
 app.use(express.json());
 app.use(cors());
+
+//will be either Production or Development
+// console.log(process.env.NODE_ENV);
+
+//this is where heroku will invoke our interface
+const publicDirectory = path.join(__dirname, 'client/build');
+
+//showing to express where is my static directory ,cuz client is static it doesnt change.
+//the static files, once built in heroku are going to be inside 'client/build'.
+//static is just one big JS HTML CSS files its not dynamically changing like the database etc
+//thus we dont need to write 'npm run build' heroku does this for us
+app.use(express.static(publicDirectory));
+
+app.get('/api/movies/popular', async (req, res) => {
+	try {
+		const popular = await popularMovieData();
+		res.send(popular.data);
+	} catch (e) {
+		console.log(e);
+	}
+});
 
 app.get('/api/test', (req, res) => {
 	res.send(data);
@@ -83,7 +106,8 @@ app.put('/api/users/transfer/:uid1&:uid2', (req, res) => {
 	res.status(200).send(transferredCredit);
 });
 
-const PORT = 5000;
+//not in local host anymore, we have to change the port using Environment variable
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
 	console.log('listening...');
 });
