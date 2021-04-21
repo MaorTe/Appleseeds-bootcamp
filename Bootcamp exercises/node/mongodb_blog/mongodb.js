@@ -1,7 +1,7 @@
 //storing whats comes back from mongodb library, its an object
 // const mongodb = require('mongodb');
 
-//to initialize the connection with need the mongoclient
+//to initialize the connection with need the mongo client
 //it will give us access to connect to the DB so we can perform our basic CRUD operations
 // const MongoClient = mongodb.MongoClient;
 
