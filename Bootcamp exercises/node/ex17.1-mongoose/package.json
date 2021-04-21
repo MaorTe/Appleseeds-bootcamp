@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.5",
+    "validator": "^13.6.0"
+  },
+  "name": "ex17.1-mongoose",
+  "version": "1.0.0",
+  "main": "mongoose.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
