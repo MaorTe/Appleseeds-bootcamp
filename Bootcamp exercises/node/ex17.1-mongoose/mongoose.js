@@ -57,7 +57,7 @@ const Product = mongoose.model('Product', {
 					throw new Error('is not a valid israeli phone number!');
 				}
 			},
-			required: [true, 'User phone number required'],
+			required: [true, 'phone number required'],
 		},
 		dateAdded: {
 			type: Date,
@@ -77,7 +77,7 @@ const product = new Product({
 	category: 'category1',
 	isActive: true,
 	details: {
-		description: 'this is a string with more than 10 letters',
+		description: 'this is a string with more than 10 letters(1)',
 		price: 20,
 		// discount:30
 		images: ['https://picsum.photos/200/300', 'https://picsum.photos/200/300'],
@@ -89,20 +89,20 @@ const product1 = new Product({
 	category: 'category2',
 	isActive: true,
 	details: {
-		description: 'this is a string with more than 10 letters',
+		description: 'this is a string with more than 10 letters(2)',
 		price: 10,
 		discount: 30,
 		images: ['https://picsum.photos/200/300', 'https://picsum.photos/200/300'],
-		phone: '+972278901689',
+		phone: '+972548901689',
 		date: '10/10/2021',
 	},
 });
 const product2 = new Product({
-	name: 'name1',
-	category: 'category1',
-	isActive: true,
+	name: 'name3',
+	category: 'category3',
+	isActive: false,
 	details: {
-		description: 'this is a string with more than 10 letters',
+		description: 'this is a string with more than 10 letters(3)',
 		price: 220,
 		discount: 50,
 		images: ['https://picsum.photos/200/300', 'https://picsum.photos/200/300'],
@@ -118,18 +118,20 @@ product
 	.catch((error) => {
 		console.log('Error!', error);
 	});
+
 product1
 	.save()
 	.then(() => {
-		console.log(product);
+		console.log(product1);
 	})
 	.catch((error) => {
 		console.log('Error!', error);
 	});
+
 product2
 	.save()
 	.then(() => {
-		console.log(product);
+		console.log(product2);
 	})
 	.catch((error) => {
 		console.log('Error!', error);
