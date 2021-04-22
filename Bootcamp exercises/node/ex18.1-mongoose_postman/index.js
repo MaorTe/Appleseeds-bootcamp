@@ -17,9 +17,9 @@ app.get('/api/products', async (req, res) => {
 });
 //get all products
 app.get('/api/products', async (req, res) => {
-	//empty '{}' will find and fetch all users
-	const products = await Product.find({});
 	try {
+		//empty '{}' will find and fetch all users
+		const products = await Product.find({});
 		res.status(201).send(products);
 	} catch (e) {
 		//internal server error
@@ -27,40 +27,49 @@ app.get('/api/products', async (req, res) => {
 	}
 });
 
-//get all products
+//get a specific product
 app.post('/api/products/:id', async (req, res) => {
 	const { id } = req.params;
-	const product = await Product.findById({ id });
 	try {
-		if (!product) res.status(404).send();
+		const product = await Product.findById({ id });
+		if (!product) {
+			res.status(404).send();
+		}
 		res.send(200).send(product);
 	} catch (e) {
 		res.status(500).send();
 	}
 });
 
-// //get a single movie
-// app.get('/api/movies/:id', (req, res) => {
-// 	const { id } = req.params;
-// 	const movie = findMovie(id);
-// 	res.status(200).send(movie);
-// });
+//get all products that are active
+app.get('/api/products', async (req, res) => {
+	try {
+		//empty '{}' will find and fetch all users
+		const products = await Product.find({
+			isActive: true,
+		});
+		res.status(201).send(products);
+	} catch (e) {
+		//internal server error
+		res.status(500).send();
+	}
+});
 
-// //update an existing movie
-// app.put('/api/movies/:id', (req, res) => {
-// 	const { id } = req.params;
-// 	const movieToUpdate = update(id, 'aaa');
-// 	res.status(200).send(movieToUpdate);
-// });
+//get all products with a specific price range
+app.get('/api/products', async (req, res) => {
+	try {
+		//empty '{}' will find and fetch all users
+		const products = await Product.find({
+			products: { price: { $gte: 50, $lte: 500 } },
+		});
+		res.status(201).send(products);
+	} catch (e) {
+		//internal server error
+		res.status(500).send();
+	}
+});
 
-// //deletes an existing movie
-// app.delete('/api/movies/:id', (req, res) => {
-// 	const { id } = req.params;
-// 	const movieToRemove = remove(id);
-// 	res.status(200).send(movieToRemove);
-// });
-
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
 	console.log('listening...');
 });
