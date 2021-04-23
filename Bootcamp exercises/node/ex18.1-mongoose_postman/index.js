@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 //add a product
-app.get('/api/products', async (req, res) => {
+app.post('/api/products', async (req, res) => {
 	const product = new Product(req.body);
 	try {
 		await product.save();
@@ -28,7 +28,7 @@ app.get('/api/products', async (req, res) => {
 });
 
 //get a specific product
-app.post('/api/products/:id', async (req, res) => {
+app.get('/api/products/:id', async (req, res) => {
 	const { id } = req.params;
 	try {
 		const product = await Product.findById({ id });
