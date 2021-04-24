@@ -58,13 +58,11 @@ app.get('/api/products', async (req, res) => {
 //get all products with a specific price range
 app.get('/api/products', async (req, res) => {
 	try {
-		//empty '{}' will find and fetch all users
 		const products = await Product.find({
 			products: { price: { $gte: 50, $lte: 500 } },
 		});
 		res.status(201).send(products);
 	} catch (e) {
-		//internal server error
 		res.status(500).send();
 	}
 });
