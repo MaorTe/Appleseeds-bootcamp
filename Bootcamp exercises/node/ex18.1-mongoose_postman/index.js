@@ -29,13 +29,14 @@ app.get('/api/products', async (req, res) => {
 
 //get a specific product
 app.get('/api/products/:id', async (req, res) => {
-	const { id } = req.params;
+	// const { id } = req.params;
+	const _id = req.params.id;
 	try {
-		const product = await Product.findById({ id });
+		const product = await Product.findById(_id);
 		if (!product) {
-			res.status(404).send();
+			res.status(404).send({ error: 'No product found' });
 		}
-		res.send(200).send(product);
+		res.status(200).send(product);
 	} catch (e) {
 		res.status(500).send();
 	}
@@ -43,11 +44,14 @@ app.get('/api/products/:id', async (req, res) => {
 
 //get all products that are active
 app.get('/api/products', async (req, res) => {
+	const key = Object.keys(req.query)[0];
+	const value = Object.values(req.query)[0];
 	try {
 		//empty '{}' will find and fetch all users
-		const products = await Product.find({
-			isActive: true,
-		});
+		// const products = await Product.find({
+		// 	isActive: true,
+		// });
+		const products = await Product.find({ [key]: value });
 		res.status(201).send(products);
 	} catch (e) {
 		//internal server error
@@ -57,9 +61,10 @@ app.get('/api/products', async (req, res) => {
 
 //get all products with a specific price range
 app.get('/api/products', async (req, res) => {
+	const { minprice, maxprice } = req.query;
 	try {
 		const products = await Product.find({
-			products: { price: { $gte: 50, $lte: 500 } },
+			'details.price': { $gte: minprice, $lte: maxprice },
 		});
 		res.status(201).send(products);
 	} catch (e) {
