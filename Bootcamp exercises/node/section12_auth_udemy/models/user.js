@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const Task = require('../models/task');
+
 //middleware is to run some functions before or after given events occur for example validate,save...
 //mongoose converts the second argument to a schema and in order to take advantage of the middleware functionality we have to create the schema first and then pass that in
 const userSchema = new mongoose.Schema({
@@ -53,6 +55,14 @@ const userSchema = new mongoose.Schema({
 			},
 		},
 	],
+});
+
+//virtual property is not actual data stored in the DB, its a relationship between 2 entities in this case between our user and task
+//its virtual cuz we r not actually changing what we stored for the user doc,its just a way for mongoose to figure out how these 2 things are related
+userSchema.virtual('tasks', {
+	ref: 'Task',
+	localField: '_id',
+	foreignField: 'owner',
 });
 
 userSchema.methods.toJSON = function () {
@@ -108,6 +118,12 @@ userSchema.pre('save', async function (next) {
 		user.password = await bcrypt.hash(user.password, 8);
 	}
 
+	next();
+});
+
+userSchema.pre('remove', async function (next) {
+	const user = this;
+	await Task.deleteMany({ owner: user._id });
 	next();
 });
 //passing the schema as a second argument to model
