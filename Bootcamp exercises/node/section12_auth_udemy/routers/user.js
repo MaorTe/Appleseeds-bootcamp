@@ -4,7 +4,7 @@ const auth = require('../middleware/auth');
 const router = new express.Router();
 
 //hash is good for when a user is created
-router.post('/users', async (req, res) => {
+router.post('/api/users', async (req, res) => {
 	const user = new User(req.body);
 
 	try {
@@ -19,7 +19,7 @@ router.post('/users', async (req, res) => {
 
 //the login/signup request will send back an auth token, JWT token, and then we can use it later on for other requests to be authenticated
 //for example edit user profile,create new task...
-router.post('/users/login', async (req, res) => {
+router.post('/api/users/login', async (req, res) => {
 	try {
 		//we will create 'findByCredentials' in the user model
 		const user = await User.findByCredentials(
@@ -35,7 +35,7 @@ router.post('/users/login', async (req, res) => {
 	}
 });
 
-router.post('/users/logout', auth, async (req, res) => {
+router.post('/api/users/logout', auth, async (req, res) => {
 	try {
 		//we already have access to req.user so all we change is the token
 		req.user.tokens = req.user.tokens.filter((token) => {
@@ -49,7 +49,7 @@ router.post('/users/logout', auth, async (req, res) => {
 	}
 });
 
-router.post('/users/logoutAll', auth, async (req, res) => {
+router.post('/api/users/logoutAll', auth, async (req, res) => {
 	try {
 		req.user.tokens = [];
 		await req.user.save();
@@ -63,7 +63,7 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 //With middleware:    new request → do something → run route handler
 
 //after login/signup the client takes this auth token and providing it with the request its trying to perform
-router.get('/users/me', auth, async (req, res) => {
+router.get('/api/users/me', auth, async (req, res) => {
 	// try {const users = await User.find({});
 	// 	res.send(users); } catch (e) {res.status(500).send();}
 	//we dont need this ^ we passed it through the request
@@ -88,7 +88,7 @@ router.get('/users/me', auth, async (req, res) => {
 // });
 
 //the next one is good for when a user is updated
-router.patch('/users/me', auth, async (req, res) => {
+router.patch('/api/users/me', auth, async (req, res) => {
 	const updates = Object.keys(req.body);
 	const allowedUpdates = ['name', 'email', 'password', 'age'];
 	const isValidOperation = updates.every((update) =>
@@ -123,7 +123,7 @@ router.patch('/users/me', auth, async (req, res) => {
 	}
 });
 
-router.delete('/users/me', auth, async (req, res) => {
+router.delete('/api/users/me', auth, async (req, res) => {
 	try {
 		//validating credentials
 		//req.params.id changed to -> req.user._id since we already attacked the user to req and we do have access to it since we r using the authentication middleware

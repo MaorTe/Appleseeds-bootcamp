@@ -37,11 +37,11 @@ const myFunction = async () => {
 	const token = jwt.sign({ _id: 'abc123' }, 'thisismynewcourse', {
 		expiresIn: '7 days',
 	});
-	console.log(token);
+	// console.log(token);
 
 	//first argument is the token we try to verify, second is secret to use if successful returns the data
 	const data = jwt.verify(token, 'thisismynewcourse');
-	console.log(data);
+	// console.log(data);
 };
 
 myFunction();
@@ -58,3 +58,4 @@ const main = async () => {
 	await user.populate('tasks').execPopulate();
 	console.log(user.tasks);
 };
+// main();
